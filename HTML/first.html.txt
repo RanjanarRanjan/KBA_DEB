@@ -1,0 +1,10 @@
+(28-10-2024)html
+😊hypertext markup language used to structure web pages developed by Tim berners-lie in 1991.
+😊shift+! then enter its short cut to get the structure of html
+😊html is case insensitive or not case sensitive
+
+😊doctypehtml-it is used to and the version of an html
+😊marqueue
+	its allow the content to move horizondaly or verticaly across the stream
+	synatx:direction="up","down"
+	       behavior="scroll",slide,alternate 
