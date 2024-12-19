@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            background-color:lightgray;
+            font-family: system-ui;
+        }
+        .button{
+            width: 70px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: purple;
+            border: none;
+            color: white;
+            margin: 20px 0 0 0;
+        }
+        input{
+          border-radius: 5px;
+            width: 250px;
+            height: 25px;
+            border: 2px solid #ccc;
+        }
+        form{
+            width:350px;
+            height: 450px;
+            background-color: white;
+            margin-top: 100px;
+            border-radius: 5px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2)
+        }
+        h1{
+            color: purple;
+            text-align: center;
+        }
+        .container{
+            text-align: center;
+        }
+        .container a{
+            color: purple;
+        }
+        table{
+            padding: 0 40px;
+        }
+        .dropdown {
+            height: 35px;
+         width: 260px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+  }
+    </style>
+</head>
+<body>
+   
+        <form>
+         
+            <h1> Sign Up</h1>
+                
+            <table >
+                <tr>
+                    <td>
+                        Name :
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <Input type="text" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       Email :
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <Input type="email" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       Password :
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <Input type="password" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       Price :
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select class="dropdown" name="price" required>
+                            <option value="admin">Admin</option>
+                            <option value="others">Others</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                       <Input class="button" type="submit" value="Sign Up">
+                    </td>
+                    
+                </tr>     
+            </table>
+            <p class="container">Already have an account? <a href="home.html">Login</a></p>
+        </form>
+   
+</body>
+</html>

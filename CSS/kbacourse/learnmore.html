@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Course</title>
+    <style>
+        *{
+            margin: 0;
+            font-family: system-ui;
+        }
+        img{
+            display: block;
+            width: 100%;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 25px;
+            background-color: lightgray;
+        }
+        .container{
+            padding-top: 10px ;
+        }
+        .container a{
+            color: purple;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        nav img{
+            width: 15%;
+        }
+       .main{
+        margin:20px 0 ;
+        display: flex;
+        justify-content: center;
+       }
+       .main-container{
+        width: 600px;
+        margin-top: 10px;
+        background-color: lightgray;
+        padding: 10px 30px 20px 30px;
+        border-radius: 7px;
+       }
+       .main-container img{
+        height: 200px;
+        border-radius: 7px;
+       }
+       .second{
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+       }.second div {
+        display: flex;
+       }
+       .rs{
+        color: rgb(236, 73, 73);
+        margin-right: 10px;
+       }
+       .addcart{
+        padding: 3px 20px;
+        height: 20px;
+        color: white;
+        background-color: purple;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+        font-size: 10px;
+    }
+      li{
+        font-size: 14px;
+        margin-left: -22px;
+      }
+      .main-container h3{
+        color: purple;
+        margin-bottom: 10px;
+      }
+      .right{
+        display: flex;
+        justify-content: right;
+        margin: 10px 150px 100px 0;
+        
+      }
+      .edit,.remove{
+        color: white;
+        padding: 3px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+        font-size: 10px;
+    }
+    .edit{
+        background-color: rgb(70, 70, 211);
+        margin-right: 10px;
+    }
+    .remove{
+        background-color: rgb(212, 45, 45);
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <a><img src="../logo.png" alt="Logo"></a>
+    <!-- <img  alt="logo" height="40" width="40"/> -->
+        <div class="container">
+            <a href="home.html"> Home</a>
+            <a href="update.html">Course </a>
+            <a href="contactus.html">Contact Us</a>
+            <a href="addcourse.html" >Add Course</a>
+            <a href="login.html">Logout</a>
+        </div> 
+    </nav> 
+    <div class="main">
+        <div>
+        <p>Back to Course</p>
+        <div class="main-container">
+            <a><img src="image.png" alt="thumbnail"></a>
+            <div class="second">
+                <h3>s122 </h3>
+                <div>
+                    <h4 class="rs">Rs.1500</h4>
+                    <a class="addcart">add to cart</a> 
+                </div>
+            </div>
+            <h3>description</h3>
+       
+            <p>11q</p><br>
+            <h3>prerequisites</h3>
+            <ul >
+                <li>Basic understanding of blockchain technology</li>
+                <li>Familiarity with programming languages</li>
+                <li>internet access</li>
+            </ul><br>
+            <h3>Features</h3>
+            <ul>
+                <li>40 hours of content</li>
+                <li>Certificate of Completion</li>
+                <li>Access to Community forums</li>
+                <li>Downloadable resources</li>
+                <li>24/7 support</li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    <div class="right">
+        <a class="edit">add to cart</a> 
+        <a class="remove">add to cart</a> 
+    </div>
+</body>
+</html>

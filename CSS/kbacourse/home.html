@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        *{
+            margin: 0;
+            font-family: system-ui;
+        }
+        body a{
+            cursor: pointer;
+        }
+        img{
+            display: block;
+            width: 100%;
+        }
+        .container1{
+            background-color: lightgray;
+            color:purple;
+            text-align: center;
+        }
+        .container2{
+            margin: 15px 0;
+            padding: 15px 0; 
+            background-color: lightgray;
+            color:rgb(185, 39, 185);
+            text-align: center;
+        }
+        .container2 p{
+            font-size: 15px;
+            color:rgb(196, 130, 196);
+        }
+        .container1 h1{
+            padding: 10px 0 ;
+            font-size: 22px;
+        }
+        .container1 p{
+            padding: 0 0 10px 0 ;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 25px;
+           
+        }
+        .container{
+            padding-top: 10px ;
+        }
+        .container a{
+            color: purple;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        nav img{
+            width: 15%;
+        }
+        .course-box{
+            width: 330px;
+            height: 170px;
+            background-color: lightgray;
+            margin: 20px 30px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .course{
+            text-align: center;
+        }
+        .ba-img{
+            display: inline-block;
+            width: 50%;
+        }
+        .ba-img img{
+            border-radius: 5px;
+        }
+        .learnmore{
+            padding: 5px 5px;
+            color: white;
+            background-color: purple;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 10px;
+          
+        }
+        .viewall{
+            text-align: center;
+        }
+        .viewall a{
+            padding: 5px 60px;
+            color: white;
+            background-color: purple;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <nav>
+            <a><img src="../logo.png" alt="Logo"></a>
+    <!-- <img  alt="logo" height="40" width="40"/> -->
+            <div class="container">
+                <a href="home.html"> Home</a>
+                <a href="update.html">Course </a>
+                <a href="contactus.html">Contact Us</a>
+                <a href="addcourse.html" >Add Course</a>
+                <a href="login.html">Logout</a>
+            </div> 
+        </nav> 
+        <div style="border-top: 1px solid rgb(194, 191, 191);"></div>
+        <h1>Learn Blockchain Technology From Kerala's First Dedicated Facility for Blockchain Education</h1>
+        <p>Since 2019</p>
+    </div>
+    <div class="container2">
+        <h2>BROWSE OUR TOP COURSES</h2>
+        <P>Choose the course that's right for your career goals.</P>
+    </div>
+    <h4>Top Course</h4>
+    <div class="course-box">
+        <div class="course">
+            <p>BlockChain</p><br>
+            <a class="ba-img"><img src="image.png" alt="BA"></a>
+        </div>
+            <a href="learnmore.html" class="learnmore">Learn more</a>
+    </div>
+    <div  class="viewall">
+        <a href="learnmore.html" >View All Courses</a>
+    </div>
+        
+</body>
+</html>

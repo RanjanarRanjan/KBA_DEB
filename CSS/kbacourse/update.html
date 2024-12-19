@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Course</title>
+    <style>
+        *{
+            margin: 0;
+            font-family: system-ui;
+        }
+        img{
+            display: block;
+            width: 100%;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 25px;
+            background-color: lightgray;
+        }
+        .container{
+            padding-top: 10px ;
+        }
+        .container a{
+            color: purple;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        nav img{
+            width: 15%;
+        }
+        form {
+            flex-direction: column;
+            background-color: lightgray;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 30px auto;
+        }
+        form h1{
+            text-align: center;
+            color: purple;
+            margin-bottom: 10px;
+        }
+        input{
+            margin: 15px 0;
+            width: 100%;
+            height: 20px;
+            border: 1px solid rgb(158, 156, 156);
+        }
+        textarea{
+            margin: 15px 0;
+            width: 100%;
+            height: 40px;
+            border: 1px solid rgb(158, 156, 156);
+         
+        }
+        .dropdown{ 
+            margin: 15px 0;
+            width: 100%;
+            padding: 5px;
+            border: 1px solid rgb(158, 156, 156);
+            background-color: rgb(197, 195, 195);
+        }
+        .button{
+            color: white;
+            background-color: purple;
+            width: 100%;
+            height: 30px;
+            border: none;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a><img src="../logo.png" alt="Logo"></a>
+    <!-- <img  alt="logo" height="40" width="40"/> -->
+        <div class="container">
+            <a href="home.html"> Home</a>
+            <a href="update.html">Course </a>
+            <a href="contactus.html">Contact Us</a>
+            <a href="addcourse.html" >Add Course</a>
+            <a href="login.html">Logout</a>
+        </div> 
+    </nav> 
+    <form>
+        <div>
+            <h1 >Update Course </h1>
+                <label> Course Name :</label><br>
+                <input type="text" placeholder="eg:Certified Blockchain Associate" required><br>
+                <label>Course Type :</label><br>
+                    <select class="dropdown" name="course" class="w-[400px]" required>
+                        <option  value="Selfe" selected>Hybrid</option>
+                        <option  value="Other">Others</option>
+                    </select><br>
+                <label>description :</label><br>
+                <textarea  rows="3" cols="21" placeholder="Small description on the Course"></textarea><br>
+                <label>Course Price :</label><br>
+                    <select class="dropdown" name="Price" required>
+                        <option  value="course1" selected>1500</option>
+                        <option  value="course2">2000</option>
+                        <option  value="course3">Others</option>
+                    </select><br>
+                <input class="button" type="submit" value="Update Course">
+        </div>
+      
+    </form>
+</body>
+</html>

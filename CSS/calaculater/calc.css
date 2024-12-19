@@ -1,0 +1,144 @@
+*{
+   margin: 0;
+   padding: 0;
+}
+body{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+img{
+    display: block;
+    width: 100%;
+}
+.sec{ 
+    width: 500px;
+    height: 580px;
+    background-color:black;
+    border-radius: 5px;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.p1{
+    margin: 10px 0 0 15px;
+    color: rgb(199, 197, 197);
+    font-size: 25px;
+    font-weight: bold;
+}
+.text{
+    display: flex;
+    margin: 10px 50px 0 0;
+    text-align: right;
+}
+.p2{
+    color:rgb(199, 197, 197);
+    font-size: 9px;
+}
+.p2 span{
+    font-size:14px;
+}
+.box{
+    display: flex;
+    background-color: aliceblue;
+    margin-left: 5px;
+}
+.box1{
+    width: 25px;
+    height: 28px;
+    background-color: bisque;
+}
+.screen {
+    width: 90%;
+    height: 70px;
+    margin: 10px 15px;
+    border: 10px solid lightgray;
+    background-color: gray;
+    border-radius: 5px;
+    
+    /* overflow: hidden;*/
+}
+
+.container3{
+    display: flex;
+}
+.left{
+    display: flex;
+}
+.right{
+    display: flex;
+    flex-direction: column;
+}
+.container2{
+    margin: 25px 15px 0 15px;
+}
+.button,.button1,.button2,.button3{
+    margin: 5px;
+    background-color: #1b1b1b;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(128, 128, 128, 0.5);
+} 
+.button4{
+    margin: 5px;
+    background-color:rgb(87, 85, 85);
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(112, 111, 111, 0.5);
+} 
+.button2{
+    position: absolute;
+    margin: 5px 0 0 10px;
+}
+.button{
+    width: 65px;
+    height: 44px;
+    font-size: 20px;
+}
+.button2{
+    width: 65px;
+    height: 44px;
+}
+.button1,.button4{
+    width: 65px;
+    height: 55px;
+    font-size: 28px;
+}
+.button3{
+    width: 65px;
+    font-size: 45px;
+}
+.container3{
+    margin: 0 15px;
+}
+#CORRECT{
+    font-size: 12px;
+}
+.left{
+    margin: 0 0 0 6px;
+}
+#on{
+    padding: 10px;
+    font-size: 14px;
+    position: relative;
+    margin-top: 5px;
+    background-color: rgb(141, 25, 141);
+}
+#c6{
+    background-color: rgb(141, 25, 141);
+}
+hr{
+    width:100%;
+}
+#c1,#c2,#c3{
+    background-color: lightseagreen;
+}
+#c4,#c5{
+    background-color: orange;
+}

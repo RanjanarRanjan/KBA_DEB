@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity2</title>
+</head>
+<body>
+    <script>
+        let a=2,b=3;
+        document.write("before swap value of a = ",a)
+        document.write("<br>before swap value of b = ",b)
+        temp=a;
+        a=b;
+        b=temp;
+        document.write("<br>after swap value of a = ",a)
+        document.write("<br>after swap value of b = ",b)
+
+
+
+        let x=10 , y=30;
+        document.write("<br><br>before swap value of x = ",x)
+        document.write("<br>before swap value of y = ",y)
+        x=y-x;
+        y=y-x;
+        x=x+y
+        document.write("<br>after swap value of x = ",x)
+        document.write("<br>after swap value of y = ",y)
+
+        let celsius = 100;
+        let fahrenheit = (celsius * 9/5) + 32;
+        document.write("<br><br>",+celsius + "°C is equal to " + fahrenheit + "°F.");
+
+        let square= x*x;
+        let cube=x*x*x;
+        document.write(`<br><br>square of x ${x} is square `,+square)
+        document.write(`<br>square of x ${x} is cube `,+cube)
+
+        let side=4
+        let r=4
+        let base=4
+        let w=4
+        let l=5
+        let h=5
+        square =side*side;
+        circle=3.14*(r*r);
+        rectangle= w*l
+        triangle=0.5*base*h
+
+        squarePerimeter = 4 * side;
+        circlePerimeter = 2 * 3.14 * r;
+        rectanglePerimeter = 2 * (l+w);
+        trianglePerimeter = 3*side;
+
+        document.write("<br><br>area of square ",square)
+        document.write("<br>area of circle ",circle)
+        document.write("<br>area of rectangle ",rectangle)
+        document.write("<br>area of triangle ",triangle)
+
+        document.write("<br><br>Perimeter of the square: ",squarePerimeter);
+        document.write("<br>Perimeter of the circle: ",circlePerimeter);
+        document.write("<br>Perimeter of the rectangle: ",rectanglePerimeter);
+        document.write("<br>Perimeter of the triangle: ",trianglePerimeter);
+
+
+        principal = 1000; 
+        rate = 5;         
+        time = 2;
+        interest = (principal*rate*time)/100;
+        C= (principal * (1 + (rate / 100)) ** time) - principal;
+        document.write("<br><br>Simple Interest: " +interest);
+        document.write("<br>Compound Interest: "+C)
+
+        F=100;
+        S=200;
+        T=50;
+        large=F<S?S:F
+        small=F<S?F:S
+        S=small<T?small:T
+        document.write("<br><br>largest number is : ",large)
+        document.write("<br>Smallest number is : ",S)
+
+        let num = 5; 
+        document.write( num > 0 ? "<br>"+num + " is positive." : num < 0 ? "<br>"+num + "is negative." :"<br>"+ num + " is zero.");
+
+        let age = 28; 
+        document.write(age >= 18 ?"<br>"+age +" Eligible to vote." : "<br>"+age+" Not eligible to vote.");
+
+
+        let num1 = 30; 
+        let num2 = 40;
+        let sum = num1 + num2;
+        document.write(sum >= 50 && sum <= 80 ? "<br>"+65 : 80);
+
+    </script>
+</body>
+</html>

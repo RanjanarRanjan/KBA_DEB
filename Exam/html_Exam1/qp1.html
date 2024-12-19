@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <center>
+    <Form>
+        <h1><font color="green">Form </font></h1>
+        <table cellspacing="15" >
+            <tr>
+                <td>Full Name :</td>
+                <td><input type="text" required></td>
+            </tr>
+            <tr>
+                <td>Email :</td>
+                <td><input type="email" required></td>
+            </tr>
+            <tr>
+                <td>Date of birth :</td>
+                <td><input type="date" required></td>
+            </tr>
+            <tr>
+                <td>Phone Number:</td>
+                <td>
+                    <input type="number" placeholder="optional">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Subject :
+                </td>
+                <td>
+                <select name="subject" required>
+                    <option value="" selected></option>
+                    <option value="general enquiry">general enquiry</option>
+                    <option value="Support">Support</option>
+                    <option value="Feedback">Feedback</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Message :</td>
+                <td><textarea required></textarea></td>
+            </tr>
+            <tr>
+                <td>Preferred Contact :</td>
+                <td>
+                    <input type="radio" name="contact" required>Phone
+                    <input type="radio" name="contact" required>Email
+                </td>
+            </tr>
+            <tr>
+                <td> File Upload :</td>
+                <td>
+                    <input type="file" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="submit">
+                </td>
+                <td>
+                    <input type="reset" value="Reset">
+                </td>
+            </tr>
+        </table>
+    
+    </Form>
+    </center>
+</body>
+</html>

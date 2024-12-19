@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body{
+            background-color:lightgray;
+            display: flex;
+            justify-content: center;
+            font-family: system-ui;
+        }
+        .modelbox{
+            margin-top: 100px;
+           padding: 20px 40px;
+            width:250px;
+            height: 350px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2)
+        }
+        h1{
+            text-align: center;
+            color: purple;
+           
+        }
+        label {
+            display: block; /* Ensures the label is on its own line */
+            margin-bottom: 2px 0; /* Adds space between the label and input */
+        }
+        input{
+            width: 250px;
+            height: 20px;
+            border: 1px solid rgb(158, 156, 156);
+            margin: 2px 0;
+        }
+        .button{
+            padding:25px 0 ;
+            display: flex;
+            justify-content: space-between;  
+        }
+        a{
+            color: purple;
+        }
+        button{
+            color: white;
+            background-color: purple;
+            width: 70px;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form class="modelbox">
+        <h1>Login</h1>
+        <label for="Email">Email :</label><br>
+        <input type="email" required><br>
+        <label for="password">password :</label><br>
+        <input type="password" required>
+        <div class="button">
+            <button>login</button>
+            <a href="#forgot">forgot password?</a>
+        </div>
+        <p style="text-align: center;">Don't have an account?<a href="signup.html">Sign Up</a></p>
+
+    </form>
+
+</body>
+</html>

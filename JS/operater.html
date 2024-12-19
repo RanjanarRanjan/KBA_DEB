@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        a=20
+        b=30
+        c=25
+
+        s=a<b;
+        document.write("S is ",s)
+        s=c<a;
+        document.write("<br>S is ",s)
+
+        s=a<b && c<b
+        document.write("<br><br> s is ",s)
+        s=a<b && c<a
+        document.write("<br>s is ",s)
+
+        r=a>b?a:b
+        document.write("<br><br>r is ",r)
+
+        x=a++
+        document.write(`<br><br>the value of  'x' is ${x} and value of 'a' is ${a}`)
+        y=++b
+        document.write(`<br>the value of  'y' is ${y} and value of 'a' is ${b}`)
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Certificate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-5 mt-2.5">
+    <div class="flex justify-between">
+        <h3 class="text-3xl">Certificate Dapp</h3>
+        <div>
+            <a  href="home.html">Home</a>&nbsp;&nbsp;
+            <a class="bg-sky-400 rounded-md px-2.5 py-1 text-white text-center" href="certificate.html">certificate</a>
+        </div>
+    </div>
+        <form class="block my-8 mx-52 w-7/10 bg-white border border-black p-5">
+            <table class="w-4/12 border-separate border-spacing-2">
+                <tr>
+                    <td><h3 class="text-2xl">Issue New Certificate</h3></td>
+                </tr>
+                <tr>
+                    <td>Select Course*</td>
+                </tr>
+                <tr>
+                    <td>
+                        <select class="w-full h-6 border border-black px-1.5" name="course">
+                            <option value="CBA">Certified Blockchain Associate</option>
+                            <option value="PCB">PCB</option>
+                            <option value="CBA">Cyber Security</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Certificate ID*</td>
+                </tr>
+                <tr>
+                    <td><input class="w-full h-6 border border-black px-1.5" type="text" placeholder="Certificate ID"></td>
+                </tr>
+                <tr>
+                    <td>Candidate name*</td>
+                </tr>
+                <tr>
+                    <td><input class="w-full h-6 border border-black px-1.5" type="text" placeholder="name"></td>
+                </tr>
+                <tr>
+                    <td>Select Grade*</td>
+                </tr>
+                <tr>
+                    <td>
+                        <select class="w-full h-6 border border-black px-1.5" name="grade">
+                            <option value="S">S</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Issue Date*</td>
+                </tr>
+                <tr>
+                    <td><input class="w-full h-6 border border-black px-1.5" type="date"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a class="bg-sky-400 rounded-md px-2.5 py-1 text-white text-center" href="issue.html">Issue Certificate</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+</body>
+</html>

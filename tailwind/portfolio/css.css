@@ -1,0 +1,137 @@
+/* General Styles 
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color:whitesmoke ; Light pastel background 
+    background-color:#D7A9A4;
+  } */
+  a{
+    text-decoration: none;
+    color: white;
+  }
+  /* Container */
+  /* .container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+  } */
+  
+  /* Header Section */
+  /* .header {
+    display: flex;
+    justify-content:space-evenly;
+    text-align:center;
+    padding: 20px 0;
+    gap: 25px;
+  } */
+  
+  /* .profile-image img {
+    width: 400px;
+    height: 500px;
+    border: 3px solid #1D3A89;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+  } */
+  
+  /* .header h1 {
+
+    font-size: 45px;
+    margin: 0 80px 10px 0;
+  } */
+  
+  /* .header p {
+    margin: 0 80px 10px 0;
+    font-size:18px;
+    color: #555;
+  } */
+  
+  /* .contact-info {
+    background-color: #1d3a89;
+    padding: 20px;
+    margin: 200px 0 0 310px;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 500px;
+  } */
+  
+  /* .contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: white;
+  } */
+  
+  /* .contact-item .icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  } */
+  
+  
+  /* Section Titles */
+  /* h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color:#1D3A89;
+    border-bottom: 2px solid black;
+    display: inline-block;
+  } */
+  
+  /* Section Content */
+  /* section {
+    margin-bottom: 30px;
+  } */
+  
+  /* .section-content {
+    line-height: 1.6;
+    font-size: 16px;
+  } */
+  
+  /* .section-content ul {
+    list-style: square;
+    padding-left: 20px;
+  } */
+  
+  /* Skills Section */
+  /* .skills ul {
+    display: flex;
+    gap: 10px;
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .skills li {
+    background: #fff;
+    padding: 8px 12px;
+    border: 1px solid #1D3A89;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color:#D7A9A4 ;
+  } */
+  .sec2{
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #1D3A89 ;
+    margin: 0 100px;
+    border-radius: 10px;
+  }
+  .sec4{
+    text-align: right;
+   
+  }
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    color: #777;
+  }
+  .section7{
+    text-align: center;
+  }
+  .s7p2{
+    text-align: right;
+    margin-right: 100px;
+  }

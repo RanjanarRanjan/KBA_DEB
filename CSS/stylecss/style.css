@@ -1,0 +1,39 @@
+/* p{
+    background-color: lightcoral;
+    color: white;
+    font-size: 30px;
+} */
+/* .main{
+    display: flex;
+}
+.main div{
+    width: 30%;
+} */
+ .sub{
+    float: left;
+    width: 33%;
+    border-left: 3px solid lightseagreen ;
+ }
+ @media only screen and (max-width:600px) {
+    /* body{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    } */
+    img{
+        width: 100px;
+    }
+    h1{
+        font-size: medium;
+    }
+    p{
+        font-size: x-small;
+        
+    }
+    .sub{
+        width: 100%;
+        height: 200px;
+        float: left;
+    }
+
+ }
