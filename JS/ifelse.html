@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If-Else</title>
+</head>
+<body>
+    <script>
+        let a=15,b=10,c=5,O="+";
+        if(a<b)
+        {
+            document.write(`${a} is smaller<br>`)
+        }
+        else
+        {
+            document.write(`${b} is smaller<br>`)
+        }
+        //if elseif
+        if(a<b&&a<c)
+        {
+            document.write(`${a} is smaller<br>`)
+        }
+        else if(b<a&&b<c)
+        {
+            document.write(`${b} is smaller<br>`)
+        }
+        else
+        {
+            document.write(`${c} is smaller<br>`)
+        }
+        //equals == and ===
+        let x=5,y="5"
+        if(x==y)
+        {
+            if(x===y){
+            document.write(`<br>${x} and ${y} are equal and same datatype<br>`)
+            }
+            else
+            {
+            document.write(`${x} and ${y}are equal but different datatype <br>`)
+            }  
+        }
+        else
+        {
+            document.write(`${x} and ${y} are not equal<br>`)   
+        }
+        //switch
+        switch(O)
+        {
+            case'+':
+            {
+                document.write("The sum is ",a+b);
+                break;
+            }
+            case'-':
+            {
+                document.write("The difference is ",a-b);
+                break;
+            }
+            case'*':
+            {
+                document.write("The product is ",a*b);
+                break;
+            }
+            case'/':
+            {
+                document.write("The quotient is ",a/b);
+                break;
+            }
+            default:
+            {
+                document.write("invalid operation");
+            }
+        }
+    </script>
+</body>
+</html>
