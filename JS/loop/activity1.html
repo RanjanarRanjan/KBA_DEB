@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Write a JS program to print natural numbers from 10 to 50 using while loop . Find the sum & average.
+        let i=10;
+        sum=0;
+        c=0;
+        document.write("natural numbers :")
+        while(i<=50)
+        {
+            document.write(" ",i);
+            sum=sum+i;
+            c=c+1;
+            i++;
+        }
+        avg=sum/c;
+        document.write("<br> sum =",sum);
+        document.write("<br> avg =",avg);
+       
+        //Write a JS program to print cube of numbers from 10 to 30
+        document.write("<br>cube of numbers from 10 to 30:");
+        for(cube=0,i=10;i<=30;i++)
+        {
+            cube=i*i*i;
+            document.write(" ",cube)
+        }
+
+        // Write a JS program to print multiplication table for a given number
+        x=4
+        for(i=1,mul=0;i<=10;i++)
+        {
+            mul=i*x
+            document.write(`<br>${i} * ${x} = ${mul}`)
+        }
+
+        //Write a JS program to print reverse of a number
+        document.write("<br>");
+        let r = 0;
+        let n = 245;
+        let temp = n;
+
+        while (temp !== 0) {
+            let digit = temp % 10;
+            r = r * 10 + digit;
+            temp = (temp-digit)/ 10; 
+        }
+
+        document.write(`The reverse of ${n} is ${r}.`);
+
+
+        //Write a JS program to print the patterns 25,30,35,40,45,50  10,100,1000,10000 8,10,12,14,16,18,20
+        document.write("<br> pattern<br>");
+         let s = 25;
+        i=0
+        while(i<6){
+           document.write(" ",s);
+           s=s+5;
+           i++;
+        }
+
+
+        
+        document.write("<br> ");
+         let y = 1;
+        i=0
+        while(i<4){
+           y=y*10;
+           document.write(" ",y);
+           i++;
+        }
+
+
+        document.write("<br>");
+         let a = 8;
+        i=0
+        do{
+           document.write(" ",a);
+           a=a+2;
+           i++;
+        }while(i<7)
+     
+        //Write a JS program to check whether the given string is palindrome or not
+    </script>
+</body>
+</html>

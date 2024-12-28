@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content"></div>
+    
+    <div id="cinema-container">List of Cinemas</div>
+    <h4>Select a Programming Language Class</h4>
+    <div id="dropdown-container"></div>
+    <p id="full-name"></p>
+    <p id="sentence"></p>
+
+    <script>
+
+//Program to print a para about yourself using createElement() , textContent & append child.
+       
+        const para = document.createElement('p');
+        para.textContent = "Hi, I'm Ranjana. I recently completed my MCA and BCA."
+        document.getElementById('content').appendChild(para);
+
+
+//Make an unordered list of cinemas on html page using javascript.
+
+        const container = document.getElementById("cinema-container");
+        const ul = document.createElement("ul");
+        const li1 = document.createElement("li");
+        li1.textContent = "PVR Cinemas";
+        ul.appendChild(li1);
+        const li2 = document.createElement("li");
+        li2.textContent = "INOX";
+        ul.appendChild(li2);
+        const li3 = document.createElement("li");
+        li3.textContent = "Cinepolis";
+        ul.appendChild(li3);
+        const li4 = document.createElement("li");
+        li4.textContent = "Carnival Cinemas";
+        ul.appendChild(li4);
+        const li5 = document.createElement("li");
+        li5.textContent = "IMAX";
+        ul.appendChild(li5);
+        container.appendChild(ul);
+
+//Create a dropdown for programming language classes offered on html page using javascript.
+
+
+        // const dropdown = document.createElement("select");
+        // const defaultOption = document.createElement("option");
+        // defaultOption.textContent = "Select a class";
+        // defaultOption.value = "";
+        // dropdown.appendChild(defaultOption);
+        // const languages = ["Java", "Python", "JavaScript", "C++", "Ruby"];
+        // for (let i = 0; i < languages.length; i++) {
+        //     const option = document.createElement("option");
+        //     option.textContent = languages[i];
+        //     dropdown.appendChild(option);
+        // }
+        // document.getElementById("dropdown-container").appendChild(dropdown);
+        const dropdown = document.createElement("select");
+        const defaultOption = document.createElement("option");
+        defaultOption.textContent = "Select a class";
+        defaultOption.value = "";
+        dropdown.appendChild(defaultOption);
+        const option1 = document.createElement("option");
+        option1.textContent = "Java";
+        dropdown.appendChild(option1);
+        const option2 = document.createElement("option");
+        option2.textContent = "Python";
+        dropdown.appendChild(option2);
+        const option3 = document.createElement("option");
+        option3.textContent = "JavaScript";
+        dropdown.appendChild(option3);
+        const option4 = document.createElement("option");
+        option4.textContent = "C++";
+        dropdown.appendChild(option4);
+        const option5 = document.createElement("option");
+        option5.textContent = "Ruby";
+        dropdown.appendChild(option5);
+        document.getElementById("dropdown-container").appendChild(dropdown);
+
+//On the KBA-courses site you created add a radio button showing your experience on KBA(like good, bad, average).
+
+//Create a dropdown for list of cakes and print the value of second option.
+
+//Print your full name storing fname & lname. Print in Uppercase.
+
+        var fname = "Ranjana";
+        var lname = "Ranjan";
+        var fullName = (fname + " " + lname).toUpperCase();
+        document.getElementById("full-name").textContent = fullName;
+
+//“You can study anything if you have a will to do it”.Take the substrings “You can study”, “you”,”will”,”do it” and combine as a sentence.
+ 
+        var sentence = "You can study anything if you have a will to do it";
+        document.write(sentence) 
+        var part1 = sentence.substring(0, 14);  
+        var part2 = sentence.substring(26, 29); 
+        var part3 = sentence.substring(37, 42); 
+        var part4 = sentence.substring(45); 
+        var combinedSentence = part1 + " " + part2 + " " + part3 + " " + part4;
+        document.getElementById("sentence").textContent = combinedSentence;
+      
+//“MongoDB is a decentralised distributed ledger . MongoDB can eliminate centralisation.” Replace MongoDB with Blockchain.
+
+        var sentence = "MongoDB is a decentralised distributed ledger. MongoDB can eliminate centralisation.";
+        document.write("Before Replacement:<br>");
+        document.write(sentence + "<br><br>");
+        var updatedSentence = sentence.split("MongoDB").join("Blockchain");
+        document.write("After Replacement:<br>");
+        document.write(updatedSentence);
+
+//Print the string “MongoDB is a decentralised distributed ledger” using substring/substr.
+
+        var sentence = "MongoDB is a decentralised distributed ledger";
+        document.write("<br><br>Before: " + sentence + "<br>");
+        var result = sentence.substring(0, 46); 
+        document.write("after : ",result);
+
+//Compare “Hello World” & “hEllO World” and display the result & its type.
+
+        var str1 = "Hello World";
+        var str2 = "hEllO World";
+        var result = str1 === str2;
+        document.write("<br><br>Result: " + result + "<br>"); 
+        document.write("Type of result: " + typeof result); 
+
+//Print this statement “ I am ___ yrs of old and my brother is 10 yrs older to me. He is now __ years old.”
+
+        var age = 25; 
+        var brotherAge = age + 10;
+        document.write(`<br><br>I am ${age} yrs of old and my brother is 10 yrs older to me. He is now ${brotherAge} years old.`);
+
+//Consider this statement “ My name is ________.(declaring fname & lastname in uppercase). I live in ____(uppercase).
+
+        var fname = "Ranjana";
+        var lastname = "Ranjan";
+        var place = "Kerala";
+        var fullName = fname.toUpperCase() + " " + lastname.toUpperCase();
+        var upperPlace = place.toUpperCase();
+        document.write("<br><br>My name is " + fullName + ". I live in " + upperPlace + ".");
+
+//Consider these two statements “I like to play video games.” “I don’t like Hide & seek”. Change 'like' to 'don't like'.
+        
+        var sentence1 = "I like to play video games.";
+        var sentence2 = "I don’t like Hide & seek";
+        document.write("<br><br>Before: <br>");
+        document.write(sentence1 + "<br>");
+        document.write(sentence2 + "<br><br>");
+        var updatedSentence1 = sentence1.replace("like", "don't like");
+        var updatedSentence2 = sentence2.replace("like", "don't like");
+        document.write("After: <br>");
+        document.write(updatedSentence1 + "<br>");
+        document.write(updatedSentence2);
+
+//Write a JavaScript program to compute the sum of the two given integers. If the sum is in the range 50..80 return 65 otherwise return 80 (using ternary operator).
+
+        var num1 = 30;  
+        var num2 = 40;  
+        var result = (num1 + num2 >= 50 && num1 + num2 <= 80) ? 65 : 80;
+        document.write("<br><br>The result is: " + result);
+
+//Program to find whether the person is eligible for voting using ternary operator
+
+        var age = 40;  
+        document.write("<br><br>",(age>=18) ? "Eligible for voting" : "Not eligible for voting");
+       
+//**Activity set 2
+
+//Write a JavaScript program to check whether a given positive number is a multiple of 3 or 7.
+        var number = 21;  
+        if (number % 3 === 0 || number % 7 === 0) {
+            document.write("<br><br>" + number + " is a multiple of 3 or 7.");
+        } else {
+            document.write("<br><br>" + number + " is not a multiple of 3 or 7.");
+        }
+//Write a JavaScript conditional statement to find the sign of the product of three numbers. Display with the specified sign.
+        var num1 = 5;  
+        var num2 = -3;
+        var num3 = 2;  
+        var product = num1 * num2 * num3;
+        if (product > 0) {
+            document.write("<br><br>The product is positive.");
+        } else if (product < 0) {
+            document.write("<br><br>The product is negative.");
+        } else {
+            document.write("<br><br>The product is zero.");
+        }
+//Write a program using switch case to check the CGPA on given condition.
+//If the CGPA is 8 then print You got 8 CGPA.
+//If the CGPA is 10 then print You got 10 CGPA.
+//If the CGPA is 7 then print You got 7 CGPA.
+        var cgpa = 8;  
+        switch (cgpa) 
+        {
+            case 10:
+                document.write("<br><br>You got 10 CGPA.");
+                break;
+            case 8:
+                document.write("<br><br>You got 8 CGPA.");
+                break;
+            case 7:
+                document.write("<br><br>You got 7 CGPA.");
+                break;
+            default:
+                document.write("<br><br>CGPA is not in the specified range.");
+        }
+//Write a program to print the month name by given number using switch
+        document.write("<br><br>")
+        var monthNumber = 3;  
+            switch (monthNumber) {
+                case 1:
+                    document.write("January");
+                    break;
+            case 2:
+                document.write("February");
+                break;
+            case 3:
+                document.write("March");
+                break;
+            case 4:
+                document.write("April");
+                break;
+            case 5:
+                document.write("May");
+                break;
+            case 6:
+                document.write("June");
+                break;
+            case 7:
+                document.write("July");
+                break;
+            case 8:
+                document.write("August");
+                break;
+            case 9:
+                document.write("September");
+                break;
+            case 10:
+                document.write("October");
+                break;
+            case 11:
+                document.write("November");
+                break;
+            case 12:
+                document.write("December");
+                break;
+            default:
+                document.write("Invalid month number. Please enter a number between 1 and 12.");
+        }
+        document.write("<br><br>")
+
+//Write a program to calculate the root of a quadratic equation.
+
+        var a = 1, b = -3, c = 2; // Coefficients
+        var epsilon = 0.0001; // Precision level
+        var d = b * b - 4 * a * c;
+        var guess, sqrtD, real, imag;
+        if (d >= 0) 
+        {
+            guess = d / 2;
+            while (Math.abs(guess * guess - d) > epsilon) 
+            {
+                guess = (guess + d / guess) / 2;
+            }
+            sqrtD = guess;
+            if (d > 0) 
+            {
+                document.write("Roots: " + (-b + sqrtD) / (2 * a) + ", " + (-b - sqrtD) / (2 * a));
+            } 
+            else 
+            {
+                document.write("Root: " + -b / (2 * a));
+            }
+        } 
+        else 
+        {
+            guess = -d / 2;
+            while (Math.abs(guess * guess - (-d)) > epsilon) 
+            {
+                guess = (guess + (-d) / guess) / 2;
+            }
+            imag = guess;
+            real = -b / (2 * a);
+            document.write("Complex roots: " + real + " ± " + imag + "i");
+        }
+
+
+//Write a program to read temperature in centigrade and display a suitable message according to the temperature state below:
+
+//Temp < 0 then Freezing weather
+//Temp 0-10 then Very Cold weather
+//Temp 10-20 then Cold weather
+//Temp 20-30 then Normal in Temp
+//Temp 30-40 then Its Hot
+//Temp >=40 then Its Very Hot-->
+        document.write("<br><br>")
+
+        var temp = 25; // Example temperature
+        if (temp < 0) {
+            document.write("Freezing weather");
+        } else if (temp >= 0 && temp <= 10) {
+            document.write("Very Cold weather");
+        } else if (temp > 10 && temp <= 20) {
+            document.write("Cold weather");
+        } else if (temp > 20 && temp <= 30) {
+            document.write("Normal in Temp");
+        } else if (temp > 30 && temp <= 40) {
+            document.write("It's Hot");
+        } else if (temp >= 40) {
+            document.write("It's Very Hot");
+        }
+</script>
+</body>
+</html>

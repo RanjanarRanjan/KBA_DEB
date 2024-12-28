@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //print 1 to 10
+        for(i=1;i<=10;i++)           // for(i=0;i<10;i++)
+        {                            // {
+            document.write(" ",i)    //     document.write(" ",i+1)
+        }                            // }
+      
+      //print sum of 1 to 10
+        for(i=1,sum=0;i<=10;i++)
+       {    
+            sum+=i;
+       }
+       document.write("<br>sum is ",sum)
+
+       //print only multiples of 10
+       for(i=1;i<=60;i++)                //for(i=10;i<=60;i+10)
+       {                                 //{
+        if(i%10==0)                      //document.write("<br>,i)
+       {                                 //}
+        document.write("<br>",i)
+       }
+       }
+
+       //factorial of a number
+       let n=5
+       for(i=1,fact=1;i<=n;i++)
+       {
+        fact=fact*i;
+       }
+       document.write("<br><br>",fact);
+       
+       let x=5
+       for(i=x,fact=1;1<=i;i--)
+       {
+        fact=fact*i;
+       }
+       document.write("<br><br>",fact)
+    </script>
+</body>
+</html>

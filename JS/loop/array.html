@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Array</title>
+    </head>
+    <body>
+        <script>
+            let a=[1,2,3,4,5];
+            document.write("element in position 2 is : ",a[2])
+            document.write("<br>",a)
+            for(i=0;i<5;i++)
+            {
+                // document.write("<br>",a[i])
+                if(i==2){
+                    a[2]=10;
+                }
+                document.write("<br>",a[i])
+            }
+
+            document.write("<br>")
+
+            a=[1,2,3,4,5];
+            document.write("<br>",a)
+            for(i=0;i<a.length;i++)
+            {
+               document.write("<br>",a[i]+2)
+            }
+        
+            document.write("<br>")
+
+            let x=[];
+            n=1
+            for(i=0;i<10;i++,n++)
+            {
+                x[i]=n;
+                document.write("<br>",x[i])
+            }
+
+            document.write("<br><br>")
+
+            y=["sana","ranjana","sandra","amal"]
+            for(i=0,c=0;i<=y.length;i++)
+            {
+                if(y[i]=="sandra")
+                {
+                    c++;//flag
+                    break;
+                }
+            }
+            if(c==1)
+            {
+                document.write("sandra is here")
+            }
+            else
+            {
+                document.write("sandra not is here")
+            }
+            document.write("<br>",y)
+           
+        </script>
+    </body>
+</html>
