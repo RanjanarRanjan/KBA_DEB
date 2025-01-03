@@ -6,43 +6,36 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="content"></div>
-    
-    <div id="cinema-container">List of Cinemas</div>
-    <h4>Select a Programming Language Class</h4>
-    <div id="dropdown-container"></div>
-    <p id="full-name"></p>
-    <p id="sentence"></p>
-
+   
     <script>
 
 //Program to print a para about yourself using createElement() , textContent & append child.
        
         const para = document.createElement('p');
         para.textContent = "Hi, I'm Ranjana. I recently completed my MCA and BCA."
-        document.getElementById('content').appendChild(para);
+        document.body.appendChild(para);
 
 
 //Make an unordered list of cinemas on html page using javascript.
 
-        const container = document.getElementById("cinema-container");
-        const ul = document.createElement("ul");
-        const li1 = document.createElement("li");
-        li1.textContent = "PVR Cinemas";
-        ul.appendChild(li1);
-        const li2 = document.createElement("li");
-        li2.textContent = "INOX";
-        ul.appendChild(li2);
-        const li3 = document.createElement("li");
-        li3.textContent = "Cinepolis";
-        ul.appendChild(li3);
-        const li4 = document.createElement("li");
-        li4.textContent = "Carnival Cinemas";
-        ul.appendChild(li4);
-        const li5 = document.createElement("li");
-        li5.textContent = "IMAX";
-        ul.appendChild(li5);
-        container.appendChild(ul);
+        // const container = document.getElementById("cinema-container");
+        // const ul = document.createElement("ul");
+        // const li1 = document.createElement("li");
+        // li1.textContent = "PVR Cinemas";
+        // ul.appendChild(li1);
+        // const li2 = document.createElement("li");
+        // li2.textContent = "INOX";
+        // ul.appendChild(li2);
+        // const li3 = document.createElement("li");
+        // li3.textContent = "Cinepolis";
+        // ul.appendChild(li3);
+        // const li4 = document.createElement("li");
+        // li4.textContent = "Carnival Cinemas";
+        // ul.appendChild(li4);
+        // const li5 = document.createElement("li");
+        // li5.textContent = "IMAX";
+        // ul.appendChild(li5);
+        // container.appendChild(ul); 
 
 //Create a dropdown for programming language classes offered on html page using javascript.
 
@@ -59,27 +52,27 @@
         //     dropdown.appendChild(option);
         // }
         // document.getElementById("dropdown-container").appendChild(dropdown);
-        const dropdown = document.createElement("select");
-        const defaultOption = document.createElement("option");
-        defaultOption.textContent = "Select a class";
-        defaultOption.value = "";
-        dropdown.appendChild(defaultOption);
-        const option1 = document.createElement("option");
-        option1.textContent = "Java";
-        dropdown.appendChild(option1);
-        const option2 = document.createElement("option");
-        option2.textContent = "Python";
-        dropdown.appendChild(option2);
-        const option3 = document.createElement("option");
-        option3.textContent = "JavaScript";
-        dropdown.appendChild(option3);
-        const option4 = document.createElement("option");
-        option4.textContent = "C++";
-        dropdown.appendChild(option4);
-        const option5 = document.createElement("option");
-        option5.textContent = "Ruby";
-        dropdown.appendChild(option5);
-        document.getElementById("dropdown-container").appendChild(dropdown);
+        // const dropdown = document.createElement("select");
+        // const defaultOption = document.createElement("option");
+        // defaultOption.textContent = "Select a class";
+        // defaultOption.value = "";
+        // dropdown.appendChild(defaultOption);
+        // const option1 = document.createElement("option");
+        // option1.textContent = "Java";
+        // dropdown.appendChild(option1);
+        // const option2 = document.createElement("option");
+        // option2.textContent = "Python";
+        // dropdown.appendChild(option2);
+        // const option3 = document.createElement("option");
+        // option3.textContent = "JavaScript";
+        // dropdown.appendChild(option3);
+        // const option4 = document.createElement("option");
+        // option4.textContent = "C++";
+        // dropdown.appendChild(option4);
+        // const option5 = document.createElement("option");
+        // option5.textContent = "Ruby";
+        // dropdown.appendChild(option5);
+        // document.getElementById("dropdown-container").appendChild(dropdown);
 
 //On the KBA-courses site you created add a radio button showing your experience on KBA(like good, bad, average).
 
@@ -90,7 +83,7 @@
         var fname = "Ranjana";
         var lname = "Ranjan";
         var fullName = (fname + " " + lname).toUpperCase();
-        document.getElementById("full-name").textContent = fullName;
+        document.write(fullName,"<br><br>");
 
 //“You can study anything if you have a will to do it”.Take the substrings “You can study”, “you”,”will”,”do it” and combine as a sentence.
  
@@ -100,13 +93,13 @@
         var part2 = sentence.substring(26, 29); 
         var part3 = sentence.substring(37, 42); 
         var part4 = sentence.substring(45); 
-        var combinedSentence = part1 + " " + part2 + " " + part3 + " " + part4;
-        document.getElementById("sentence").textContent = combinedSentence;
+        combinedSentence = part1 + " " + part2 + " " + part3 + " " + part4;
+        document.write(combinedSentence);
       
 //“MongoDB is a decentralised distributed ledger . MongoDB can eliminate centralisation.” Replace MongoDB with Blockchain.
 
         var sentence = "MongoDB is a decentralised distributed ledger. MongoDB can eliminate centralisation.";
-        document.write("Before Replacement:<br>");
+        document.write("<br><br>Before Replacement:<br>");
         document.write(sentence + "<br><br>");
         var updatedSentence = sentence.split("MongoDB").join("Blockchain");
         document.write("After Replacement:<br>");
@@ -254,39 +247,19 @@
 
 //Write a program to calculate the root of a quadratic equation.
 
-        var a = 1, b = -3, c = 2; // Coefficients
-        var epsilon = 0.0001; // Precision level
-        var d = b * b - 4 * a * c;
-        var guess, sqrtD, real, imag;
-        if (d >= 0) 
-        {
-            guess = d / 2;
-            while (Math.abs(guess * guess - d) > epsilon) 
-            {
-                guess = (guess + d / guess) / 2;
-            }
-            sqrtD = guess;
-            if (d > 0) 
-            {
-                document.write("Roots: " + (-b + sqrtD) / (2 * a) + ", " + (-b - sqrtD) / (2 * a));
-            } 
-            else 
-            {
-                document.write("Root: " + -b / (2 * a));
-            }
-        } 
-        else 
-        {
-            guess = -d / 2;
-            while (Math.abs(guess * guess - (-d)) > epsilon) 
-            {
-                guess = (guess + (-d) / guess) / 2;
-            }
-            imag = guess;
-            real = -b / (2 * a);
-            document.write("Complex roots: " + real + " ± " + imag + "i");
-        }
-
+     let a=1,b=-3,c=2
+     let d=(b*b)-(4*a*c)
+     if(d>0)
+     {
+        r1 =(-b+Math.sqrt(d))/(2*a)
+        r2 =(-b-Math.sqrt(d))/(2*a)
+        document.write(`root are real and different : ${r1}, ${r2}`)
+     }
+     else if(d===0)
+     {
+        r = -b/(2*a)
+        document.write(`Roots are real and equal : ${r}`)
+     }
 
 //Write a program to read temperature in centigrade and display a suitable message according to the temperature state below:
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foreach</title>
+</head>
+<body>
+    <script>
+        let a =[2,4,6,8];
+        b=[]
+        a.forEach(function(x)
+        {
+            b.push(x+2);
+        })
+        document.write("a = ",a,"<br>")
+        document.write("b = ",b)
+
+        //arrow function
+        a =[2,4,6,8];
+        z=[]
+        a.forEach((x)=>{
+            x=x+2;
+            z.push(x)
+        })
+        document.write("<br> z = ",z)
+
+        //anony
+        function sum(a,b)
+        {
+            return a+b
+        }
+        document.write("<br> sum = ",sum(2,3))
+
+        //arrow 
+        sum=(a,b)=>
+        {
+            return a+b
+        }
+        document.write("<br> sum = ",sum(2,3))
+
+        function name()
+        {
+            console.log("hello world")
+            setTimeout(()=>
+        {
+            console.log("hi")
+        },10000)
+        name();
+        }
+    </script>
+</body>
+</html>

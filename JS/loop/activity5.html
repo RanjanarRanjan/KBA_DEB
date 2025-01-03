@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form" onsubmit="submitform(event)">
+        <label>First Name :</label>
+        <input type="text" id="name"><br>
+        <label>Last Name :</label>
+        <input type="text" id="lname"><br>
+        <label>Date of birth :</label>
+        <input type="date" id="dob"><br>
+        <label>Address :</label>
+        <input id="address"><br>
+        <label>phone number :</label>
+        <input type="text" id="phno"><br>
+        <input type="submit" >
+    </form>
+  <div style="display: none; border: 1px solid blue; width: fit-content; padding: 20px;" id="output">
+    <h4 id="school"></h4>
+    <p id="details"></p>
+  </div>
+    <script>
+        function submitform(event)
+        {
+            event.preventDefault();
+            fname=document.getElementById("name").value;
+            lastname=document.getElementById("lname").value;
+            date=document.getElementById("dob").value;
+            address=document.getElementById("address").value;
+            phone=document.getElementById("phno").value;
+              
+        
+        const student={
+            name:fname,
+            lname:lastname,
+            dob:date,
+            address:address,
+            phoneno:phone
+        }
+        document.getElementById("output").style.display="block";
+        document.getElementById("school").innerHTML="St joseph high school";
+        document.getElementById("details").innerHTML="Name : "+student.name+" "+student.lname+"<br>"+"DOB : "+student.dob+"<br>"+"Address : "+student.address+"<br>"+"Phone Number : "+student.phoneno;
+        }
+        </script>
+</script>
+</body>
+</html>

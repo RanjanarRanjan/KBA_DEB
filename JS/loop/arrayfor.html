@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //for in and for of
+
+    a=[1,2,3,4];
+    for(x in a)
+    {
+        a[x]=a[x]+2;
+    }
+    document.write(a)
+    document.write("<br>")
+
+    //for of
+    a=[1,2,3,4];
+    sum=0
+    for(i of a)
+    {
+        sum=sum+i;
+    }
+    document.write("<br>sum = ",sum)
+    document.write("<br>")
+    a=[1,2,3,4]
+    e=2
+    b=[]
+    a.push(7)
+    document.write("<br>",a)
+    for(x of a)
+    {
+    if(x!=e)
+    {
+        b.push(x)
+    }
+    }
+    document.write("<br>",b)
+    document.write("<br>")
+
+    // x="paste"
+    // flag=false
+    // char='t'
+    // for(i in x)
+    // {
+    //     if(x[i]==char)
+    // {
+    //     flag=true;
+    //     break;
+    // }
+    // }
+    // if(flag==true)
+    // {
+    //     document.write("character is present in string ",char," position ",i)
+    // }
+    // else
+    // {
+    //     document.write("chatacter is not present in string")
+    // }
+    // document.write("<br>")
+
+
+    x="paste"
+   count=0
+    char='t'
+    for(i in x)
+    {
+        if(x[i]==char)
+        {
+            document.write("character is present in string ",char," position ",i)
+            count++;
+            break
+        }
+    }
+    if(count==0)
+    {
+        document.write("chatacter is not present in string")
+    }
+    </script>
+</body>
+</html>

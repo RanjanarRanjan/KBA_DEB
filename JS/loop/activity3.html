@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //JS program to read array a=[20,25,30,35,40,45] and divide the array in to two seperate arrays having equal number of elements.
+    a=[20,25,30,35,40,45]
+    b=[]
+    c=[]
+    document.write("array A =",a)
+    mid=a.length/2;
+    for(i in a)
+    {
+        if(i<mid)
+        {
+            b.push(a[i])
+        }
+        else
+        {
+            c.push(a[i])
+        }
+    }
+    document.write("<br>Array B= ",b)
+    document.write("<br>Array C=",c)
+    document.write("<br><br>")
+    //JS program to concatinate two arrays a=[1,2,3,4] & b=[5,6,7,8] into a single array
+    a=[1,2,3,4]
+    b=[5,6,7,8]
+    c=[]
+    for(x of a)
+    {
+        c.push(x)
+    }
+    for(x of b)
+    {
+        c.push(x)
+    }
+    document.write(c)
+
+    //JS program to read an array and sort in ascending and descending order
+    let arr = [34, 7, 23, 32, 5, 62];
+    document.write("<br>Original array : ", arr);
+    for (let i in arr) {  // Using for...in to iterate over array indices
+        for (let j in arr) {
+            if (arr[i] < arr[j] && i != j) 
+            {
+                let temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    document.write("<br>Ascending Order: ", arr);
+    
+    for (let i in arr) {  // Using for...in again for descending sort
+        for (let j in arr) {
+            if (arr[i] > arr[j] && i != j) {
+                let temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    document.write("<br>Descending Order: ", arr);
+    
+    document.write("<br>")
+    //Write a program to read the array [1,6,7,8,2,3,4,2,2].Find the occurance of 2 in this array.
+
+        array = [2, 6, 7, 8, 2, 3, 4, 2, 2];
+        let count = 0;
+        for (let i in array) {
+            if (array[i] === 2) { 
+                count++;
+            }
+        }
+        document.write("The occurrence of 2 in the array is: " + count);
+
+        document.write("<br><br>")
+
+        // Input array
+        let ar = [34, 7, 23, 32, 5, 62];
+        document.write("<br>Original Array: ", ar);
+
+// Ascending Order
+        for (let i = 0; i < ar.length; i++) {
+            for (let j = i + 1; j < ar.length; j++) {
+            if (ar[i] > ar[j]) {
+            // Swap arr[i] and arr[j]
+                let temp = ar[i];
+                ar[i] = ar[j];
+                ar[j] = temp;
+            }
+        }
+    }
+    document.write("<br>Ascending Order: ", ar);
+
+// Descending Order
+    for (let i = 0; i < ar.length; i++) {
+        for (let j = i + 1; j < ar.length; j++) {
+            if (ar[i] < ar[j]) {
+            // Swap arr[i] and arr[j]
+                let temp = ar[i];
+                ar[i] = ar[j];
+                ar[j] = temp;
+            }
+        }
+    }
+    document.write("<br>Descending Order: ", ar);
+
+    </script>
+</body>
+</html>

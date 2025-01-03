@@ -9,17 +9,17 @@
     <script>
     // JS program to find the sum of the elements in array.
 
-    const numbers = [1, 2, 3, 4, 5];
+    numbers = [1, 2, 3, 4, 5];
     let sum = 0;
 
     for (let i = 0; i < numbers.length; i++) 
     {
-        sum += numbers[i];
+        sum=sum+numbers[i];
     }
     document.write("The sum of the elements in the array is:", sum);
 
 //JS program to store & print even numbers upto 20 in an array
-    const evenNumbers = [];
+    evenNumbers = [];
     let index = 0;
     for (let i = 1; i <= 20; i++) 
     {
@@ -32,15 +32,15 @@
     document.write("<br><br>Even numbers up to 20:", evenNumbers);
 
 //JS program to check whether a number is in the array and if present print the location
-    const n = [10, 20, 30, 40, 50];
-    const target = 30;
+    n = [10, 20, 30, 40, 50];
+    target = 30;
     let x = -1;
     for (let i = 0; i < numbers.length; i++) 
     {
         if (n[i] === target) 
         {
             x = i; 
-            break; 
+            break;
         }
     }
     if (x !== -1) 
@@ -56,10 +56,11 @@
 //JS program to remove an element pesent in a specific location
 
     number = [10, 20, 30, 40, 50];
-    const remove = 2;
+    remove = 3;
+   
     if (remove >= 0 && remove < number.length) 
     {
-        for (let i = remove; i < number.length - 1; i++) 
+        for (let i = remove; i < number.length; i++) 
         {
         number[i] = number[i + 1];
         }
@@ -74,18 +75,19 @@
 
 //JS program to copy an element in an aaray to another array
 
-    const array = [10, 20, 30, 40, 50];
-    const copy = 2;
-    const d_array = [];
+    array = [10, 20, 30, 40, 50];
+    copy = 1;
+    d_array = [];
+    document.write("<br><br>Source Array:", array);
     if (copy >= 0 && copy < array.length) 
     {
         d_array[0] = array[copy];
-        document.write("<br><br>Source Array:", array);
-        document.write("<br><br>Destination Array after copying:", d_array);
+        
+        document.write("<br>Destination Array after copying:", d_array);
     } 
     else 
     {
-        document.write("<br><br>Invalid index. Cannot copy element.");
+        document.write("<br>Invalid index. Cannot copy element.");
     }
 
 
@@ -94,44 +96,49 @@
 //1
 //2 2
 //3 3 3
-    const rows = 3;
-    for (let i = 1; i <= rows; i++) 
+    document.write("<br><br>");
+    for (let i = 1; i <=3; i++) 
     {
-        let row = '';
         for (let j = 1; j <= i; j++) 
         {
-            row = (row+i) + ' '; 
+           document.write(i," ") 
         }
-        document.write("<br>",row); 
+        document.write("<br>"); 
     }
 //2 2 2
 //2 2 2
 //2 2 2 
-    const n_rows = 3;
-    const cols = 3;
+
     document.write("<br><br>");
-    for (let i = 1; i <= n_rows; i++) 
+    for (let i = 1; i <=3; i++) 
     {
-        let n_row = '';
-        for (let j = 1; j <= cols; j++)
+        for (let j = 1; j <= 3; j++)
         {
-            n_row += '2 '; 
+            document.write('2 '); 
         }
-        document.write(n_row + "<br>"); 
+        document.write("<br>"); 
     }
 //1 1 1
 //2 2
 //3
 document.write("<br><br>");
-    m_rows = 3;
-    for (let i = 1; i <= m_rows; i++) 
+    for (let i = 1; i <= 3; i++) 
     {
-        let m_row = '';
-        for (let j = 1; j <= (m_rows - i + 1); j++) 
+        for (let j = 1; j <=4- i; j++) 
         {
-            m_row += i + ' '; 
+            document.write(i," "); 
         }
-    document.write(m_row + "<br>");
+        document.write("<br>");
+    }
+
+    document.write("<br><br>");
+    for (let i = 3; i <= 1; i--) 
+    {
+        for (let j = 1; j <=4- i; j++) 
+        {
+            document.write(i," "); 
+        }
+        document.write("<br>");
     }
 </script>
 </body>

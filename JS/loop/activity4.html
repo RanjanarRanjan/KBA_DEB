@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML page containing an input tab to enter temperature in celsius and on a button click, it should be converted to fahreinheit -->
+    <label>Enter the temperature in celsius :</label><br><br>
+    <input type="text" id="temp"><br><br>
+    <button onclick="submit()">click here</button>
+    <p id="output"></p>
+    <script>
+        function submit()
+        {
+            d=document.getElementById("temp").value
+            f=(d*9/5)+32;
+            document.getElementById("output").innerHTML=f+" F";
+        }
+    </script>
+
+
+
+
+
+
+    <!-- HTML page to read "name, date-of-birth" and diaplay this in format of id card on clicking "generate ID" button. -->
+     <!-- <label>Enter Name :</label>
+     <input type="text" id="name"><br><br>
+     <label>Enter DOB :</label>
+     <input type="date" id="dob"><br><br>
+     <button onclick="genrate(event)">generate ID</button>
+     <div id="div" style="display: none; border: 1px solid black; width: 400px; height: 130px;">
+    <h1 id="iname"></h1>
+     <p id="output"></p>
+     <p id="output1"></p>
+    </div>
+
+     <script>
+        function genrate(event)
+        {
+            name=document.getElementById("name").value;
+            dob=document.getElementById("dob").value
+            document.getElementById("div").style.display="block";
+            document.getElementById("iname").innerHTML="KBA"
+            document.getElementById("output").innerHTML=name
+            document.getElementById("output1").innerHTML=dob
+        }
+     </script> -->
+
+
+
+
+
+    <!-- HTML to read a number and on clicking button find the square of the number. -->
+     <!-- <label>Enter the Number :</label>
+     <input type="number" id="n"><br><br>
+     <button onclick="submit(event)">SUBMIT</button>
+     <p id="output"></p>
+     <script>
+        function submit(event){
+        v=document.getElementById("n").value
+        square=v*v;
+        document.getElementById("output").innerHTML="Square of a number is : "+square;
+        }
+     </script> -->
+
+
+
+
+
+    
+    <!-- Html page to enter names of fruits and insert the entered name to array and there is a dropdown and on selecting the index from drop down, display the fruit on the index. -->
+      <!-- <h1>Fruit</h1>
+     <label>Enter fruit name:</label>
+     <input type="text" id="fruit">
+     <button onclick="add()">Add Fruit</button>
+     <select id="dropdown" onchange="displayFruit()">
+        <option id="option" value=" " disabled selected >select an index</option>
+     </select>
+     <p id="select"></p>
+     <script>
+        fruit=[]
+        function add() 
+        {
+            value=document.getElementById("fruit").value
+            fruit.push(value); // Add the value to the array
+            document.getElementById("fruit").value = ""; // Clear the input box
+            updateDropdown(); // Update the dropdown with new options
+        }
+        function updateDropdown() 
+        {
+            const dropdown = document.getElementById("dropdown");
+            dropdown.innerHTML = '<option value="" disabled selected>Select an index</option>'; // Reset dropdown options
+            for (const fruitName of fruit) 
+            {
+                const options = document.createElement("option");
+                options.textContent = fruitName;// Set the display text of the option to the fruit name
+                dropdown.appendChild(options);
+            }
+        }
+        function displayFruit() 
+        {
+            const dropdown = document.getElementById('dropdown');
+            const selectedIndex = dropdown.value;
+            const output=document.getElementById('select')
+            output.textContent=selectedIndex;
+            
+        }  
+     </script>-->
+
+
+
+
+    <!-- Make the calculator dynamic -->
+     <!-- <div class="calculator">
+        <input type="text" id="display" disabled />
+        <br><br>
+        <div >
+            <button onclick="appendValue('1')" >1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="appendValue('+')">+</button>
+            <br><br>
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendValue('-')">-</button>
+            <br><br>
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('*')">*</button>
+            <br><br>
+            <button  onclick="appendValue('0')">0</button>
+            <button  onclick="clearDisplay()">C</button>
+            <button  onclick="calculateResult()">=</button>
+            <button  onclick="appendValue('/')">/</button>
+        </div>
+    </div>
+    <script>
+        let display = document.getElementById('display');
+        function appendValue(value) 
+        {
+            display.value = display.value + value;
+        }
+        function clearDisplay() {
+                display.value = '';
+                }
+
+        function calculateResult() {
+                display.value = eval(display.value);      
+        }
+
+    </script>-->
+    
+</body>
+</html>
