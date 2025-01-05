@@ -27,6 +27,8 @@
     document.write("<br>Array B= ",b)
     document.write("<br>Array C=",c)
     document.write("<br><br>")
+
+
     //JS program to concatinate two arrays a=[1,2,3,4] & b=[5,6,7,8] into a single array
     a=[1,2,3,4]
     b=[5,6,7,8]
@@ -41,33 +43,38 @@
     }
     document.write(c)
 
+
+    document.write("<br><br>")
+
     //JS program to read an array and sort in ascending and descending order
-    let arr = [34, 7, 23, 32, 5, 62];
-    document.write("<br>Original array : ", arr);
-    for (let i in arr) {  // Using for...in to iterate over array indices
-        for (let j in arr) {
-            if (arr[i] < arr[j] && i != j) 
-            {
-                let temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-    }
-    document.write("<br>Ascending Order: ", arr);
+    // let arr = [34, 32, 23, 32, 5, 62];
+    // document.write("<br>Original array : ", arr);
+    // for (let i in arr) {  // Using for...in to iterate over array indices
+    //     for (let j in arr) {
+    //         if (arr[i] < arr[j] && i != j) 
+    //         {
+    //             let temp = arr[i];
+    //             arr[i] = arr[j];
+    //             arr[j] = temp;
+    //         }
+    //     }
+    // }
+    // document.write("<br>Ascending Order: ", arr);
     
-    for (let i in arr) {  // Using for...in again for descending sort
-        for (let j in arr) {
-            if (arr[i] > arr[j] && i != j) {
-                let temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-    }
-    document.write("<br>Descending Order: ", arr);
+    // for (let i in arr) {  // Using for...in again for descending sort
+    //     for (let j in arr) {
+    //         if (arr[i] > arr[j] && i != j) {
+    //             let temp = arr[i];
+    //             arr[i] = arr[j];
+    //             arr[j] = temp;
+    //         }
+    //     }
+    // }
+    // document.write("<br>Descending Order: ", arr);
     
-    document.write("<br>")
+    // document.write("<br><br>")
+
+
     //Write a program to read the array [1,6,7,8,2,3,4,2,2].Find the occurance of 2 in this array.
 
         array = [2, 6, 7, 8, 2, 3, 4, 2, 2];
@@ -81,11 +88,14 @@
 
         document.write("<br><br>")
 
+
+        //JS program to read an array and sort in ascending and descending order
         // Input array
         let ar = [34, 7, 23, 32, 5, 62];
         document.write("<br>Original Array: ", ar);
 
-// Ascending Order
+
+        // Ascending Order
         for (let i = 0; i < ar.length; i++) {
             for (let j = i + 1; j < ar.length; j++) {
             if (ar[i] > ar[j]) {
@@ -93,9 +103,9 @@
                 let temp = ar[i];
                 ar[i] = ar[j];
                 ar[j] = temp;
+                }
             }
         }
-    }
     document.write("<br>Ascending Order: ", ar);
 
 // Descending Order
@@ -106,9 +116,9 @@
                 let temp = ar[i];
                 ar[i] = ar[j];
                 ar[j] = temp;
+                }
             }
         }
-    }
     document.write("<br>Descending Order: ", ar);
 
     </script>

@@ -7,7 +7,8 @@
 </head>
 <body>
     <!-- HTML page containing an input tab to enter temperature in celsius and on a button click, it should be converted to fahreinheit -->
-    <label>Enter the temperature in celsius :</label><br><br>
+
+    <!-- <label>Enter the temperature in celsius :</label><br><br>
     <input type="text" id="temp"><br><br>
     <button onclick="submit()">click here</button>
     <p id="output"></p>
@@ -18,14 +19,11 @@
             f=(d*9/5)+32;
             document.getElementById("output").innerHTML=f+" F";
         }
-    </script>
-
-
-
-
+    </script> -->
 
 
     <!-- HTML page to read "name, date-of-birth" and diaplay this in format of id card on clicking "generate ID" button. -->
+
      <!-- <label>Enter Name :</label>
      <input type="text" id="name"><br><br>
      <label>Enter DOB :</label>
@@ -54,6 +52,7 @@
 
 
     <!-- HTML to read a number and on clicking button find the square of the number. -->
+
      <!-- <label>Enter the Number :</label>
      <input type="number" id="n"><br><br>
      <button onclick="submit(event)">SUBMIT</button>
@@ -65,14 +64,91 @@
         document.getElementById("output").innerHTML="Square of a number is : "+square;
         }
      </script> -->
+     <!-- Make the calculator dynamic -->
+      <div class="calculator">
+        <input type="text" id="display" disabled />
+        <br><br>
+        <div >
+            <button onclick="appendValue('1')" >1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="appendValue('+')">+</button>
+            <br><br>
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendValue('-')">-</button>
+            <br><br>
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('*')">*</button>
+            <br><br>
+            <button  onclick="appendValue('0')">0</button>
+            <button  onclick="clearDisplay()">C</button>
+            <button  onclick="calculateResult()">=</button>
+            <button  onclick="appendValue('/')">/</button>
+        </div>
+    </div>
+    <script>
+        let display = document.getElementById('display');
+        function appendValue(value) 
+        {
+            display.value = display.value + value;
+        }
+        function clearDisplay() {
+                display.value = '';
+                }
 
+        function calculateResult() {
+                display.value = eval(display.value);      
+        }
 
+    </script>
+    
 
 
 
     
-    <!-- Html page to enter names of fruits and insert the entered name to array and there is a dropdown and on selecting the index from drop down, display the fruit on the index. -->
-      <!-- <h1>Fruit</h1>
+   
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- Html page to enter names of fruits and insert the entered name to array and there is a dropdown and on selecting the index from drop down, display the fruit on the index. -->
+    <!--<h1>Fruit</h1>
      <label>Enter fruit name:</label>
      <input type="text" id="fruit">
      <button onclick="add()">Add Fruit</button>
@@ -113,47 +189,4 @@
 
 
 
-    <!-- Make the calculator dynamic -->
-     <!-- <div class="calculator">
-        <input type="text" id="display" disabled />
-        <br><br>
-        <div >
-            <button onclick="appendValue('1')" >1</button>
-            <button onclick="appendValue('2')">2</button>
-            <button onclick="appendValue('3')">3</button>
-            <button onclick="appendValue('+')">+</button>
-            <br><br>
-            <button onclick="appendValue('4')">4</button>
-            <button onclick="appendValue('5')">5</button>
-            <button onclick="appendValue('6')">6</button>
-            <button onclick="appendValue('-')">-</button>
-            <br><br>
-            <button onclick="appendValue('7')">7</button>
-            <button onclick="appendValue('8')">8</button>
-            <button onclick="appendValue('9')">9</button>
-            <button onclick="appendValue('*')">*</button>
-            <br><br>
-            <button  onclick="appendValue('0')">0</button>
-            <button  onclick="clearDisplay()">C</button>
-            <button  onclick="calculateResult()">=</button>
-            <button  onclick="appendValue('/')">/</button>
-        </div>
-    </div>
-    <script>
-        let display = document.getElementById('display');
-        function appendValue(value) 
-        {
-            display.value = display.value + value;
-        }
-        function clearDisplay() {
-                display.value = '';
-                }
-
-        function calculateResult() {
-                display.value = eval(display.value);      
-        }
-
-    </script>-->
     
-</body>
-</html>

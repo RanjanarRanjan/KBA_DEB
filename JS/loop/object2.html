@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const person = new Object();
+        person.fname="Arya";
+        person.lname="C R";
+        person.hobby="surfing";
+        person.basicpay=10000;
+        person.ta=5000;
+        person.da=3000;
+        person.getdetails=function()
+        {
+            const salary=person.basicpay+person.ta+person.da;
+            return`Person Name : ${this.fname+" "+this.lname}<br> Person Hobby : ${this.hobby}<br>Salary : ${salary}` 
+        }
+        document.write(person.getdetails())
+
+
+        //Json file
+        //const student = new Object()
+        student={
+            name:"Athul",
+            class:"V B",
+            phone:9876543210
+        }
+        document.write("<br><br> Name of the student : ",student.name,"<br> Class : ",student.class)
+        const arr=Object.values(student);
+        console.log("array",arr)
+        const str=JSON.stringify(student);
+        console.log("JSON String ",str);
+        const jsonF=JSON.parse(str);
+        console.log("json format",jsonF)
+
+
+
+    
+    </script>
+</body>
+</html>
