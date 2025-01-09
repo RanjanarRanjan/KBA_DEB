@@ -87,7 +87,19 @@
         }while(i<7)
      
         //Write a JS program to check whether the given string is palindrome or not
+        document.write("<br><br>Write a JS program to check whether the given string is palindrome or not<br>")
+       let j= "civic";
+        let reverse = "";
 
+         for (let i = j.length - 1; i >= 0; i--) {
+            reverse += j[i];
+            }
+
+        if (j===reverse) {
+            document.write(`<br>The given string ${j} is Palindrome`);
+        } else {
+            document.write(`<br>The given string ${j} is Not a Palindrome`);
+        }
     </script>
 </body>
 </html>

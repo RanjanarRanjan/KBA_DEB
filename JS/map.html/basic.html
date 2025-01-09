@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <script>
+        function MapMethods(){
+        // const mymap= new Map();
+        // mymap.set("name","Anu");
+        // mymap.set("age",30);
+        // mymap.set("Employee",true);
+        // mymap.set("Role",["admin","user"])
+        const mymap= new Map([
+            ["name","Anu"],
+            ["age",30],
+            ["Employee",true],
+            ["Role",["admin","user"]]
+        ]);
+            console.log(mymap);
+        document.getElementById("get").innerHTML="Name : "+mymap.get('name'); 
+        document.getElementById("has").innerHTML="Has a key : "+mymap.has('age')
+        document.getElementById("delete").innerHTML="after deteling age : "+mymap.delete('age')
+            console.log(mymap);
+        let roles=mymap.get('Role') 
+        document.getElementById("role").innerHTML="join : "+roles.join(",")
+        // mymap.clear();
+        // document.getElementById("clear").innerHTML="after clear : "+mymap.size
+        //     console.log(mymap);
+
+
+        //map iteration
+        let ouput ='';
+        mymap.forEach((value,key)=>{
+            if(Array.isArray(value)) //to check if the value array or not
+            {
+                ouput+=key+'='+value.join(" and ")+"<br>"
+            }
+            else
+                ouput+=key+'='+value+'<br>'
+        })
+        document.getElementById("iteration").innerHTML=ouput
+        
+        }
+
+    </script>
+</head>
+<body>
+   <h1>Map Methods</h1>
+   <button onclick="MapMethods()">Map Methods</button>
+   <div id="get"></div>
+   <div id="has"></div>
+   <div id="delete"></div>
+   <div id="role"></div>
+   <div id="clear"></div>
+
+   <h1>Iteration</h1>
+   <div id="iteration"></div>
+</body>
+</html>

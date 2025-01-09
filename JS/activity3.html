@@ -6,77 +6,109 @@
     <title>Document</title>
 </head>
 <body>
-   
+    <div id="pi">
+    </div>
+    <div id="cinema-container"></div>
+    <div id="kba"></div><br>
+    <select id="language"></select><br>
+    <select id="cake"></select><br>
+ 
     <script>
 
 //Program to print a para about yourself using createElement() , textContent & append child.
        
         const para = document.createElement('p');
         para.textContent = "Hi, I'm Ranjana. I recently completed my MCA and BCA."
-        document.body.appendChild(para);
+        document.getElementById("pi").appendChild(para);
 
 
 //Make an unordered list of cinemas on html page using javascript.
 
-        // const container = document.getElementById("cinema-container");
-        // const ul = document.createElement("ul");
-        // const li1 = document.createElement("li");
-        // li1.textContent = "PVR Cinemas";
-        // ul.appendChild(li1);
-        // const li2 = document.createElement("li");
-        // li2.textContent = "INOX";
-        // ul.appendChild(li2);
-        // const li3 = document.createElement("li");
-        // li3.textContent = "Cinepolis";
-        // ul.appendChild(li3);
-        // const li4 = document.createElement("li");
-        // li4.textContent = "Carnival Cinemas";
-        // ul.appendChild(li4);
-        // const li5 = document.createElement("li");
-        // li5.textContent = "IMAX";
-        // ul.appendChild(li5);
-        // container.appendChild(ul); 
+        const container = document.getElementById("cinema-container");
+        const ul = document.createElement("ul");
+        const li1 = document.createElement("li");
+        li1.textContent = "PVR Cinemas";
+        ul.appendChild(li1);
+        const li2 = document.createElement("li");
+        li2.textContent = "INOX";
+        ul.appendChild(li2);
+        const li3 = document.createElement("li");
+        li3.textContent = "Cinepolis";
+        ul.appendChild(li3);
+        const li4 = document.createElement("li");
+        li4.textContent = "Carnival Cinemas";
+        ul.appendChild(li4);
+        const li5 = document.createElement("li");
+        li5.textContent = "IMAX";
+        ul.appendChild(li5);
+        container.appendChild(ul); 
 
 //Create a dropdown for programming language classes offered on html page using javascript.
+        const dropdown=document.getElementById("language")
+        
+        opt=document.createElement("option");
+        opt.textContent="select language";
+        dropdown.appendChild(opt);
 
+        opt1=document.createElement("option");
+        opt1.textContent="HTML";
+        dropdown.appendChild(opt1);
 
-        // const dropdown = document.createElement("select");
-        // const defaultOption = document.createElement("option");
-        // defaultOption.textContent = "Select a class";
-        // defaultOption.value = "";
-        // dropdown.appendChild(defaultOption);
-        // const languages = ["Java", "Python", "JavaScript", "C++", "Ruby"];
-        // for (let i = 0; i < languages.length; i++) {
-        //     const option = document.createElement("option");
-        //     option.textContent = languages[i];
-        //     dropdown.appendChild(option);
-        // }
-        // document.getElementById("dropdown-container").appendChild(dropdown);
-        // const dropdown = document.createElement("select");
-        // const defaultOption = document.createElement("option");
-        // defaultOption.textContent = "Select a class";
-        // defaultOption.value = "";
-        // dropdown.appendChild(defaultOption);
-        // const option1 = document.createElement("option");
-        // option1.textContent = "Java";
-        // dropdown.appendChild(option1);
-        // const option2 = document.createElement("option");
-        // option2.textContent = "Python";
-        // dropdown.appendChild(option2);
-        // const option3 = document.createElement("option");
-        // option3.textContent = "JavaScript";
-        // dropdown.appendChild(option3);
-        // const option4 = document.createElement("option");
-        // option4.textContent = "C++";
-        // dropdown.appendChild(option4);
-        // const option5 = document.createElement("option");
-        // option5.textContent = "Ruby";
-        // dropdown.appendChild(option5);
-        // document.getElementById("dropdown-container").appendChild(dropdown);
+        opt2=document.createElement("option");
+        opt2.textContent="CSS";
+        dropdown.appendChild(opt2);
 
+        opt3=document.createElement("option");
+        opt3.textContent="Javascript";
+        dropdown.appendChild(opt3);
+       
 //On the KBA-courses site you created add a radio button showing your experience on KBA(like good, bad, average).
+let section=document.getElementById("kba");
+let label=document.createElement("label");
+label.innerHTML="Experience on KBA : ";
+section.appendChild(label);
+
+let goodradio=document.createElement("input")
+goodradio.name="choice"
+goodradio.type="radio"
+goodradio.value="button"
+section.appendChild(goodradio)
+let label1=document.createElement("label")
+label1.innerHTML="Good";
+section.appendChild(label1)
+
+let goodradio1=document.createElement("input")
+goodradio1.name="choice"
+goodradio1.type="radio"
+goodradio1.value="button1"
+section.appendChild(goodradio1)
+let label2=document.createElement("label")
+label2.innerHTML="Bad";
+section.appendChild(label2)
+
+let goodradio2=document.createElement("input")
+goodradio2.name="choice"
+goodradio2.type="radio"
+section.appendChild(goodradio2)
+let label3=document.createElement("label")
+label3.innerHTML="Average"
+section.appendChild(label3)
 
 //Create a dropdown for list of cakes and print the value of second option.
+        pdropdown=document.getElementById("cake")
+    
+        cake1=document.createElement("option");
+        cake1.textContent="Red velvet";
+        pdropdown.appendChild(cake1);
+
+        cake2=document.createElement("option");
+        cake2.textContent="Black forest";
+        pdropdown.appendChild(cake2);
+
+        cake3=document.createElement("option");
+        cake3.textContent="White forest";
+        pdropdown.appendChild(cake3);
+        document.write(document.getElementById("cake").options[1].value+"<br><br>")
 
 //Print your full name storing fname & lname. Print in Uppercase.
 

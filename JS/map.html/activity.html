@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function submit()
+        {
+            const friut=new Map([
+                 // ["item","apple"],
+                    // ["price",50],
+                    // ["qty",2],
+                    // ["item","orange"],
+                    // ["price",30],
+                    // ["qty",4],
+                ["orange",[30,5]],
+                ["apple",[50,2]]
+    
+            ])
+            // document.getElementById("price").innerHTML="item : "+friut.get("item")
+             let output=" "
+            sum=0
+            friut.forEach((value,key)=>{
+               if(Array.isArray(value))
+               {
+                const [price, qty] = value; 
+                const total = price * qty;
+                 output += key + " = Price: " + price + ", Quantity: " + qty + ", Total: " + total + "<br>";
+                sum=sum+total;
+               }
+               else
+                 output+=key+'='+value+'<br>'
+            })
+    
+            // document.getElementById("price").innerHTML=output
+            document.getElementById("amount").innerHTML="Total "+sum
+            
+        }
+    </script>
+    </head>
+    <body>
+    <h1>Fruit</h1>
+    <button onclick="submit()">View details</button>
+    <p id="price"></p>
+    <p id="amount"></p>  
+    </body>
+    </html>
