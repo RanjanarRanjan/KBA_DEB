@@ -19,21 +19,21 @@
     
             ])
             // document.getElementById("price").innerHTML="item : "+friut.get("item")
-             let output=" "
+            let output=" "
             sum=0
             friut.forEach((value,key)=>{
                if(Array.isArray(value))
                {
                 const [price, qty] = value; 
                 const total = price * qty;
-                 output += key + " = Price: " + price + ", Quantity: " + qty + ", Total: " + total + "<br>";
+                output += key + " = Price: " + price + ", Quantity: " + qty + ", Total: " + total + "<br>";
                 sum=sum+total;
                }
                else
                  output+=key+'='+value+'<br>'
             })
     
-            // document.getElementById("price").innerHTML=output
+            document.getElementById("price").innerHTML=output
             document.getElementById("amount").innerHTML="Total "+sum
             
         }
