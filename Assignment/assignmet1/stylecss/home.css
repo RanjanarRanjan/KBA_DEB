@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+}
+img{
+    display: block;
+    width: 100%;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+body{
+    background-color :#daf0ef;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    background-color:  rgb(3, 97, 92);
+    padding: 20px 50px 15px 50px;
+    color: white;
+}
+.main{
+    display: flex;
+    justify-content:left;
+}
+.main a{
+    display: block;
+    width: 40px;
+}
+nav a{
+    font-family: cursive;
+    font-size: 20px;
+}
+nav p{
+    font-family:cursive ;
+    font-size: 20px;
+}
+.container{
+    display: flex;
+}
+.sub-container{
+    display:flex;
+    flex-direction: column;
+    background-color:  rgb(3, 97, 92);
+    color: white;
+    font-family:cursive ;
+    font-size: 20px;
+    padding: 40px 20px 0 30px;
+    gap: 25px;
+    height: 82vh;
+}
+.sub-container a{
+    margin-bottom: 50px;
+}
+.book{
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 0 20px 120px;
+}
+.sub-book,.sub-book2{
+    width: 100%;
+}
+.sub-book a{
+    display: block;
+    width: 65%
+}
+.sub-book2 a{
+    display: block;
+    width: 70%;
+}
+.book img{
+    border-radius: 10px;
+}
+.viewbooks{
+    font-size: 15px;
+    font-family: cursive;
+    padding: 10px; 
+    text-align: center;
+    margin-top: 30px;
+    background-color: rgb(3, 97, 92) ;
+    border-radius: 10px;
+}
+.container1 h1{
+    text-align: center;
+    font-family: cursive;
+    color:  rgb(3, 97, 92);
+    margin-bottom: 30px;
+}
+.v-book{
+    display: flex;
+    justify-content: center;
+    margin: 60px 150px;
+    gap: 40px;
+}
+.v-book table{
+    width: 600px;
+font-size: 20px;
+color: rgb(3, 97, 92);
+row-gap: 50px;
+}
+.container1 p{
+    text-align: center;
+    margin-top: 40px;
+    color:  rgb(3, 97, 92);
+    font-size: 20px;
+}
+.add-main{
+    margin: 20px 300px;
+    background-color:rgb(3, 97, 92) ;
+    padding: 20px 40px;
+    color: white;
+    font-family: cursive;
+    text-align: center;
+    border-radius: 10px;
+   
+}
+.add-main button{
+    width: 80px;
+    height: 30px;
+    background-color:#daf0ef;
+    color:rgb(3, 97, 92);
+    padding: 5px;
+    border-radius: 5px;
+}
+.add-main .form{
+    display: flex;
+    justify-content: space-between;
+    gap: 150px;
+    margin: 20px 0;
+}
+.add-main .form input,.add-main .form textarea{
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+}

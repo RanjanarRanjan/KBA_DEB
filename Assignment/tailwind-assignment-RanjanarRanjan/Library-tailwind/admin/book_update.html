@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More informations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#daf0ef]">
+    
+    <nav class="flex justify-between bg-[#03615C] px-[50px] pt-[20px] pb-[15px] text-white fixed w-full">
+        <div class="flex justify-start">
+            <a class="block w-[40px]"><img src="/img/Buecher-coloured.svg" alt="logo"></a>
+            <p class="font-[cursive] text-[20px]">LibraryWorld</p>
+        </div>
+        <a class="font-[cursive] text-[20px]" href="Login.html">Add Book</a>
+    </nav>
+
+    <div class="flex">
+        <div class="absolute">
+        <div class="flex flex-col bg-[#03615C] text-white font-[cursive] mt-14 text-[15px] px-[20px]   pl-[30px] justify-evenly h-screen fixed">
+            <a href="admin_home.html">Books</a>
+            <a href="add_book.html">Users</a>
+            <a href="manage_book.html">manage Books</a>
+            <a href="admin_login.html">Logout</a>
+            
+        </div>
+    </div>
+    <div class="ml-[150px] mt-[90px]">
+        <a  href="manage_book.html" class="flex justify-start text-xl">Back</a>
+        <div class="m-[20px_300px] bg-[#03615C] p-[20px_40px] text-white font-[cursive] text-center rounded-[10px]">
+            <form>
+                <h1 class="underline text-2xl font-semibold"> Update Book Details</h1>
+                <div class="flex justify-between gap-[100px] my-5">
+                    <label>Book Name</label>
+                    <input class="h-[30px] w-[300px]" type="text" >
+                </div>
+                <div class="flex justify-between gap-[100px] my-5">
+                    <label>Book-Id</label>
+                    <input class="h-[30px] w-[300px]" type="text" >
+                </div>
+                <div class="flex justify-between gap-[100px] my-5">
+                    <label>Category</label>
+                    <input class="h-[30px] w-[300px]" type="text" >
+                </div>
+                <div class="flex justify-between gap-[100px] my-5">
+                    <label>User-ID</label>
+                    <input class="h-[30px] w-[300px]" type="text" >
+                </div>
+                <div class="flex justify-between gap-[100px] my-5">
+                    <label>Return Date</label>
+                    <input class="h-[30px] w-[300px]" type="Date" >
+                </div>
+                <button class="w-[70px] bg-[#daf0ef] h-[30px] text-[#03615C] rounded">Submit</button>
+                <button class="w-[70px] bg-[#daf0ef] h-[30px] text-[#03615C] rounded">Cancel</button>
+            </form>
+        </div>
+       
+    </div>
+</body>
+</html>
+
+   
+        
+   

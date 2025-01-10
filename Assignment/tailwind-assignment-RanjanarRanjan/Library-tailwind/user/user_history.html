@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user_history</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#daf0ef]">
+    
+    <nav class="flex justify-between bg-[#03615C] px-[50px] pt-[20px] pb-[15px] text-white fixed w-full">
+        <div class="flex justify-start">
+            <a class="block w-[40px]"><img src="../img/Buecher-coloured.svg" alt="logo"></a>
+            <p class="font-[cursive] text-[20px]">LibraryWorld</p>
+        </div>
+        <div class="flex ">
+            <a class="w-[35px]"><img src="../img/profile.svg" alt="Profile"></a>
+            <a class="font-[cursive] text-[18px]" href="user_profile.html">user name</a>
+        </div>
+    </nav>
+
+    <div class="flex">
+        <div class="absolute">
+        <div class="flex flex-col bg-[#03615C] text-white font-[cursive] mt-14 text-[15px] px-[20px]   pl-[30px] justify-evenly h-screen fixed">
+            <a href="user_home.html">📚 Books</a>
+            <a href="user_profile.html">👤Profile</a>
+            <a href="user_history.html">🕒History</a>
+            <a href="user_login.html">🚪Logout</a>
+        </div>
+    </div>
+    <div class="ml-[150px] mt-[90px] w-full"> 
+            <h1 class="text-2xl text-[#03615C] font-bold mb-4 text-center">Library Book List</h1>
+            
+            <table class="w-[95%] bg-white border border-gray-200 rounded-lg">
+              <thead>
+                <tr class="bg-gray-100 border-b">
+                  <th class="text-left py-3 px-4 font-semibold text-gray-600">#</th>
+                  <th class="text-left py-3 px-4 font-semibold text-gray-600">Book Name</th>
+                  <th class="text-left py-3 px-4 font-semibold text-gray-600">ID</th>
+                  <th class="text-left py-3 px-4 font-semibold text-gray-600">Rented Date</th>
+                  <th class="text-left py-3 px-4 font-semibold text-gray-600">Return Date</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr>
+                  <td class="py-3 px-4">1</td>
+                  <td class="py-3 px-4"> Vaikom Muhammad Basheer</td>
+                  <td class="py-3 px-4">BK001</td>
+                  <td class="py-3 px-4">2024-12-01</td>
+                  <td class="py-3 px-4 text-green-600 font-medium">2024-12-10</td>
+                </tr>
+                <tr>
+                    <td class="py-3 px-4 ">2</td>
+                    <td class="py-3 px-4">Oru Desathinte Katha</td>
+                    <td class="py-3 px-4">BK002</td>
+                    <td class="py-3 px-4">2024-11-15</td>
+                    <td class="py-3 px-4 text-green-600 font-medium">2024-11-25</td>
+                </tr>
+                <tr>
+                    <td class="py-3 px-4">3</td>
+                    <td class="py-3 px-4">War and Peace</td>
+                    <td class="py-3 px-4">BK003</td>
+                    <td class="py-3 px-4">2024-10-01</td>
+                    <td class="py-3 px-4 text-green-600 font-medium">2024-10-25</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

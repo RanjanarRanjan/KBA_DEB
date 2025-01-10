@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user_profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#daf0ef]">
+    
+    <nav class="flex justify-between bg-[#03615C] px-[50px] pt-[20px] pb-[15px] text-white fixed w-full">
+        <div class="flex justify-start">
+            <a class="block w-[40px]"><img src="../img/Buecher-coloured.svg" alt="logo"></a>
+            <p class="font-[cursive] text-[20px]">LibraryWorld</p>
+        </div>
+        <div class="flex ">
+            <a class="w-[35px]"><img src="../img/profile.svg" alt="Profile"></a>
+            <a class="font-[cursive] text-[18px]" href="user_profile.html">user name</a>
+        </div>
+    </nav>
+
+    <div class="flex">
+        <div class="absolute">
+        <div class="flex flex-col bg-[#03615C] text-white font-[cursive] mt-14 text-[15px] px-[20px]   pl-[30px] justify-evenly h-screen fixed">
+            <a href="user_home.html">📚 Books</a>
+            <a href="user_profile.html">👤Profile</a>
+            <a href="user_history.html">🕒History</a>
+            <a href="user_login.html">🚪Logout</a>
+        </div>
+    </div>
+    <div class="ml-[150px] mt-[90px] w-full">
+        <a  href="user_profile.html" class="flex justify-start text-xl">Back</a>
+        <div class="m-[20px_300px] bg-[#03615C] p-[20px_40px] text-white font-[cursive] text-center rounded-[10px]">
+            <form>
+                <h1 class="underline text-2xl font-semibold"> Edit Profile</h1>
+                <div class="flex justify-between gap-[100px] my-5">
+                    <label>User Name</label>
+                    <input class="h-[30px] w-[300px] text-black" type="text" >
+                </div>
+                <div class="flex justify-between gap-[100px] my-5">
+                    <label>Email</label>
+                    <input class="h-[30px] w-[300px] text-black" type="email" >
+                </div>
+                <div class="flex justify-between gap-[100px] my-5">
+                    <label>Phone Number</label>
+                    <input class="h-[30px] w-[300px] text-black" type="text" >
+                </div>
+                <div class="flex justify-between gap-[100px] my-5">
+                    <label>Password</label>
+                    <input class="h-[30px] w-[300px] text-black" type="password" >
+                </div>
+                <div class="flex justify-between gap-[100px] my-5">
+                    <label>Re-Password</label>
+                    <input class="h-[30px] w-[300px] text-black" type="password" >
+                </div>
+
+                <button class="w-[70px] bg-[#daf0ef] h-[30px] text-[#03615C] rounded">Edit</button>
+                <button class="w-[70px] bg-[#daf0ef] h-[30px] text-[#03615C] rounded">Cancel</button>
+            </form>
+        </div>
+       
+               
+                      
+    </div>
+</body>
+</html>
