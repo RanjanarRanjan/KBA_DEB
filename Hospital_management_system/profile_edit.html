@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>editing</title>
+</head>
+<body class="bg-[#D7EFF4] min-h-screen flex flex-col">
+    <header class="h-[80px] w-full flex justify-between bg-gradient-to-tr from-[#ffffff] to-[#0098B9] py-[25px] px-4 ">
+        <div class="flex ">
+            <a class="w-[100px] md:w-[200px]"><img src="./img/AJHospital.svg" alt="hospitalname"></a>
+            <a class="w-[20px] md:w-[50px]"><img src="./img/logo (2).svg" alt="log"></a>
+        </div>
+        <div class="text-white flex gap-[50px] text-xl ">
+            <a href="home.html" class="hidden md:block">Dashboard</a>
+            <a href="booking.html" class="hidden md:block">Book Appointment</a>
+            <a href="history.html" class="hidden md:block">Appointment History</a>
+            <a href="profile.html" class="hidden md:block">Profile</a>
+            <a href="Login.html" class="text-[20px]">Logout</a>
+        </div>
+        </header>
+    <div class="p-4 flex justify-center">
+        <form class=" mt-[10px]  bg-[#ffffff] border border-cyan-300 rounded-lg py-4 px-2 md:px-[100px]">
+            <h1 class=" text-xl mb-[20px] text-center">Edit Profile</h1>
+            <input type="text" id="name" placeholder="Enter your Full Name" class="w-[300px] mb-[20px] bg-transparent border-b-2 border-black  "/><br>
+            <input type="email" id="email" placeholder="Enter your Email" class="w-[300px] mb-[20px] bg-transparent border-b-2 border-black "/><br>
+            <input type="number" id="number" placeholder="Enter your Phone number" class="w-[300px] mb-[20px] bg-transparent border-b-2 border-black  "/><br>
+            <input type="text" id="blood" placeholder="Enter your Blood Group" class="w-[300px] mb-[20px] bg-transparent border-b-2 border-black "/><br>
+
+            <textarea placeholder="Enter your Address" class="w-[300px] mb-[20px] bg-transparent border-b-2 border-black "></textarea><br>
+
+            <input type="password" id="password" placeholder="Enter your password" class="w-[300px] mb-[20px] bg-transparent border-b-2 border-black "/><br>
+            <button type="submit" class="w-[300px] bg-[#1799B6] text-white py-2 px-4 rounded border-2 border-white hover:bg-black hover:text-white">
+             Edit
+            </button><br>
+            <button type="submit" class="w-[300px] bg-[#1799B6] text-white py-2 px-4 rounded border-2 border-white hover:bg-black hover:text-white">
+               <a href="profile.html"> cancel</a>
+            </button>
+          
+          </form>         
+    </div>
+   
+</body>
+</html>

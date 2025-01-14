@@ -33,7 +33,7 @@ const rl=readline.createInterface({
         })
         break;
     case '2':
-            const list=task_array.length?task_array.join(','):'no task'
+            const list=task_array.length?task_array.join():'no task'
             console.log('task :',list);
             showMenu();
         break;

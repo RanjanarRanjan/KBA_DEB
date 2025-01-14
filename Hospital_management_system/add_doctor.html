@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Admin-Add Doctor</title>
+</head>
+<body class="bg-[#0098B9] min-h-screen flex flex-col">
+  <header class="md:h-[80px]  w-full flex flex-col md:flex-row justify-between bg-gradient-to-tr from-[#ffffff] to-[#0098B9] py-[25px] px-4 ">
+    <div class="flex justify-center ">
+        <a class="w-[150px] md:w-[200px]"><img src="./img/AJHospital.svg" alt="hospitalname"></a>
+        <a class="w-[50px]"><img src="./img/logo (2).svg" alt="log"></a>
+    </div>
+    <div class="text-white grid gap-[10px] grid-rows-2 grid-cols-2 md:gap-[50px] text-[15px] md:flex md:text-xl">
+    <a href="admin_home.html">Dashboard</a>
+    <a href="admin_doctor.html">Doctor List</a>
+    <a href="admin_patient.html">Patients Details </a>
+    <a href="admin_booking_details.html">Appoinment details</a>
+    <a href="add_doctor.html"class="border-2 border-[#ffffff] px-4  rounded ">Add Doctor</a>
+    <a href="Login.html">Logout</a>
+    </div>
+    </header>
+    <div class="p-4">
+        <div class=" md:h-[78vh] bg-[#ffffff] border border-cyan-300 rounded-lg p-4">
+            <h1 class="text-2xl font-bold text-center">Add Doctor</h1>
+            <form class="m-4 md:mt-[20px] md:px-[100px]">
+                <div class="flex justify-between mb-[10px] ">
+                    <label class="text-[10px] md:text-xl font-semibold text-center">Department</label>
+                    <input type="text" class="w-[60%] md:w-[50%] md:h-[40px] rounded-lg border-2 border-cyan-300">
+                </div>
+                <div class="flex justify-between mb-[10px] ">
+                    <label class="text-[10px] md:text-xl font-semibold text-center">Doctor Name</label>
+                    <input type="text" class="w-[60%] md:w-[50%] md:h-[40px] rounded-lg border-2 border-cyan-300">
+                </div>
+                <div class="flex justify-between mb-[10px] ">
+                    <label class="text-[10px] md:text-xl font-semibold text-center">Email-ID</label>
+                    <input type="email" class="w-[60%] md:w-[50%] md:h-[40px] rounded-lg border-2 border-cyan-300">
+                </div>
+                <div class="flex justify-between mb-[10px]">
+                    <label class="text-[10px] md:text-xl font-semibold text-center ">Contact</label>
+                    <input type="number" class="w-[60%] md:w-[50%] md:h-[40px] rounded-lg border-2 border-cyan-300">
+                </div>
+                <div class="flex justify-between mb-[10px]">
+                    <label class="text-[10px] md:text-xl font-semibold text-center">Fees</label>
+                    <input type="number" class="w-[60%] md:w-[50%] md:h-[40px] rounded-lg border-2 border-cyan-300">
+                </div>
+                <div class="flex flex-col md:flex-row md:justify-between mb-[10px]">
+                    <label class="text-[13px] md:text-xl font-semibold text-center ">Duty Days</label>
+                    <div class="grid grid-cols-6 g md:flex ">
+                        <input type="checkbox" class="h-5 w-5 text-cyan-500 ml-[10px] md:ml-[28px]"> <span class="ml-2">Mon</span>
+                        <input type="checkbox" class="h-5 w-5 text-cyan-500 ml-[10px] md:ml-[28px]"> <span class="ml-2">Tue</span>
+                        <input type="checkbox" class="h-5 w-5 text-cyan-500 ml-[10px] md:ml-[28px]"> <span class="ml-2">Wed</span>
+                        <input type="checkbox" class="h-5 w-5 text-cyan-500 ml-[10px] md:ml-[28px]"> <span class="ml-2">Thu</span>
+                        <input type="checkbox" class="h-5 w-5 text-cyan-500 ml-[10px] md:ml-[28px]"> <span class="ml-2">Fri</span>
+                        <input type="checkbox" class="h-5 w-5 text-cyan-500 ml-[10px] md:ml-[28px]"> <span class="ml-2">Sat</span>
+                        <input type="checkbox" class="h-5 w-5 text-cyan-500 ml-[10px] md:ml-[28px]"> <span class="ml-2">Sun</span>
+                    </div>
+                </div>
+                <div class="flex justify-between md:mt-[50px]">
+                    <button class="bg-white py-2 px-6 rounded border-4 border-[#0098B9]"><A href="admin_home.html">Cancel</A></button>
+                    <button class="bg-[#0098B9] py-2 px-8 rounded  border-4 border-white text-white">Add</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    
+</body>
+</html>

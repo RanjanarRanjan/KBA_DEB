@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Admin-appoinment_details</title>
+    </head>
+    <body class="bg-[#0098B9] min-h-screen flex flex-col">
+      <header class="md:h-[80px]  w-full flex flex-col md:flex-row justify-between bg-gradient-to-tr from-[#ffffff] to-[#0098B9] py-[25px] px-4 ">
+        <div class="flex justify-center ">
+            <a class="w-[150px] md:w-[200px]"><img src="./img/AJHospital.svg" alt="hospitalname"></a>
+            <a class="w-[50px]"><img src="./img/logo (2).svg" alt="log"></a>
+        </div>
+        <div class="text-white grid gap-[10px] grid-rows-2 grid-cols-2 md:gap-[50px] text-[15px] md:flex md:text-xl">
+        <a href="admin_home.html" >Dashboard</a>
+        <a href="admin_doctor.html ">Doctor List</a>
+        <a href="admin_patient.html">Patients Details </a>
+        <a href="admin_booking_details.html" class="border-2 border-[#ffffff] px-4  rounded">Appoinment details</a>
+        <a href="add_doctor.html">Add Doctor</a>
+        <a href="Login.html">Logout</a>
+        </div>
+        </header>
+        <div class="p-4">
+            <div class="h-[78vh] bg-[#ffffff] border border-cyan-300 rounded-lg p-4 overflow-x-auto">
+              <table class="w-full text-left text-gray-700">
+                <thead>
+                  <tr class="border-b bg-cyan-300">
+                    <th class="py-2 px-4">sl no.</th>
+                    <th class="py-2 px-4">Patient Name</th>
+                    <th class="py-2 px-4">Doctor</th>
+                    <th class="py-2 px-4">Department</th>
+                    <th class="py-2 px-4">Date</th>
+                    <th class="py-2 px-4">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-black">
+                    <td class="py-2 px-4">1</td>
+                    <td class="py-2 px-4">Arun Das</td>
+                    <td class="py-2 px-4">Dr. John Doe</td>
+                    <td class="py-2 px-4">Cardiology</td>
+                    <td class="py-2 px-4">14/12/2024</td>
+                    <td class="py-2 px-4">
+                      <button class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">Remove</button>
+                  </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+    </div>
+    </body>
+    </html>
+    

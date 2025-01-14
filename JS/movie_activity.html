@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Movie Review</title>
+</head>
+<body class="bg-orange-200">
+    <div class="flex justify-center ">
+    <form  id="movieform" class="bg-orange-100 p-[20px] mt-[10px]">
+        <h1 class="text-3xl font-medium mb-[20px] text-center"> Movie Rating</h1>
+        <label class="text-xl font-medium mb-[20px]">Enter Movie Name : </label><br>
+        <input type="text" id="moviename" class="w-[400px] h-[40px] mb-[20px] border border-gray-300 rounded"><br>
+        <label class="text-xl font-medium mb-[20px]">Rating : </label><br>
+        <select id="rating" class="w-[400px] h-[40px] mb-[20px] border border-gray-300 rounded">
+            <option value="" disabled selected></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select><br>
+         <button onclick="submitMovie(event)" class="w-[100px] bg-green-300 p-[10px] rounded ml-[150px]">Submit</button>
+    </form>
+</div>
+    <div id="output" class="text-center" >
+        <h2 id="h2" class="text-xl font-medium"></h2>
+        <ul id="list"></ul>
+    </div>
+
+
+    <script>
+        const movies=[]
+        const priority=[]
+
+        function submitMovie(event) 
+        {
+            event.preventDefault();
+            const movie=document.getElementById("moviename").value.trim()
+            const rating=document.getElementById("rating").value
+            
+            if(movie&&rating)
+            {
+                movies.push(movie);
+                priority.push(rating);
+
+                document.getElementById('movieform').reset();
+
+                let priorityClass = '';
+                if (rating === "1") {
+                    priorityClass = 'text-red-500'; 
+                } else if (rating === "2") {
+                    priorityClass = 'text-yellow-500';
+                } else if (rating === "3") {
+                    priorityClass = 'text-green-500'; 
+                }
+
+                document.getElementById("h2").innerHTML=("Movie Details")
+                const movielist=document.getElementById("list");
+                const listitem=document.createElement("li")
+                listitem.textContent=`${movie}: - rating :${rating}`
+                listitem.classList.add(priorityClass);
+                movielist.appendChild(listitem)
+
+                const watchedButton = document.createElement("button");
+                watchedButton.textContent = "Watched";
+                watchedButton.classList.add("bg-blue-300", "p-2","text-white", "rounded", "ml-4","mb-6");
+                watchedButton.onclick = () => markWatched(listitem);
+
+                const removeButton = document.createElement("button");
+                removeButton.textContent = "Remove";
+                removeButton.classList.add("bg-red-300", "p-2", "rounded","text-white","ml-4","mb-6");
+                removeButton.onclick = () => removeMovie(listitem);
+
+ //key method of add one or more classes to the element
+                // const editbutton=document.createElement("button")
+                // editbutton.textContent="Edit";
+                // editbutton.classList.add("bg-yellow-300", "p-2", "rounded","text-white","ml-4","mb-6");
+                // editbutton.onclick=()=>editmovie(listitem,movie,rating)
+
+
+                
+
+                listitem.appendChild(watchedButton);
+                listitem.appendChild(removeButton);
+                // listitem.appendChild(editbutton)
+
+
+                function markWatched(listitem) 
+                {
+                    listitem.classList.add("line-through","text-gray-500"); 
+                }
+                function removeMovie(listitem) 
+                {
+                    listitem.remove(); 
+                }
+                // function editmovie(listitem,oldmovie,oldrating)
+                // {
+                //     const newMovie=prompt("edit movie",oldmovie)
+                //     const newrating=prompt("select rating 1-3",oldrating)
+
+                //     if (newmovie && newrating) {
+                //         listitem.firstChild.textContent = `${newmovie} - Rating: ${newrating}`;
+                //         listitem.className = ""; 
+                //         if (newrating === "1") listitem.classList.add("text-red-500");
+                //         else if (newrating === "2") listitem.classList.add("text-yellow-500");
+                //         else if (newrating === "3") listitem.classList.add("text-green-500");
+                //     }
+                // }
+                
+
+            }
+            else 
+            {
+                alert('Please enter a movie name and select a rating.');
+            }
+           
+        }
+    </script>
+</body>
+</html>
+               

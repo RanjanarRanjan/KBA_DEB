@@ -65,7 +65,7 @@
         }
      </script> -->
      <!-- Make the calculator dynamic -->
-      <div class="calculator">
+      <!-- <div class="calculator">
         <input type="text" id="display" disabled />
         <br><br>
         <div >
@@ -104,56 +104,15 @@
                 display.value = eval(display.value);      
         }
 
-    </script>
+    </script> -->
     
 
-
-
-    
-   
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <!-- Html page to enter names of fruits and insert the entered name to array and there is a dropdown and on selecting the index from drop down, display the fruit on the index. -->
-    <!--<h1>Fruit</h1>
+    <!-- Html page to enter names of fruits and insert the entered name to array and there is a dropdown and on selecting the index from drop down, display the fruit on the index. -->
+    <h1>Fruit</h1>
      <label>Enter fruit name:</label>
      <input type="text" id="fruit">
      <button onclick="add()">Add Fruit</button>
      <select id="dropdown" onchange="displayFruit()">
-        <option id="option" value=" " disabled selected >select an index</option>
      </select>
      <p id="select"></p>
      <script>
@@ -161,32 +120,28 @@
         function add() 
         {
             value=document.getElementById("fruit").value
-            fruit.push(value); // Add the value to the array
-            document.getElementById("fruit").value = ""; // Clear the input box
-            updateDropdown(); // Update the dropdown with new options
+            fruit.push(value); 
+            document.getElementById("fruit").value = ""; 
+            updateDropdown(); 
         }
-        function updateDropdown() 
-        {
-            const dropdown = document.getElementById("dropdown");
-            dropdown.innerHTML = '<option value="" disabled selected>Select an index</option>'; // Reset dropdown options
-            for (const fruitName of fruit) 
-            {
-                const options = document.createElement("option");
-                options.textContent = fruitName;// Set the display text of the option to the fruit name
-                dropdown.appendChild(options);
-            }
+        function updateDropdown() {
+        const dropdown = document.getElementById("dropdown");
+        dropdown.innerHTML = '<option value="" disabled selected>Select an index</option>'; 
+        for (let i = 0; i < fruit.length; i++) {
+            const option = document.createElement("option");
+            option.textContent = i; 
+            dropdown.appendChild(option);
         }
-        function displayFruit() 
-        {
-            const dropdown = document.getElementById('dropdown');
-            const selectedIndex = dropdown.value;
-            const output=document.getElementById('select')
-            output.textContent=selectedIndex;
-            
-        }  
-     </script>-->
+    }
 
+    function displayFruit() {
+        const dropdown = document.getElementById('dropdown');
+        const selectedIndex = dropdown.value;
+        const output = document.getElementById('select');
+        output.textContent = fruit[selectedIndex]; 
+    }
+     </script>
 
-
-
-    
+</body>
+</html>
+ 

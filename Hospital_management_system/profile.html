@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Profile</title>
+</head>
+<body class="bg-[#D7EFF4] min-h-screen flex flex-col">
+    <header class="md:h-[80px]  w-full flex flex-col md:flex-row justify-between bg-gradient-to-tr from-[#ffffff] to-[#0098B9] py-[25px] px-4 ">
+        <div class="flex justify-center ">
+            <a class="w-[150px] md:w-[200px]"><img src="./img/AJHospital.svg" alt="hospitalname"></a>
+            <a class="w-[50px]"><img src="./img/logo (2).svg" alt="log"></a>
+        </div>
+        <div class="text-white grid gap-[10px] grid-rows-2 grid-cols-2 md:gap-[50px] text-[15px] md:flex md:text-xl">
+            <a href="home.html" >Dashboard</a>
+            <a href="booking.html" >Book Appointment</a>
+            <a href="history.html" >Appointment History</a>
+            <a href="profile.html" class="border-2 border-[#ffffff] px-4  rounded md:block hidden">Profile</a>
+            <a href="Login.html" >Logout</a>
+        </div>
+        </header>
+        <div class="py-4 px-4 md:px-[200px]">
+            <div class="bg-white  md:h-[80vh] border border-cyan-300 rounded-lg p-4">
+                <form class="flex flex-col md:flex-row md:justify-between">
+                    <div class="flex flex-col md:ml-[100px] gap-4">
+                        <div class="flex justify-center">
+                            <img class="w-[150px] md:w-[200px]" src="/img/user_profile.svg" alt="user_profile">
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                            <label class="text-lg md:text-xl">Name :</label>
+                            <div class="flex-1 border-b border-black"></div>
+                            <label class="text-lg md:text-xl md:ml-2">Gender :</label>
+                            <div class="md:w-[100px] border-b border-black"></div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                            <label class="text-lg md:text-xl">Address :</label>
+                            <div class="flex-1 border-b border-black"></div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                            <label class="text-lg md:text-xl">Password :</label>
+                            <div class="flex-1 border-b border-black"></div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                            <label class="text-lg md:text-xl">Phone :</label>
+                            <div class="md:w-[200px] border-b border-black"></div>
+                            <label class="text-lg md:text-xl">Email :</label>
+                            <div class="md:w-[200px] border-b border-black"></div>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+                            <label class="text-lg md:text-xl">DOB :</label>
+                            <div class="md:w-[100px] border-b border-black"></div>
+                            <label class="text-lg md:text-xl">Age :</label>
+                            <div class="md:w-[100px] border-b border-black"></div>
+                            <label class="text-lg md:text-xl">Blood Group :</label>
+                            <div class="md:w-[100px] border-b border-black"></div>
+                        </div>
+                    </div>
+                  
+                    <div class="mt-6 md:mt-0 md:self-start md:mr-[40px]">
+                        <button class="bg-orange-300 w-[80px] h-[40px] rounded hover:bg-orange-400">
+                            <a href="profile_edit.html" class="text-black font-medium">Edit</a>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+</body>
+</html>
