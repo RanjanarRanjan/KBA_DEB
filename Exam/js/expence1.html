@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <script src="http://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center mt-[30px]">
+    <form id="expenceform" class="flex flex-col border-2 border-black px-4 py-4">
+        <label>Type of Expense:</label>
+        <select id="expence" class="w-[400px] border-2 border-black">
+            <option value="" disabled selected></option>
+            <option value="hospitel">Hospital</option>
+            <option value="education">Education</option>
+            <option value="travel">Travel</option>
+            <option value="shopping">Shopping</option>
+            <option value="other">Other</option>
+        </select>
+        <label>Amount:</label>
+        <input type="number" id="amount" class="w-[400px] border-2 border-black">
+        <label>Date:</label>
+        <input type="date" id="date" class="w-[400px] border-2 border-black">
+        <button onclick="submitExpense(event)" class="py-4 px-2 bg-blue-500 mt-[30px]">Submit</button>
+        <div>
+            <button class="py-4 px-2 bg-blue-500 mt-[30px]">show</button>
+            <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+            </select>
+        </div>
+        
+    </form>
+    <div id="expenseList" class="mt-6 px-4">
+        <h2 class="text-xl font-bold">Expense List:</h2>
+        <ul id="expenseItems" class="list-disc pl-6"></ul>
+    </div>
+    <script>
+        const expenses = [];
+        function submitExpense(event) {
+            event.preventDefault();
+
+            const expense = document.getElementById("expence").value;
+            const amount = document.getElementById("amount").value.trim();
+            const date = document.getElementById("date").value.trim();
+
+            if (expense && amount && date) {
+                expenses.push({ expense, amount, date });
+                document.getElementById("expenceform").reset();
+                showExpenses();
+            } else {
+                alert("Please fill out all fields correctly.");
+            }
+        }
+
+        function showExpenses() {
+            const expenseItems = document.getElementById("expenseItems");
+            expenseItems.innerHTML = ""; 
+            expenses.forEach((expense) => {
+                const li = document.createElement("li");
+                li.textContent = `${expense.expense} - ${expense.amount} on ${expense.date}`;
+                expenseItems.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
