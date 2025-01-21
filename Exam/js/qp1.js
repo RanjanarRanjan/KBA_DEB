@@ -69,9 +69,8 @@ function viewExpenses() {
     } else {
         console.log("Expense List:");
         expenses.forEach((expense) => {
-            console.log(
-                `Type: ${expense.type}, Amount: ${expense.amount}, Month: ${expense.date}`
-            );
+            sum=sum+expense.amount
+            console.log(`Type: ${expense.type}, Amount: ${expense.amount}, Month: ${expense.date}`);
         });
     }
     showMenu();

@@ -1,18 +1,25 @@
-import express from 'express';
+import express,{json} from 'express';
 import dotenv from 'dotenv';
 import { userauth } from './Routes/userauth.js';
+// import { json } from 'express';
 
 dotenv.config();
 
 const app=express();
 
+app.use(json())
 app.use("/",userauth);
 
 
-app.get('/',function(req,res)
+app.get("/",function(req,res)
 {
     res.send("hello Everyone");
 })
+
+// app.post("/signup",function(req,res)
+// {
+//     console.log(req.body);
+// })
 
 app.listen(process.env.PORT,function(){
     console.log(`Server is listening at ${process.env.PORT}`)
