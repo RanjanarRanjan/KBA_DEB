@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Enter Element</h2>
+<input type="text" id="inputElement" placeholder="Enter element">
+<button onclick="addElement()">Add Element</button>
+
+<h3>The Array is:</h3>
+<p id="arrayDisplay">[]</p>
+
+<h3>Select Element by Index:</h3>
+<select id="indexSelect" onchange="showElement()">
+    <option value="-1">Select index</option>
+</select>
+<p id="selectedElement"></p>
+
+<h3>The Array in Sorted Order is:</h3>
+<p id="sortedArray">[]</p>
+
+<h3>Search:</h3>
+<input type="text" id="searchInput" placeholder="Search element" onkeyup="searchElement()">
+<p id="searchResult"></p>
+
+<h3>The Reversed Array is:</h3>
+<p id="reversedArray">[]</p>
+
+<script>
+    let array = [];
+
+    // Add element to the array
+    function addElement() {
+        const inputElement = document.getElementById('inputElement').value;
+        if (inputElement) {
+            array.push(inputElement);
+            document.getElementById('inputElement').value = ''; // Clear input field
+            updateDisplay();
+        }
+    }
+
+    // Update all displays
+    function updateDisplay() {
+        // Display the array
+        document.getElementById('arrayDisplay').innerText = JSON.stringify(array);
+
+        // Update dropdown for selecting index
+        updateDropdown();
+
+        // Display sorted array
+        const sortedArray = [...array].sort();
+        document.getElementById('sortedArray').innerText = JSON.stringify(sortedArray);
+
+        // Display reversed array
+        const reversedArray = [...array].reverse();
+        document.getElementById('reversedArray').innerText = JSON.stringify(reversedArray);
+    }
+
+    // Update dropdown with array indices
+    function updateDropdown() {
+        const dropdown = document.getElementById('indexSelect');
+        dropdown.innerHTML = '<option value="-1">Select index</option>'; // Reset dropdown
+
+        array.forEach((element, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = index;
+            dropdown.appendChild(option);
+        });
+    }
+
+    // Show the element at selected index
+    function showElement() {
+        const index = document.getElementById('indexSelect').value;
+        const selectedElement = document.getElementById('selectedElement');
+        
+        if (index !== '-1') {
+            selectedElement.innerText = `Element at index ${index}: ${array[index]}`;
+        } else {
+            selectedElement.innerText = '';
+        }
+    }
+
+    // Search for an element
+    function searchElement() {
+        const searchValue = document.getElementById('searchInput').value.toLowerCase();
+        const result = array.filter(item => item.toLowerCase().includes(searchValue));
+        document.getElementById('searchResult').innerText = result.length ? `Found: ${result.join(', ')}` : 'No match found';
+    }
+</script>
+
+</body>
+</html>

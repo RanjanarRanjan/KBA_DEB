@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area Calculator</title>
+  <script>
+    // Function to calculate the area of a square
+    function calculateSquareArea() {
+      const side = parseFloat(document.getElementById('squareSide').value);
+      if (!isNaN(side)) {
+        const area = side * side;
+        document.getElementById('squareArea').innerText = 'Area of Square: ' + area;
+      } else {
+        alert('Please enter a valid number for square side');
+      }
+    }
+
+    // Function to calculate the area of a rectangle
+    function calculateRectangleArea() {
+      const length = parseFloat(document.getElementById('rectangleLength').value);
+      const breadth = parseFloat(document.getElementById('rectangleBreadth').value);
+      if (!isNaN(length) && !isNaN(breadth)) {
+        const area = length * breadth;
+        document.getElementById('rectangleArea').innerText = 'Area of Rectangle: ' + area;
+      } else {
+        alert('Please enter valid numbers for length and breadth');
+      }
+    }
+
+    // Function to calculate the area of a circle
+    function calculateCircleArea() {
+      const radius = parseFloat(document.getElementById('circleRadius').value);
+      if (!isNaN(radius)) {
+        const area = 3.14 * radius * radius;
+        document.getElementById('circleArea').innerText = 'Area of Circle: ' + area.toFixed(2);
+      } else {
+        alert('Please enter a valid number for radius');
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Area Calculator</h2>
+
+  <div>
+    <label for="squareSide">Enter the side of square: </label>
+    <input type="number" id="squareSide" placeholder="Side of square">
+    <button onclick="calculateSquareArea()">Area of Square</button>
+    <p id="squareArea"></p>
+  </div>
+
+  <div>
+    <label for="rectangleLength">Enter the length: </label>
+    <input type="number" id="rectangleLength" placeholder="Length of rectangle">
+    <label for="rectangleBreadth">Enter the breadth: </label>
+    <input type="number" id="rectangleBreadth" placeholder="Breadth of rectangle">
+    <button onclick="calculateRectangleArea()">Area of Rectangle</button>
+    <p id="rectangleArea"></p>
+  </div>
+
+  <div>
+    <label for="circleRadius">Enter the radius: </label>
+    <input type="number" id="circleRadius" placeholder="Radius of circle">
+    <button onclick="calculateCircleArea()">Area of Circle</button>
+    <p id="circleArea"></p>
+  </div>
+
+</body>
+</html>

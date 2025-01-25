@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function toggleDropdown() {
+            const otherOption = document.getElementById("degree-others");
+            const dropdown = document.getElementById("other-degrees");
+            if (otherOption.checked) {
+                dropdown.classList.remove("hidden");
+            } else {
+                dropdown.classList.add("hidden");
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const address = document.getElementById("address").value;
+            const degree = document.querySelector('input[name="degree"]:checked').value;
+            const otherDegree = document.getElementById("other-degree-select")?.value;
+
+            let result = `Name: ${name}\nAddress: ${address}\nDegree: ${degree}`;
+
+            if (degree === "others") {
+                result += ` (${otherDegree})`;
+            }
+
+            const output = document.getElementById("output");
+            output.textContent = result;
+        }
+    </script>
+</head>
+<body>
+    <h1>Dynamic Form</h1>
+    <form onsubmit="handleSubmit(event)">
+        <!-- Name -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <!-- Address -->
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <!-- Degree -->
+        <fieldset>
+            <legend>Degree:</legend>
+            <label>
+                <input type="radio" name="degree" value="btech" onclick="toggleDropdown()"> BTech
+            </label>
+            <label>
+                <input type="radio" name="degree" value="mtech" onclick="toggleDropdown()"> MTech
+            </label>
+            <label>
+                <input type="radio" name="degree" value="mca" onclick="toggleDropdown()"> MCA
+            </label>
+            <label>
+                <input type="radio" id="degree-others" name="degree" value="others" onclick="toggleDropdown()"> Others
+            </label>
+        </fieldset>
+
+        <!-- Dropdown for 'Others' -->
+        <div id="other-degrees" class="hidden">
+            <label for="other-degree-select">Select Degree:</label>
+            <select id="other-degree-select" name="other-degree">
+                <option value="bca">BCA</option>
+                <option value="pgdca">PGDCA</option>
+                <option value="bcom">BCom</option>
+                <option value="mphil">MPhil</option>
+            </select>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Output -->
+    <div id="output" class="mt-4" style="margin-top: 20px; font-weight: bold;"></div>
+</body>
+</html>

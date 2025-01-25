@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Roll Number Lookup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, select, button, input {
+            margin: 5px 0;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Roll Number Lookup</h1>
+
+    <div>
+        <label for="nameInput">Enter Student Name:</label>
+        <input type="text" id="nameInput" placeholder="Enter name" required>
+        <button id="addButton">Submit</button>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <label for="rollNumberSelect">Select Roll Number:</label>
+        <select id="rollNumberSelect">
+            <option value="">-- Select Roll Number --</option>
+        </select>
+        <p id="studentNameDisplay" style="margin-top: 10px;"></p>
+    </div>
+
+    <script>
+        // Array to store names
+        const studentNames = [];
+
+        // Get DOM elements
+        const nameInput = document.getElementById('nameInput');
+        const addButton = document.getElementById('addButton');
+        const rollNumberSelect = document.getElementById('rollNumberSelect');
+        const studentNameDisplay = document.getElementById('studentNameDisplay');
+
+        // Add student name to the array and dropdown
+        addButton.addEventListener('click', () => {
+            const name = nameInput.value.trim();
+
+            if (name) {
+                // Add name to array
+                studentNames.push(name);
+
+                // Sort the names alphabetically
+                studentNames.sort();
+
+                // Clear the dropdown before updating it
+                rollNumberSelect.innerHTML = '<option value="">-- Select Roll Number --</option>';
+
+                // Update dropdown with sorted names
+                studentNames.forEach((studentName, index) => {
+                    const newOption = document.createElement('option');
+                    newOption.value = index; // Roll number (index)
+                    newOption.textContent = `Roll No ${index + 1}`;
+                    rollNumberSelect.appendChild(newOption);
+                });
+
+                // Clear input field
+                nameInput.value = '';
+                nameInput.focus();
+
+
+                setTimeout(() => successMessage.remove(), 3000);
+            } else {
+                // Display error message without prompt
+                const errorMessage = document.createElement('p');
+                errorMessage.textContent = 'Please enter a valid name.';
+                errorMessage.style.color = 'red';
+                document.body.appendChild(errorMessage);
+
+                setTimeout(() => errorMessage.remove(), 3000);
+            }
+        });
+
+        // Display the student name based on roll number selection
+        rollNumberSelect.addEventListener('change', () => {
+            const selectedRollNumber = rollNumberSelect.value;
+
+            if (selectedRollNumber) {
+                studentNameDisplay.textContent = `Name: ${studentNames[selectedRollNumber]}`;
+            } else {
+                studentNameDisplay.textContent = '';
+            }
+        });
+    </script>
+</body>
+</html>
