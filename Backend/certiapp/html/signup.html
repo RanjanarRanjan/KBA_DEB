@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center bg-slate-300  font-semibold">
+    <div class="w-80 bg-white px-5 py-5 rounded-lg mt-16">
+        <p class="text-center text-5xl">Sign Up</p>
+        <form class="ml-4 mt-6" onsubmit="handlesubmit(event)">
+            <label class=" mt-6">UserName :</label> <br>
+             <input type="text" id="username" class="w-11/12 border border-black mt-2 " required> <br>
+            <label class=" mt-6">mail :</label> <br>
+            <input type="email" id="mail" class="w-11/12   mt-2 border border-black" required> <br>
+            <label class=" mt-6">user_role :</label> <br>
+            <select class="w-11/12   mt-2 border border-black" name="role" id="role" required>
+                <option value="admin">Admin</option>
+                <option value="others">User</option>
+            </select>
+            <label class="mt-6">password :</label> <br>
+            <input type="password" id="password" class="w-11/12 border border-black  mt-2" required> <br>
+            <div class="flex justify-center mt-6">
+                <button class="mr-9 px-2.5 py-1 bg-cyan-400  rounded-lg">Sign Up</button>
+            </div>
+            <p class="text-sm  mt-6">Already have an account?<a href="addcourse.html" class="text-cyan-400 underline">Login</a></p>
+        </form>
+    </div>  
+    <script>
+        async function handlesubmit(event)
+        {
+            event.preventDefault();
+            console.log("hii")
+            // fname=document.getElementById("FirstName").value;
+            //lastname=document.getElementById("LastName").value;
+            username=document.getElementById("username").value;
+            email=document.getElementById("mail").value;
+            user_role=document.getElementById("role").value;
+            password=document.getElementById("password").value;
+
+            const response=await fetch("http://127.0.0.1:8000/signup",{
+                method:"POST",
+                headers:{"Content-Type":'application/json'},
+            body:JSON.stringify({
+                // FirstName:fname,
+                // LastName:lastname,
+                UserName:username,
+                Email:email,
+                user_role:user_role,
+                password:password
+            })
+        }
+        )
+        //console.log(response)
+        console.log(response.status);
+        const data=await response.text();
+        console.log(data)
+        if(response.status=='201')
+        {
+            window.location.href="login.html"
+        }
+        else if(response.status=='400')
+        {
+            alert("Username already exist")
+        }
+        else
+        {
+            alert("try after sometimes");
+        }
+        } 
+    </script>
+</body>
+</html>

@@ -9,32 +9,25 @@
     <h2>Enter element:</h2>
     <input type="text" id="inputElement" placeholder="Enter value">
     <button onclick="addToArray()">Add to Array</button>
+    <button onclick="viewArray()">View Array</button>
 
     <h3>The entered array is:</h3>
     <p id="arrayDisplay"></p>
 
     <script>
-        // Initialize an empty array
         let array = [];
-
-        // Function to add value to array and display it
         function addToArray() {
-            // Get the value from the input field
-            const value = document.getElementById('inputElement').value;
-
-            // Check if the input is not empty
-            if (value.trim() !== "") {
-                // Add value to the array
+            const value = document.getElementById('inputElement').value.trim()
+            if (value!== "") {
                 array.push(value);
-
-                // Display the array
-                document.getElementById('arrayDisplay').innerText = JSON.stringify(array);
-
-                // Clear the input field
                 document.getElementById('inputElement').value = "";
             } else {
                 alert("Please enter a value");
             }
+        }
+        function viewArray() 
+        {
+            document.getElementById('arrayDisplay').innerText = array;
         }
     </script>
 </body>

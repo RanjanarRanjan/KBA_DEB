@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center bg-slate-300  font-semibold">
+    <div class="w-80 bg-white px-5 py-5 rounded-lg mt-16">
+        <p class="text-center text-5xl">Login</p>
+        <form class="ml-4 mt-6" onsubmit="handlesubmit(event)">
+            <!-- <label class=" mt-6">user role :</label> <br>
+            <select class="w-11/12   mt-2 border border-black" id="role" name="price" required>
+                <option value="admin">Admin</option>
+                <option value="user">user</option>
+            </select> -->
+            <label class=" mt-6">UserName :</label> <br>
+            <input type="text"id="username" class="w-11/12 border border-black  mt-2" required> <br>
+            <label class=" mt-6">password :</label> <br>
+            <input type="password" id="password" class="w-11/12   mt-2 border border-black" required> <br>
+            <div class="flex justify-between mt-6">
+                <a class="text-sm text-cyan-400 ">forgot password?</a>
+                <button type="submit" class="mr-9 px-2.5 py-1 bg-cyan-400  rounded-lg">login</button>
+            </div>
+            <p class="text-sm  mt-6">Don't have an account?<a href="signup.html" class="text-cyan-400 underline">Sign Up</a></p>
+        </form>
+    </div>
+    <script>
+       async function handlesubmit(event)
+        {
+            event.preventDefault();
+            console.log("hii")
+            username=document.getElementById("username").value;
+            //user_role=document.getElementById("role").value;
+            password=document.getElementById("password").value;
+
+            const response=await fetch("http://127.0.0.1:8000/login",{
+                method:"POST",
+                credentials:"include",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({
+                    //user_role:user_role,
+                    UserName:username,
+                    password:password
+                })
+            })
+            console.log(response.status);
+        const data=await response.text();
+        console.log(data)
+        if(response.status=='200')
+        {
+            window.location.href="Home.html"
+        }
+        else if(response.status=='400')
+        {
+            alert("Username already exist")
+        }
+        else
+        {
+            alert("try after sometimes");
+        }
+        } 
+    </script>  
+</body>
+</html>

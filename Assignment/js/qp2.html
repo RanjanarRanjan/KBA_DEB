@@ -3,93 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Form</title>
+    <title>Form with View Button</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        .hidden {
+        .display {
             display: none;
         }
     </style>
-    <script>
-        function toggleDropdown() {
-            const otherOption = document.getElementById("degree-others");
-            const dropdown = document.getElementById("other-degrees");
-            if (otherOption.checked) {
-                dropdown.classList.remove("hidden");
-            } else {
-                dropdown.classList.add("hidden");
-            }
-        }
-
-        function handleSubmit(event) {
-            event.preventDefault();
-            const name = document.getElementById("name").value;
-            const address = document.getElementById("address").value;
-            const degree = document.querySelector('input[name="degree"]:checked').value;
-            const otherDegree = document.getElementById("other-degree-select")?.value;
-
-            let result = `Name: ${name}\nAddress: ${address}\nDegree: ${degree}`;
-
-            if (degree === "others") {
-                result += ` (${otherDegree})`;
-            }
-
-            const output = document.getElementById("output");
-            output.textContent = result;
-        }
-    </script>
 </head>
 <body>
-    <h1>Dynamic Form</h1>
-    <form onsubmit="handleSubmit(event)">
-        <!-- Name -->
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <!-- Address -->
-        <label for="address">Address:</label>
-        <input type="text" id="address" name="address" required>
-
-        <!-- Degree -->
-        <fieldset>
-            <legend>Degree:</legend>
-            <label>
-                <input type="radio" name="degree" value="btech" onclick="toggleDropdown()"> BTech
-            </label>
-            <label>
-                <input type="radio" name="degree" value="mtech" onclick="toggleDropdown()"> MTech
-            </label>
-            <label>
-                <input type="radio" name="degree" value="mca" onclick="toggleDropdown()"> MCA
-            </label>
-            <label>
-                <input type="radio" id="degree-others" name="degree" value="others" onclick="toggleDropdown()"> Others
-            </label>
-        </fieldset>
-
-        <!-- Dropdown for 'Others' -->
-        <div id="other-degrees" class="hidden">
-            <label for="other-degree-select">Select Degree:</label>
-            <select id="other-degree-select" name="other-degree">
-                <option value="bca">BCA</option>
-                <option value="pgdca">PGDCA</option>
-                <option value="bcom">BCom</option>
-                <option value="mphil">MPhil</option>
+    <form id="userForm" class="border-2 border-black w-[500px] h-auto mx-auto mt-24 p-4">
+        <div class="mt-4">
+            <label>Name: </label>
+            <input type="text" id="name" class="border-2 border-black h-[35px] w-[250px]" required><br>
+        </div>
+        <div class="mt-4">
+            <label>Address: </label>
+            <textarea id="address" rows="5" cols="18" class="border-2 border-black h-[100px] w-[250px]" required></textarea><br>
+        </div>
+        <div class="mt-4">
+            <label>Degree: </label>
+            <input type="radio" name="degree" value="B.Tech">
+            <label>B.Tech</label>
+            <input type="radio" name="degree" value="M.Tech">
+            <label>M.Tech</label>
+            <input type="radio" name="degree" value="MCA">
+            <label>MCA</label>
+            <input type="radio" name="degree" value="Others" onclick="displaydropdown()">
+            <label>Others</label>
+            <select class="display ml-2 w-24" id="other">
+                <option>BCA</option>
+                <option>PGDCA</option>
+                <option>B.Com</option>
+                <option>MPhil</option>
             </select>
         </div>
-
-        <!-- Submit -->
-        <button type="submit">Submit</button>
+        <div class="mt-4">
+            <button type="button" onclick="viewDetails()" class="bg-blue-500 text-white px-4 py-2 rounded">View</button>
+        </div>
     </form>
 
-    <!-- Output -->
-    <div id="output" class="mt-4" style="margin-top: 20px; font-weight: bold;"></div>
+    <div id="output" class="border-2 border-gray-400 w-[500px] mx-auto mt-4 p-4 hidden">
+        <h2 class="text-lg font-bold">Form Details:</h2>
+        <p id="outputName"></p>
+        <p id="outputAddress"></p>
+        <p id="outputDegree"></p>
+    </div>
+
+    <script>
+        function displaydropdown() {
+            document.getElementById("other").classList.remove("display");
+        }
+
+        function viewDetails() {
+            // Fetching form values
+            const name = document.getElementById("name").value.trim();
+            const address = document.getElementById("address").value.trim();
+
+            // Fetching selected degree
+            let degree = "";
+            const degreeOptions = document.getElementsByName("degree");
+            for (let option of degreeOptions) {
+                if (option.checked) {
+                    degree = option.value;
+                    break;
+                }
+            }
+
+            // Handle "Others" option
+            if (degree === "Others") {
+                const otherDegree = document.getElementById("other").value.trim();
+                degree = `Others (${otherDegree})`;
+            }
+
+           
+            document.getElementById("output").classList.remove("hidden");
+            // Displaying values
+            document.getElementById("outputName").innerText = `Name: ${name}`;
+            document.getElementById("outputAddress").innerText = `Address: ${address}`;
+            document.getElementById("outputDegree").innerText = `Degree: ${degree}`;
+        }
+    </script>
 </body>
 </html>

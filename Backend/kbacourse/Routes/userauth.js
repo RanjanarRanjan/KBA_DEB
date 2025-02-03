@@ -1,4 +1,4 @@
-import { Router} from "express";
+import {Router} from "express";
 import bcrypt from "bcrypt"
 import jwt from 'jsonwebtoken'//importing token
 import dotenv from 'dotenv'
@@ -115,7 +115,11 @@ userauth.post('/login',async function(req,res)
 //         res.status(500).send("server Error")
 //     }
 // })
-
+userauth.get("/logout",(req,res)=>
+{
+    res.clearCookie('authToken')
+    res.status(200).json({msg:"Successfull"})
+})
 
 })
 export{userauth};

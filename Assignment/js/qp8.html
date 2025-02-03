@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+</head>
+<body>
+
+    <h2>Enter Marks for the Student</h2>
+
+    <div class="container">
+        <label for="subject">Name of Subject:</label>
+        <input type="text" id="subject" placeholder="Subject">
+    </div>
+    <div class="container">
+        <label for="mark">Mark:</label>
+        <input type="number" id="mark" placeholder="Mark" min="0" max="100">
+    </div>
+
+    <button onclick="calculateGrade()">Submit</button>
+
+    <div id="error" class="error"></div>
+    <div id="result" class="result"></div>
+
+    <script>
+        function calculateGrade() {
+            const subject = document.getElementById("subject").value.trim();
+            const markInput = document.getElementById("mark").value;
+            const errorDiv = document.getElementById("error");
+            const resultDiv = document.getElementById("result");
+
+           
+            errorDiv.innerHTML = "";
+            resultDiv.innerHTML = "";
+
+            const mark = parseFloat(markInput);
+
+          
+            if (!subject) {
+                errorDiv.innerHTML = "Please enter the subject name.";
+                return;
+            }
+
+            if (mark < 0 || mark > 100) {
+                errorDiv.innerHTML = "Please enter a valid mark between 0 and 100.";
+                return;
+            }
+
+            let grade = "";
+            if (mark > 90) {
+                grade = "A+";
+            } else if (mark >= 80) {
+                grade = "A";
+            } else if (mark >= 70) {
+                grade = "B+";
+            } else if (mark >= 60) {
+                grade = "C+";
+            } else if (mark >= 50) {
+                grade = "C";
+            } else {
+                grade = "Fail";
+            }
+
+            // Display result
+            resultDiv.innerHTML = `Subject: ${subject} <br>Mark: ${mark}% <br>Grade: ${grade}`;
+        }
+    </script>
+
+</body>
+</html>

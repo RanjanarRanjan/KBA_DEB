@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse a Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input[type="number"], button {
+            margin-top: 10px;
+            padding: 5px;
+        }
+        button {
+            cursor: pointer;
+        }
+        .output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function reverseNumber() {
+            const inputNumber = document.getElementById("number-input").value.trim();
+            
+            if (!inputNumber) {
+                document.getElementById("output").textContent = "Please enter a number.";
+                return;
+            }
+
+            let number = parseInt(inputNumber, 10); // Convert input to integer
+            let reversed = 0;
+
+            while (number > 0) {
+                const digit = number % 10;         // Extract the last digit
+                reversed = reversed * 10 + digit; // Build the reversed number
+                number = (number - digit) / 10; // Remove the last digit
+            }
+
+            document.getElementById("output").textContent = `Reversed Number: ${reversed}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Reverse a Number</h1>
+    <label for="number-input">Enter a Number:</label>
+    <input type="number" id="number-input" placeholder="Enter number">
+    <button onclick="reverseNumber()">Reverse</button>
+    <div id="output" class="output"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Compare</title>
+</head>
+<body class="mt-4">
+    <label>Enter first number</label>
+    <input id="first" class="w-[400px] border-2 border-black" type="number"><br>
+    <label>Enter second number</label>
+    <input id="second" class="w-[400px] border-2 border-black" type="number"><br>
+    <button class="bg-green-400 py-2 px-4 rounded" onclick="compare()">compare</button>
+<p id="result"></p>
+    <script>
+         function compare(){
+        const first=document.getElementById("first").value.trim()
+        const second=document.getElementById("second").value.trim()
+   
+    if(first<second)
+    {
+        document.getElementById("result").innerHTML="second number is greater"
+    }
+    else if (first>second)
+    {
+        document.getElementById("result").innerHTML="first number is greater"
+    }
+    else
+    {
+        document.getElementById("result").innerHTML="both are equal"
+    }
+}
+    </script>
+</body>
+</html>

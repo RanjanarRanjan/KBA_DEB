@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Student Roll Number</title>
+</head>
+<body class="p-6">
+    <label for="name" class="block mb-2">Name</label>
+    <input id="name" type="text" class="w-[400px] border-2 border-black px-2 py-1 mb-4">
+    <button class="bg-green-400 px-4 py-2" onclick="add()">Submit</button>
+    <p class="mt-4">Select a student:</p>
+    <select id="dropdown" class="w-[400px] border-2 border-gray-400 px-2 py-1" onclick="list()">
+        <option value="" disabled selected>Select a student</option>
+    </select>
+    <p id="result"></p>
+    <script>
+        const student = [];
+      
+        function add() {
+            const nameInput = document.getElementById("name");
+            const sname = nameInput.value.trim();
+            
+            if (sname === '') {
+                alert("Please enter a valid name");
+            } else {
+                student.push(sname); 
+                nameInput.value = ''; 
+                updateDropdown();
+            }
+        }
+
+        function updateDropdown() {
+            const dropdown = document.getElementById("dropdown");
+            dropdown.innerHTML = '<option value="" disabled selected>Select a student</option>'; 
+            
+            student.forEach((name, index) => {
+                const option = document.createElement("option");
+                option.value = index; 
+                option.textContent = `${index+1}`; 
+                dropdown.appendChild(option);
+            });
+        }
+        function list() {
+            const dropdown = document.getElementById("dropdown");
+            const selectedIndex = dropdown.value; 
+            const ans=student[selectedIndex];
+            document.getElementById("result").innerHTML=ans
+           
+        }
+    </script>
+</body>
+</html>

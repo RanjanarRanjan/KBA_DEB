@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input placeholder="Enter the element" type="text" id="element">
+    <button onclick="add()">Add</button><br><br>
+    <select id="drop" onclick="dropdown()">
+        <option value="">select element</option>
+    </select>
+    <p id="select"></p>
+    <button onclick="view()">View Array</button> 
+    <p id="result"></p><br><br>
+    <button onclick="sort()">Sort array</button>
+    <p id="sort"></p><br><br>
+    <button onclick="reverse()">reverse</button>
+    <p id="reverse"></p>
+    <input type="text" id="search">
+    <button onclick="search()"> Search</button>
+    <p id="searchResult"></p>
+    <script>
+        const array = [];
+
+        function add() {
+            const data = document.getElementById("element").value.trim(); // Get the input value
+            
+            if (data === '') {
+                alert("Invalid input. Please enter a value.");
+            } else {
+                array.push(data); 
+                document.getElementById("element").value = '';
+                updatedropdown()
+            }
+        }
+        function updatedropdown() {
+            const dropdown = document.getElementById("drop");
+            dropdown.innerHTML = '<option value="" disabled selected>Select a student</option>'; 
+            
+            array.forEach((name, index) => {
+                const option = document.createElement("option");
+                option.value = index; 
+                option.textContent = `${index}`; 
+                dropdown.appendChild(option);
+            });
+        }
+        function dropdown() {
+            const dropdown = document.getElementById("drop");
+            const selectedIndex = dropdown.value; 
+            const ans=array[selectedIndex];
+            document.getElementById("select").innerHTML=ans
+           
+        }
+
+        function view() {
+            const result = document.getElementById("result");
+            result.innerHTML = `Array contents: ${array.join(", ")}`;
+        }
+
+        function sort() {
+            const new_array = [array];
+    
+            if (new_array.length === 0) {
+                document.getElementById('sort').innerText = 'Array is empty';
+                return;
+            }
+            for (let i = 0; i < new_array.length - 1; i++) {
+                for (let j = 0; j < new_array.length - i - 1; j++) {
+                    if (new_array[j] > new_array[j + 1]) {
+                        let temp = new_array[j];
+                        new_array[j] = new_array[j + 1];
+                        new_array[j + 1] = temp;
+                    }
+                }
+            }
+            document.getElementById('sort').innerText = `Sorted Array: ${new_array.join(", ")}`;
+        }
+
+        function reverse() {
+            const rev = [];
+            if (array.length === 0) {
+                document.getElementById('reverse').innerText = 'Array is empty';
+                return;
+            }
+            for (let i = array.length - 1; i >= 0; i--) {
+                rev.push(array[i]);
+            }
+            document.getElementById('reverse').innerText = `Reversed Array: ${rev}`;
+        }
+
+        function search()
+        {
+            const find=document.getElementById("search").value.trim()
+            if(find=='')
+        {
+            alert("enter element")
+        }
+        else
+        {
+            let foundIndex = -1;
+                for (let i = 0; i < array.length; i++) {
+                    if (array[i] === find) {
+                        foundIndex = i;
+                        break;
+                    }
+            }
+            if (foundIndex !== -1) {
+                    searchResult.innerText = `Element "${find}" found at index ${foundIndex}.`;
+                } else {
+                    searchResult.innerText = `Element "${find}" not found in the array.`;
+                }
+        }
+        }
+
+
+    </script>
+</body>
+</html>

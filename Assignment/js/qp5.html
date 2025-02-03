@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Area Calculator</title>
   <script>
-    // Function to calculate the area of a square
-    function calculateSquareArea() {
-      const side = parseFloat(document.getElementById('squareSide').value);
-      if (!isNaN(side)) {
+  
+    function SquareArea() {
+      const side = document.getElementById('squareSide').value;
+      if (side) {
         const area = side * side;
         document.getElementById('squareArea').innerText = 'Area of Square: ' + area;
       } else {
@@ -17,10 +17,10 @@
     }
 
     // Function to calculate the area of a rectangle
-    function calculateRectangleArea() {
-      const length = parseFloat(document.getElementById('rectangleLength').value);
-      const breadth = parseFloat(document.getElementById('rectangleBreadth').value);
-      if (!isNaN(length) && !isNaN(breadth)) {
+    function RectangleArea() {
+      const length = document.getElementById('rectangleLength').value;
+      const breadth = document.getElementById('rectangleBreadth').value;
+      if (length&&breadth) {
         const area = length * breadth;
         document.getElementById('rectangleArea').innerText = 'Area of Rectangle: ' + area;
       } else {
@@ -29,11 +29,11 @@
     }
 
     // Function to calculate the area of a circle
-    function calculateCircleArea() {
-      const radius = parseFloat(document.getElementById('circleRadius').value);
-      if (!isNaN(radius)) {
+    function CircleArea() {
+      const radius = document.getElementById('circleRadius').value;
+      if (radius) {
         const area = 3.14 * radius * radius;
-        document.getElementById('circleArea').innerText = 'Area of Circle: ' + area.toFixed(2);
+        document.getElementById('circleArea').innerText = 'Area of Circle: ' + area;
       } else {
         alert('Please enter a valid number for radius');
       }
@@ -46,7 +46,7 @@
   <div>
     <label for="squareSide">Enter the side of square: </label>
     <input type="number" id="squareSide" placeholder="Side of square">
-    <button onclick="calculateSquareArea()">Area of Square</button>
+    <button onclick="SquareArea()">Area of Square</button>
     <p id="squareArea"></p>
   </div>
 
@@ -55,14 +55,14 @@
     <input type="number" id="rectangleLength" placeholder="Length of rectangle">
     <label for="rectangleBreadth">Enter the breadth: </label>
     <input type="number" id="rectangleBreadth" placeholder="Breadth of rectangle">
-    <button onclick="calculateRectangleArea()">Area of Rectangle</button>
+    <button onclick="RectangleArea()">Area of Rectangle</button>
     <p id="rectangleArea"></p>
   </div>
 
   <div>
     <label for="circleRadius">Enter the radius: </label>
     <input type="number" id="circleRadius" placeholder="Radius of circle">
-    <button onclick="calculateCircleArea()">Area of Circle</button>
+    <button onclick="CircleArea()">Area of Circle</button>
     <p id="circleArea"></p>
   </div>
 

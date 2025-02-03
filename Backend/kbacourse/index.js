@@ -1,16 +1,24 @@
 import express,{json} from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import { userauth } from './Routes/userauth.js';
 import { adminauth } from "./Routes/adminauth.js"
+import { adminsign } from './Routes/adminsign.js';
 // import { json } from 'express';
 
 dotenv.config();
 
 const app=express();
 
+app.use(cors({
+    origin:'http://127.0.0.1:5500',
+    credentials:true
+}))
+
 app.use(json())
 app.use("/",userauth);
-app.use("/",adminauth);
+app.use("/",adminauth);//app.use("/api",adminauth)-->ttp://127.0.0.1:8000/api/addcourse
+app.use("/admin",adminsign) // use this in postman http://127.0.0.1:8000/admin/signup
 
 
 app.get("/",function(req,res)
