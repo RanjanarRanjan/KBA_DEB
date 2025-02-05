@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <script src="http://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col items-center mt-[30px]">
+    <form id="expenseForm" class="flex flex-col border-2 border-black px-4 py-4">
+        <label>Type of Expense:</label>
+        <select id="expense" class="w-[400px] border-2 border-black" onchange="checkOtherOption()">
+            <option value="" disabled selected></option>
+            <option value="hospital">Hospital</option>
+            <option value="education">Education</option>
+            <option value="travel">Travel</option>
+            <option value="shopping">Shopping</option>
+            <option value="others">Other</option>
+        </select>
+
+        <!-- Extra input field for "Other" option (hidden by default) -->
+        <input type="text" id="otherExpense" class="w-[400px] border-2 border-black mt-2 hidden" placeholder="Enter expense type">
+
+        <label>Amount:</label>
+        <input type="number" id="amount" class="w-[400px] border-2 border-black">
+        
+        <label>Date:</label>
+        <input type="date" id="date" class="w-[400px] border-2 border-black">
+        
+        <button onclick="submitExpense(event)" class="py-4 px-2 bg-blue-500 mt-[30px] text-white">Submit</button>
+    </form>
+
+    <div class="mt-6 px-4 w-[500px]">
+        <h2 class="text-xl font-bold">Expense List:</h2>
+        <ul id="expenseItems" class="list-disc pl-6"></ul>
+
+        <!-- Show total amount -->
+        <h3 id="totalAmount" class="mt-4 text-lg font-bold"></h3>
+
+        <!-- Input for Month & Year -->
+        <label class="block mt-4">Filter by Month & Year:</label>
+        <input type="month" id="filterMonthYear" class="w-[400px] border-2 border-black mt-2">
+        
+        <!-- Button to calculate total expense -->
+        <button onclick="showTotalExpense()" class="py-4 px-2 bg-green-500 mt-[10px] text-white">Show Total</button>
+
+        <!-- Display total expense -->
+        <h3 id="totalExpense" class="mt-4 text-lg font-bold"></h3>
+    </div>
+
+    <script>
+        let expenses = [];
+
+        function checkOtherOption() {
+            const expenseDropdown = document.getElementById("expense");
+            const otherExpenseInput = document.getElementById("otherExpense");
+
+            if (expenseDropdown.value === "others") {
+                otherExpenseInput.classList.remove("hidden");
+                otherExpenseInput.required = true;
+            } else {
+                otherExpenseInput.classList.add("hidden");
+                otherExpenseInput.required = false;
+            }
+        }
+
+        function submitExpense(event) {
+            event.preventDefault();
+
+            let expense = document.getElementById("expense").value;
+            const amount = document.getElementById("amount").value.trim();
+            const date = document.getElementById("date").value.trim();
+            const otherExpenseInput = document.getElementById("otherExpense");
+
+            if (expense === "others") {
+                expense = otherExpenseInput.value.trim();
+            }
+
+            if (expense && amount && date) {
+                expenses.push({ expense, amount: parseFloat(amount), date: new Date(date) });
+                document.getElementById("expenseForm").reset();
+                checkOtherOption(); // Reset "Other" input field
+                showExpenses();
+            } else {
+                alert("Please fill out all fields correctly.");
+            }
+        }
+
+        function showExpenses() {
+            expenses.sort((a, b) => b.date - a.date); // Sort by date (latest first)
+
+            const expenseItems = document.getElementById("expenseItems");
+            expenseItems.innerHTML = expenses.map(exp => 
+                `<li>${exp.expense} - ₹${exp.amount} on ${exp.date.toISOString().split('T')[0]}</li>`
+            ).join("");
+
+            // Show total amount of all expenses
+            const totalAmount = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+            document.getElementById("totalAmount").textContent = `Total Expense: ₹${totalAmount}`;
+        }
+
+        function showTotalExpense() {
+            const selectedMonthYear = document.getElementById("filterMonthYear").value;
+            if (!selectedMonthYear) {
+                alert("Please select a month and year.");
+                return;
+            }
+
+            const [year, month] = selectedMonthYear.split("-");
+            const total = expenses
+                .filter(exp => {
+                    return (
+                        exp.date.getFullYear() == year &&
+                        (exp.date.getMonth() + 1) == month
+                    );
+                })
+                .reduce((sum, exp) => sum + exp.amount, 0);
+
+            document.getElementById("totalExpense").textContent = `Total Expense for ${month}/${year}: ₹${total}`;
+        }
+    </script>
+</body>
+</html>

@@ -4,7 +4,6 @@ import cors from 'cors';
 import { userauth } from './Routes/userauth.js';
 import { adminauth } from "./Routes/adminauth.js"
 import { adminsign } from './Routes/adminsign.js';
-import mongoose from 'mongoose';
 // import { json } from 'express';
 
 dotenv.config();
@@ -31,14 +30,6 @@ app.get("/",function(req,res)
 // {
 //     console.log(req.body);
 // })
-
-mongoose.connect('mongodb://localhost:27017/KBACourse').then(()=>{
-    console.log("MongoDB connected successfully to KBACourse")
-})
-.catch((error)=>{
-    console.error("MongoDB connction failed",error)
-})
-
 
 app.listen(process.env.PORT,function(){
     console.log(`Server is listening at ${process.env.PORT}`)

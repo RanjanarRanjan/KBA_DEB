@@ -11,5 +11,5 @@ app.use('/',router)
 app.listen(PORT,function(){
     console.log(`Server is listening at ${PORT}`)
 })
-mongoose.connect('mongodb://localhost:27017/demo')
+mongoose.connect('mongodb://localhost:27017/demo')//it is used to connect the mongoose and express
 

@@ -14,4 +14,16 @@ router.post('/create',async(req,res)=>{
         res.status(500).json();
     }
 })
+
+router.get("/read",async(req,res)=>{
+    try{
+        // const result=await sample.find()
+        const result=await sample.findById("67a1cd44a8e8c144ca21d309")
+        res.status(200).send(result)
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).json();
+    }
+})
 export {router};

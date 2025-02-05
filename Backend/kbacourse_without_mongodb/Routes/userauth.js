@@ -2,12 +2,11 @@ import {Router} from "express";
 import bcrypt from "bcrypt"
 import jwt from 'jsonwebtoken'//importing token
 import dotenv from 'dotenv'
-import { sample } from "../Models/sample.js";
 //import {authenticate} from "../middleware/auth.js"
 
 dotenv.config()
 
-//const user = new Map();
+const user = new Map();
 const userauth=Router();
 //const course=new Map();
 
@@ -30,34 +29,21 @@ userauth.post("/signup",async function(req,res)
     const newpassword=await bcrypt.hash(password,10)//without using bcrypt-> //const newpassword=bcrypt.hash(password,10)//hash has two param 
     //console.log(newpassword)//new password is created
     
-    const existingUser=await sample.findOne({UserName:UserName});
-
-    if(existingUser)//if(user.get(UserName))->it use for map
+    if(user.get(UserName))
     {
         res.status(400).send("UserName is already Exist");//using a status here
     }
     else
     {
-        //user.set(UserName,{FirstName,LastName,UserName,mail,user_role,password:newpassword});
-        const newUser =new sample({
-            FirstName:FirstName,//schema name:postman
-            LastName:LastName,
-            UserName:UserName,
-            mail:mail,
-            user_role:user_role,
-            password:password
-        })
-        await newUser.save()      
+        user.set(UserName,{FirstName,LastName,UserName,mail,user_role,password:newpassword});        
         res.status(201).send("Registration successfully")
-        //console.log(user.get(UserName))
+        console.log(user.get(UserName))
     }
     }
     catch
     {
     res.status(500).send("server error")
     }
-})
-
 
 userauth.post('/login',async function(req,res)
 {
@@ -135,6 +121,6 @@ userauth.get("/logout",(req,res)=>
     res.status(200).json({msg:"Successfull"})
 })
 
-
+})
 export{userauth};
 
