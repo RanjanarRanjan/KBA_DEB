@@ -45,7 +45,7 @@ userauth.post("/signup",async function(req,res)
             UserName:UserName,
             mail:mail,
             user_role:user_role,
-            password:password
+            password:newpassword
         })
         await newUser.save()      
         res.status(201).send("Registration successfully")
@@ -64,14 +64,16 @@ userauth.post('/login',async function(req,res)
     try
     {
         const {UserName,password}=req.body;
-        const result=user.get(UserName);
+        //const result=user.get(UserName);
+        const result=await sample.findOne({UserName:UserName});
+
         if(!result)
         {
             res.status(400).send("Enter avalid username")
         }
         else
         {
-            //console.log(result.password);
+            console.log(result.password);
             const valid=await bcrypt.compare(password,result.password);//checking the password is same //
             console.log(valid);
             if(valid)

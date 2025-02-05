@@ -1,30 +1,40 @@
 import { Router} from "express";
 import {authenticate} from "../middleware/auth.js"
 import { admincheck } from "../middleware/admin.js";
+import { sample1 } from "../Models/sample.js";
 
 const adminauth=Router();
-const course=new Map();
+//const course=new Map();
 
 
-adminauth.post("/addcourse",authenticate,(req,res)=>
+adminauth.post("/addcourse",authenticate,async(req,res)=>
     {
         try
         {
             if(req.user_role=='admin')
             {
             const {course_name,course_id,course_type,description,course_price}=req.body
+            const addcourse=await sample1.findOne({c_id:course_id})
             //console.log(course_name,course_id,course_type,description,course_price)
-            if(course.get(course_name))
+            if(addcourse)//if(course.get(course_name))
             {
                 // res.status(400).send("Course is already exist")
                 res.status(400).json({msg:"Course is already exist"})
             }
             else
             {
-                course.set(course_name,{course_id,course_type,description,course_price})
+                //course.set(course_name,{course_id,course_type,description,course_price})
+                const newcourse = new sample1({
+                    c_name:course_name,
+                    c_id:course_id,
+                    c_type:course_type,
+                    description:description,
+                    course_price:course_price 
+                })
+                await newcourse.save()
                 res.status(201).send("successfully")
                 console.log("admin")
-                console.log(course.get(course_name))
+                //console.log(course.get(course_name))
             }
         }
         else
@@ -49,15 +59,17 @@ adminauth.post("/addcourse",authenticate,(req,res)=>
 
 
 //using query
-adminauth.get('/getcourse',(req,res)=>
+adminauth.get('/getcourse',async(req,res)=>
 {
     try{
         const name=req.query.coursename
-        const result=course.get(name)
-        if(result)
+        //const result=course.get(name)
+        const result1=await sample1.findOne({c_name:name})
+        if(result1)
         {
-            res.send(result)
-            console.log(result)
+            //res.send(result)
+            res.json(result1);
+            console.log(result1)
         }
         else{
             res.status(400).send("Course not found")
