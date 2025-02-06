@@ -16,7 +16,8 @@ const add=new Schema({
     c_id:{type:String,required:true,unique:true},
     c_type:{type:String,required:true},
     description:{type:String,required:true},
-    course_price:{type:String,required:true} 
+    course_price:Number,//{type:String,required:true}
+    image:String
 })
 const sample1=model('addcourse',add)
 
