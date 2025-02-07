@@ -1,0 +1,30 @@
+import {Schema} from 'mongoose'
+import {model} from 'mongoose'
+
+const sign = new Schema({
+    fullname: { type: String, required: true },
+    Email: { type: String, required: true, unique: true },
+    user_role: { type: String, required: true },
+    phone: { type: Number, required: true },
+    dob: { type: Date, required: true }, 
+    gender: {type:String, required:true},
+    password: { type: String, required: true }
+
+});
+const signup=model('signup_user',sign)
+
+const doctor= new Schema({
+    doctor_name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    contact: { type: String, required: true },
+    working_days: [{ type: String, enum: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] }],
+    time_schedules: [{
+        start_time: { type: String, required: true }, // Example: "09:00 AM"
+        end_time: { type: String, required: true }    // Example: "09:20 AM"
+    }]
+});
+
+const doctor_creation=model('create_doctor',doctor)
+
+export {signup}
+export {doctor_creation}

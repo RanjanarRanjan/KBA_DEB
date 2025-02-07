@@ -1,6 +1,7 @@
 import express, { json } from 'express'
 import dotenv from 'dotenv'
 import { userauth } from './Routes/userauth.js'
+import mongoose from 'mongoose'
 import { adminauth } from './Routes/adminauth.js'
 
 
@@ -15,6 +16,13 @@ app.use("/",adminauth)
 app.get("/",function(req,res)
 {
     res.send("hello Everyone");
+})
+
+mongoose.connect('mongodb://localhost:27017/Hospital_management').then(()=>{
+    console.log("MongoDB connected successfully to Hospital_management")
+})
+.catch((error)=>{
+    console.error("MongoDB connction failed",error)
 })
 
 
