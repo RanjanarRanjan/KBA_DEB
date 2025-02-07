@@ -1,6 +1,7 @@
 import {Schema} from 'mongoose'
 import {model} from 'mongoose'
 
+
 const sign = new Schema({
     fullname: { type: String, required: true },
     Email: { type: String, required: true, unique: true },
@@ -26,5 +27,18 @@ const doctor= new Schema({
 
 const doctor_creation=model('create_doctor',doctor)
 
+
+const appointment = new Schema({
+    user_id: { type: Schema.Types.ObjectId, ref: "signup_user", required: true }, 
+    doctor_id: { type: Schema.Types.ObjectId, ref: "create_doctor", required: true }, 
+    appointment_date: { type: String, required: true },
+    time_slot: { type: String, required: true }
+});
+
+
+const Appointment = model("Appointment", appointment);
+
+
 export {signup}
 export {doctor_creation}
+export { Appointment };

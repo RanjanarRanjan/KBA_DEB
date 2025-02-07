@@ -3,15 +3,18 @@ import dotenv from 'dotenv'
 import { userauth } from './Routes/userauth.js'
 import mongoose from 'mongoose'
 import { adminauth } from './Routes/adminauth.js'
-
+import {appointment} from './Routes/appointment.js'
 
 dotenv.config()
 
 const app = express()
 
 app.use(json())
+
 app.use("/",userauth)
 app.use("/",adminauth)
+app.use("/",appointment)
+
 
 app.get("/",function(req,res)
 {

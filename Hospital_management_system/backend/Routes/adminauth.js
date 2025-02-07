@@ -46,7 +46,7 @@ adminauth.post("/add_doctor",authenticate,async(req,res)=>
     })
  
 //view doctor
-    adminauth.get('/getdoctor',async(req,res)=>
+    adminauth.get('/getdoctor',authenticate,async(req,res)=>
         {
             try{
                 const mail=req.query.email
