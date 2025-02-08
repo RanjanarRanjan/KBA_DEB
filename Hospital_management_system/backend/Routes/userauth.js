@@ -62,7 +62,7 @@ userauth.post('/login',async function(req,res)
             console.log(valid);
             if(valid)
             {
-                const token=jwt.sign({Email:Email,user_role:result.user_role},process.env.SECRET_KEY,{expiresIn:'1h'});
+                const token=jwt.sign({ _id: result._id,Email:Email,user_role:result.user_role},process.env.SECRET_KEY,{expiresIn:'1h'});
                 console.log(token);
                 res.cookie('authToken',token,
                 {

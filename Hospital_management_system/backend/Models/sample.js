@@ -15,8 +15,8 @@ const sign = new Schema({
 const signup=model('signup_user',sign)
 
 const doctor= new Schema({
-    doctor_name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
+    doctor_name: { type: String, required: true,unique: true},
+    email: { type: String, required: true, },
     contact: { type: String, required: true },
     working_days: [{ type: String, enum: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] }],
     time_schedules: [{
@@ -29,8 +29,8 @@ const doctor_creation=model('create_doctor',doctor)
 
 
 const appointment = new Schema({
-    user_id: { type: Schema.Types.ObjectId, ref: "signup_user", required: true }, 
-    doctor_id: { type: Schema.Types.ObjectId, ref: "create_doctor", required: true }, 
+    user_id: { type: Schema.Types.ObjectId, ref: "signup_user", required: true },
+    doctor_name: { type: String, ref: "create_doctor", required: true },  // Changed doctor_id to doctor_name
     appointment_date: { type: String, required: true },
     time_slot: { type: String, required: true }
 });

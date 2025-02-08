@@ -14,11 +14,11 @@ adminauth.post("/add_doctor",authenticate,async(req,res)=>
             if(req.user_role=='admin')
             {
             const {doctor_name,email,contact,working_days,time_schedules}=req.body
-            const add_doctor=await doctor_creation.findOne({email:email})
+            const add_doctor=await doctor_creation.findOne({doctor_name:doctor_name})
            
             if(add_doctor)
             {
-                res.status(400).json({msg:"Doctor E-mail is already exist"})
+                res.status(400).json({msg:"Doctor name is already exist"})
             }
             else
             {
@@ -49,8 +49,8 @@ adminauth.post("/add_doctor",authenticate,async(req,res)=>
     adminauth.get('/getdoctor',authenticate,async(req,res)=>
         {
             try{
-                const mail=req.query.email
-                const result1=await doctor_creation.findOne({email:mail})
+                const name=req.query.doctor_name
+                const result1=await doctor_creation.findOne({doctor_name:name})
                 if(result1)
                 {
                     res.json(result1);
@@ -73,7 +73,7 @@ adminauth.put("/updatedoctor",authenticate,admincheck,async(req,res)=>
     {
      try{
             const {doctor_name,email,contact,working_days,time_schedules}=req.body
-            const result=await doctor_creation.findOne({email:email})
+            const result=await doctor_creation.findOne({doctor_name:doctor_name})
             if(result)
             {
                 result.doctor_name=doctor_name,
@@ -99,16 +99,16 @@ adminauth.put("/updatedoctor",authenticate,admincheck,async(req,res)=>
 //delete doctor
 adminauth.delete('/deletedoctor',authenticate,admincheck,async(req,res)=>
     {
-        const  {email}=req.body          
-        const result=await doctor_creation.findOne({email:email})
+        const  {doctor_name}=req.body          
+        const result=await doctor_creation.findOne({doctor_name:doctor_name})
         if(result)
         {
-            await doctor_creation.findOneAndDelete({email:email})
+            await doctor_creation.findOneAndDelete({doctor_name:doctor_name})
             res.status(201).send("successfully")
         }
         else
         {
-            res.status(404).send("course not found");
+            res.status(404).send("doctor not found");
         }
     })
     

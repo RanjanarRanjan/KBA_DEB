@@ -2,7 +2,7 @@ import { Router } from "express";
 import { authenticate } from "../middleware/auth_admin.js";
 import { doctor_creation, Appointment } from "../Models/sample.js";
 
-const appointment= Router();
+const appointment = Router();
 
 // Get Available Doctors for a Selected Date
 appointment.get("/available_doctors", authenticate, async (req, res) => {
@@ -28,15 +28,15 @@ appointment.get("/available_doctors", authenticate, async (req, res) => {
 });
 
 // Get Available Time Slots for a Doctor
-appointment.get("/available_slots",authenticate, async (req, res) => {
+appointment.get("/available_slots", authenticate, async (req, res) => {
     try {
-        const { doctor_id, date } = req.query;
-        if (!doctor_id || !date) return res.status(400).json({ msg: "Doctor ID and date are required" });
+        const { doctor_name, date } = req.query; // Changed doctor_id to doctor_name
+        if (!doctor_name || !date) return res.status(400).json({ msg: "Doctor name and date are required" });
 
-        const doctor = await doctor_creation.findById(doctor_id);
+        const doctor = await doctor_creation.findOne({ doctor_name }); // Find doctor by name
         if (!doctor) return res.status(404).json({ msg: "Doctor not found" });
 
-        const bookedSlots = await Appointment.find({ doctor_id, appointment_date: date }).select("time_slot");
+        const bookedSlots = await Appointment.find({ doctor_name, appointment_date: date }).select("time_slot");
         const bookedTimeSlots = bookedSlots.map(slot => slot.time_slot);
 
         const availableSlots = doctor.time_schedules.filter(slot =>
@@ -53,22 +53,22 @@ appointment.get("/available_slots",authenticate, async (req, res) => {
 // Book an Appointment (Only for Authenticated Users)
 appointment.post("/book_appointment", authenticate, async (req, res) => {
     try {
-        const { doctor_id, appointment_date, time_slot } = req.body;
-        if (!doctor_id || !appointment_date || !time_slot) {
+        const { doctor_name, appointment_date, time_slot } = req.body; // Changed doctor_id to doctor_name
+        if (!doctor_name || !appointment_date || !time_slot) {
             return res.status(400).json({ msg: "All fields are required" });
         }
 
-        const doctor = await doctor_creation.findById(doctor_id);
+        const doctor = await doctor_creation.findOne({ doctor_name }); // Find doctor by name
         if (!doctor) return res.status(404).json({ msg: "Doctor not found" });
 
-        const existingAppointment = await Appointment.findOne({ doctor_id, appointment_date, time_slot });
+        const existingAppointment = await Appointment.findOne({ doctor_name, appointment_date, time_slot });
         if (existingAppointment) {
             return res.status(400).json({ msg: "Time slot is already booked" });
         }
 
         const newAppointment = new Appointment({
             user_id: req.user_id, // From authentication middleware
-            doctor_id,
+            doctor_name,  // Use doctor_name instead of doctor_id
             appointment_date,
             time_slot
         });
@@ -81,4 +81,36 @@ appointment.post("/book_appointment", authenticate, async (req, res) => {
     }
 });
 
-export { appointment};
+
+appointment.get('/appointments', authenticate, async (req, res) => {
+    try {
+        // Check if the user is an admin
+        if (req.user_role === 'admin') {
+            // Admin can view all appointments
+            const allAppointments = await Appointment.find();
+
+            if (!allAppointments || allAppointments.length === 0) {
+                return res.status(404).json({ msg: 'No appointments found' });
+            }
+
+            // Return all appointments
+            res.status(200).json(allAppointments);
+        } else {
+            // Regular user can only view their own appointments
+            const userAppointments = await Appointment.find({ user_id: req.user_id });
+
+            if (!userAppointments || userAppointments.length === 0) {
+                return res.status(404).json({ msg: 'No appointments found for this user' });
+            }
+
+            // Return user-specific appointments
+            res.status(200).json(userAppointments);
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Error fetching appointments' });
+    }
+});
+
+
+export { appointment };

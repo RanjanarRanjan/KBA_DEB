@@ -17,14 +17,9 @@ const authenticate=(req,res,next)=>
     {
         const verified=jwt.verify(token,process.env.SECRET_KEY)//get the payload datetails
         console.log(verified);
+        req.user_id = verified._id;
         req.UserName=verified.UserName;
         req.user_role=verified.user_role;
-
-        req.user = {
-            _id: verified.user_id,  // Assuming 'user_id' is in the JWT payload
-            UserName: verified.UserName,
-            user_role: verified.user_role
-        };
         next();//go back to the route
     }
     else
