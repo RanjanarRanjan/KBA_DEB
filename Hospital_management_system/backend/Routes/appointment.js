@@ -38,12 +38,26 @@ appointment.get("/available_slots", authenticate,usercheck, async (req, res) => 
         const doctor = await doctor_creation.findOne({ doctor_name }); // Find doctor by name
         if (!doctor) return res.status(404).json({ msg: "Doctor not found" });
 
-        const bookedSlots = await Appointment.find({ doctor_name, appointment_date: date }).select("time_slot");
-        const bookedTimeSlots = bookedSlots.map(slot => slot.time_slot);
+        // const bookedSlots = await Appointment.find({ doctor_name, appointment_date: date }).select("time_slot");
+        // const bookedTimeSlots = bookedSlots.map(slot => slot.time_slot);
 
-        const availableSlots = doctor.time_schedules.filter(slot =>
-            !bookedTimeSlots.includes(`${slot.start_time} - ${slot.end_time}`)
-        );
+        // const availableSlots = doctor.time_schedules.filter(slot =>
+        //     !bookedTimeSlots.includes(`${slot.start_time} - ${slot.end_time}`)
+
+        const bookedTimeSlots = [];
+        const bookedSlots = await Appointment.find({ doctor_name, appointment_date: date }).select("time_slot");
+        bookedSlots.forEach(slot => bookedTimeSlots.push(slot.time_slot));
+
+        const availableSlots = [];
+        for (const slot of doctor.time_schedules) {
+            const timeRange = `${slot.start_time} - ${slot.end_time}`;
+            if (!bookedTimeSlots.includes(timeRange)) {
+                availableSlots.push(slot);
+            }
+        }
+        // const availableSlots = doctor.time_schedules.filter(slot =>
+        //     !bookedTimeSlots.includes(`${slot.start_time} - ${slot.end_time}`)
+        // );
 
         res.status(200).json(availableSlots);
     } catch (error) {

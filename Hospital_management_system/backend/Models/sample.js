@@ -9,6 +9,7 @@ const sign = new Schema({
     phone: { type: Number, required: true },
     dob: { type: Date, required: true }, 
     gender: {type:String, required:true},
+    address: { type: String, required: true },
     password: { type: String, required: true }
 
 });

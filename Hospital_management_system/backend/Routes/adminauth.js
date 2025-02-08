@@ -14,7 +14,7 @@ adminauth.post("/add_doctor",authenticate,admincheck,async(req,res)=>
             if(req.user_role=='admin')
             {
             const {doctor_name,email,contact,working_days,time_schedules}=req.body
-            const add_doctor=await doctor_creation.find({doctor_name:doctor_name})
+            const add_doctor=await doctor_creation.findOne({doctor_name:doctor_name})
            
             if(add_doctor)
             {
