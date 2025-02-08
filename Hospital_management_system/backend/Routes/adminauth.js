@@ -7,14 +7,14 @@ import { doctor_creation } from "../Models/sample.js";
 const adminauth=Router();
 
 //add Doctor
-adminauth.post("/add_doctor",authenticate,async(req,res)=>
+adminauth.post("/add_doctor",authenticate,admincheck,async(req,res)=>
     {
         try
         {
             if(req.user_role=='admin')
             {
             const {doctor_name,email,contact,working_days,time_schedules}=req.body
-            const add_doctor=await doctor_creation.findOne({doctor_name:doctor_name})
+            const add_doctor=await doctor_creation.find({doctor_name:doctor_name})
            
             if(add_doctor)
             {
@@ -46,15 +46,15 @@ adminauth.post("/add_doctor",authenticate,async(req,res)=>
     })
  
 //view doctor
-    adminauth.get('/getdoctor',authenticate,async(req,res)=>
+    adminauth.get('/getdoctor',authenticate,admincheck,async(req,res)=>
         {
             try{
-                const name=req.query.doctor_name
-                const result1=await doctor_creation.findOne({doctor_name:name})
+                //const name=req.query.doctor_name
+                const result1=await doctor_creation.find()
                 if(result1)
                 {
                     res.json(result1);
-                    console.log(result1)
+                    //console.log(result1)
                 }
                 else{
                     res.status(400).send("doctor not found")

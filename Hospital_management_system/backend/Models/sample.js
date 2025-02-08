@@ -14,6 +14,7 @@ const sign = new Schema({
 });
 const signup=model('signup_user',sign)
 
+
 const doctor= new Schema({
     doctor_name: { type: String, required: true,unique: true},
     email: { type: String, required: true, },

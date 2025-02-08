@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 import { signup } from "../Models/sample.js";
 
-
 dotenv.config()
 
 

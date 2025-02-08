@@ -1,11 +1,13 @@
 import { Router } from "express";
 import { authenticate } from "../middleware/auth_admin.js";
 import { doctor_creation, Appointment } from "../Models/sample.js";
+import { usercheck } from "../middleware/user_check.js";
+
 
 const appointment = Router();
 
 // Get Available Doctors for a Selected Date
-appointment.get("/available_doctors", authenticate, async (req, res) => {
+appointment.get("/available_doctors", authenticate,usercheck,async (req, res) => {
     try {
         const { date } = req.query;
         if (!date) return res.status(400).json({ msg: "Please provide a date" });
@@ -28,7 +30,7 @@ appointment.get("/available_doctors", authenticate, async (req, res) => {
 });
 
 // Get Available Time Slots for a Doctor
-appointment.get("/available_slots", authenticate, async (req, res) => {
+appointment.get("/available_slots", authenticate,usercheck, async (req, res) => {
     try {
         const { doctor_name, date } = req.query; // Changed doctor_id to doctor_name
         if (!doctor_name || !date) return res.status(400).json({ msg: "Doctor name and date are required" });
@@ -51,7 +53,7 @@ appointment.get("/available_slots", authenticate, async (req, res) => {
 });
 
 // Book an Appointment (Only for Authenticated Users)
-appointment.post("/book_appointment", authenticate, async (req, res) => {
+appointment.post("/book_appointment", authenticate,usercheck,async (req, res) => {
     try {
         const { doctor_name, appointment_date, time_slot } = req.body; // Changed doctor_id to doctor_name
         if (!doctor_name || !appointment_date || !time_slot) {
@@ -111,6 +113,43 @@ appointment.get('/appointments', authenticate, async (req, res) => {
         res.status(500).json({ msg: 'Error fetching appointments' });
     }
 });
+
+
+// Admin can delete any appointment or the user can delete their own appointment
+appointment.delete('/deleteappointment', authenticate, async (req, res) => {
+    try {
+        const { appointment_id } = req.body; // Accept appointment_id only
+
+        if (!appointment_id) {
+            return res.status(400).send("Appointment ID is required");
+        }
+
+        // Check if the appointment exists
+        const appointment = await Appointment.findById(appointment_id);
+
+        if (!appointment) {
+            return res.status(404).send("Appointment not found");
+        }
+
+        // Admin can delete any appointment
+        if (req.user_role === 'admin') {
+            await Appointment.findByIdAndDelete(appointment_id);
+            return res.status(200).send("Appointment successfully deleted by admin");
+        }
+
+        // If the logged-in user is the owner of the appointment, they can delete it
+        if (appointment.user_id.toString() === req.user_id) {
+            await Appointment.findByIdAndDelete(appointment_id);
+            return res.status(200).send("Appointment successfully deleted by user");
+        } else {
+            return res.status(403).send("You are not authorized to delete this appointment");
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server error");
+    }
+});
+
 
 
 export { appointment };
