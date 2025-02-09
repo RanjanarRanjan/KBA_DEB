@@ -21,6 +21,7 @@ const authenticate=(req,res,next)=>
         req.Email=verified.Email
         // req.UserName=verified.UserName;
         req.user_role=verified.user_role;
+        
         next();//go back to the route
     }
     else

@@ -20,7 +20,12 @@ appointment.get("/available_doctors", authenticate,usercheck,async (req, res) =>
         }
 
         // Map over the availableDoctors to only return doctor names
-        const doctorNames = availableDoctors.map(doctor => doctor.doctor_name);
+        //const doctorNames = availableDoctors.map(doctor => doctor.doctor_name);
+        const doctorNames = [];
+        for (let i = 0; i < availableDoctors.length; i++) {
+            const doctor = availableDoctors[i];  // Get the current doctor object
+            doctorNames.push(doctor.doctor_name);
+        }
 
         res.status(200).json(doctorNames);
     } catch (error) {
@@ -29,42 +34,64 @@ appointment.get("/available_doctors", authenticate,usercheck,async (req, res) =>
     }
 });
 
+
+
+
+
 // Get Available Time Slots for a Doctor
-appointment.get("/available_slots", authenticate,usercheck, async (req, res) => {
+appointment.get("/available_slots", authenticate, usercheck, async (req, res) => {
     try {
-        const { doctor_name, date } = req.query; // Changed doctor_id to doctor_name
-        if (!doctor_name || !date) return res.status(400).json({ msg: "Doctor name and date are required" });
+        const { doctor_name, date } = req.query;
+        if (!doctor_name || !date) {
+            return res.status(400).json({ msg: "Doctor name and date are required" });
+        }
+        const doctor = await doctor_creation.findOne({ doctor_name });
 
-        const doctor = await doctor_creation.findOne({ doctor_name }); // Find doctor by name
-        if (!doctor) return res.status(404).json({ msg: "Doctor not found" });
-
-        // const bookedSlots = await Appointment.find({ doctor_name, appointment_date: date }).select("time_slot");
-        // const bookedTimeSlots = bookedSlots.map(slot => slot.time_slot);
-
-        // const availableSlots = doctor.time_schedules.filter(slot =>
-        //     !bookedTimeSlots.includes(`${slot.start_time} - ${slot.end_time}`)
-
-        const bookedTimeSlots = [];
+        if (!doctor) {
+            return res.status(404).json({ msg: "Doctor not found" });
+        }
+        // Fetch booked slots
         const bookedSlots = await Appointment.find({ doctor_name, appointment_date: date }).select("time_slot");
-        bookedSlots.forEach(slot => bookedTimeSlots.push(slot.time_slot));
-
+        // Normalize booked time slots
+        // const bookedTimeSlots = bookedSlots.map(slot => slot.time_slot.trim());
+        const bookedTimeSlots = [];
+        for (let i = 0; i < bookedSlots.length; i++) {
+            const slot = bookedSlots[i];
+        if (slot.time_slot) {  // Ensure 'time_slot' exists
+            bookedTimeSlots.push(slot.time_slot.trim());
+        } else {
+        bookedTimeSlots.push(null); // You can push null or an empty string if time_slot is missing
+        }
+        }
+       
+        // const availableSlots = doctor.time_schedules.filter(slot => {
+        //     const timeRange = `${slot.start_time.trim()} - ${slot.end_time.trim()}`;
+        //     return !bookedTimeSlots.includes(timeRange);
+        // });
         const availableSlots = [];
-        for (const slot of doctor.time_schedules) {
-            const timeRange = `${slot.start_time} - ${slot.end_time}`;
-            if (!bookedTimeSlots.includes(timeRange)) {
-                availableSlots.push(slot);
+        for (let i = 0; i < doctor.time_schedules.length; i++) {
+            const slot = doctor.time_schedules[i];
+            const timeRange = `${slot.start_time.trim()} - ${slot.end_time.trim()}`;
+        if (!bookedTimeSlots.includes(timeRange)) {
+            availableSlots.push(slot);
             }
         }
-        // const availableSlots = doctor.time_schedules.filter(slot =>
-        //     !bookedTimeSlots.includes(`${slot.start_time} - ${slot.end_time}`)
-        // );
 
+
+        // Return a meaningful response
+        if (availableSlots.length === 0) {
+            return res.status(200).json({ msg: "No available slots for the selected date" });
+        }
         res.status(200).json(availableSlots);
     } catch (error) {
         console.error(error);
         res.status(500).json({ msg: "Server error" });
     }
 });
+
+
+
+
 
 // Book an Appointment (Only for Authenticated Users)
 appointment.post("/book_appointment", authenticate,usercheck,async (req, res) => {
@@ -100,18 +127,15 @@ appointment.post("/book_appointment", authenticate,usercheck,async (req, res) =>
 
 appointment.get('/appointments', authenticate, async (req, res) => {
     try {
-        // Check if the user is an admin
         if (req.user_role === 'admin') {
-            // Admin can view all appointments
             const allAppointments = await Appointment.find();
 
             if (!allAppointments || allAppointments.length === 0) {
                 return res.status(404).json({ msg: 'No appointments found' });
             }
-
-            // Return all appointments
             res.status(200).json(allAppointments);
-        } else {
+        }
+        else {
             // Regular user can only view their own appointments
             const userAppointments = await Appointment.find({ user_id: req.user_id });
 
@@ -167,3 +191,10 @@ appointment.delete('/deleteappointment', authenticate, async (req, res) => {
 
 
 export { appointment };
+
+
+ // Ensure doctor.time_schedules exist
+        // if (!doctor.time_schedules || doctor.time_schedules.length === 0) {
+        //     return res.status(200).json({ msg: "No available slots for the selected date" });
+        // }
+        // Filter available slots

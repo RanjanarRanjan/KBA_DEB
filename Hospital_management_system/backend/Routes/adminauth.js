@@ -1,7 +1,7 @@
 import { Router} from "express";
 import {authenticate} from "../middleware/auth_admin.js"
 import { admincheck } from "../middleware/admin_check.js";
-import { doctor_creation } from "../Models/sample.js";
+import { doctor_creation, signup } from "../Models/sample.js";
 
 
 const adminauth=Router();
@@ -86,7 +86,7 @@ adminauth.put("/updatedoctor",authenticate,admincheck,async(req,res)=>
             }
             else
             {
-                res.status(400).send("Course not found")
+                res.status(400).send("Doctor not found")
             }
         }
      catch
@@ -112,6 +112,23 @@ adminauth.delete('/deletedoctor',authenticate,admincheck,async(req,res)=>
         }
     })
     
-
+    adminauth.get('/userdetailstoget',authenticate,admincheck,async(req,res)=>
+        {
+            try{
+                const result2=await signup.find().select('-password');
+                if(result2)
+                {
+                    res.json(result2);
+                }
+                else{
+                    res.status(400).send("user not found")
+                }
+            }
+            catch (error) {
+                console.error("Authentication Error:", error);
+                res.status(500).send("Server error");
+            }
+        })
+        
 
 export {adminauth}

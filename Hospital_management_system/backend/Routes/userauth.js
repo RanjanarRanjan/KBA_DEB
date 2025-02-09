@@ -66,10 +66,7 @@ userauth.post('/login',async function(req,res)
             {
                 const token=jwt.sign({ _id: result._id,Email:Email,user_role:result.user_role},process.env.SECRET_KEY,{expiresIn:'1h'});
                 console.log(token);
-                res.cookie('authToken',token,
-                {
-                    httpOnly:true
-                });
+                res.cookie('authToken',token,{httpOnly:true});
                 res.status(200).send("success")
             }
             else
