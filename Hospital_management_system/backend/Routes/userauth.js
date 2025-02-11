@@ -116,7 +116,7 @@ userauth.get('/getuser',authenticate,usercheck,async(req,res)=>
                         result.gender=gender,
                         result.address=address
                         await result.save()
-                        res.status(200).send("Successfully update a course")
+                        res.status(200).send("Successfully update a Profile")
                     }
                     else
                     {

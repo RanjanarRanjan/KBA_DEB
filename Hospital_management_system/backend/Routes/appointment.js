@@ -176,7 +176,7 @@ appointment.delete('/deleteappointment', authenticate, async (req, res) => {
         }
 
         // If the logged-in user is the owner of the appointment, they can delete it
-        if (appointment.user_id.toString() === req.user_id) {
+        if (appointment.user_id.toString() === req.user_id) {//objectId
             await Appointment.findByIdAndDelete(appointment_id);
             return res.status(200).send("Appointment successfully deleted by user");
         } else {
