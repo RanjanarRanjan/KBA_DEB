@@ -1,0 +1,64 @@
+/* Reset and Full-Screen Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Prevents scrolling */
+}
+
+#root {
+  /*max-width: 1280px; */
+  margin: 0 auto;
+  padding: 0; /* Remove padding to avoid overflow */
+  text-align: center;
+}
+
+.light-mode, .dark-mode {
+  width: 100vw; 
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* transition: all 0.3s ease-in-out; */
+  overflow: hidden;
+}
+
+.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Button Styling */
+.button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background: lightgray;
+}
+
+.dark-mode .button {
+  background: #444;
+  color: white;
+}
+
+.light-mode .button {
+  background: #ddd;
+  color: black;
+}
