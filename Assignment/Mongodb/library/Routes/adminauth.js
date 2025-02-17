@@ -2,6 +2,7 @@ import { Router} from "express";
 import { authenticate } from "../middleware/auth.js";
 import { sample } from "../Models/samples.js";
 import { books } from "../Models/samples.js";
+import { admincheck } from "../middleware/admin.js";
 
 const adminauth=Router();
 
@@ -45,21 +46,28 @@ adminauth.post("/addbook",authenticate,async(req,res)=>
     })
 
 
-adminauth.put("/updatebook",authenticate,(req,res)=>
+adminauth.put("/updatebook",authenticate,async(req,res)=>
 {
  try{
     if(req.user_role=='admin')
     {
         const {BookName,Author,Category,Language,Date,Description}=req.body
-        if(book.get(BookName))
+        const book=await books.findOne({BookName:BookName})
+        if(book)
         {
-            book.set(BookName,{BookName,Author,Category,Language,Date,Description})
-            res.status(200).send("Successfully update a course")
-            console.log(book.get(BookName))
+            book.BookName=BookName,
+            book.Author=Author,
+            book.Category=Category,
+            book.Language=Language,
+            book.Date=Date,
+            book.Description=Description
+            await book.save()
+            res.status(200).send("Successfully update a Book")
+            
         }
         else
         {
-            res.status(400).send("Course not found")
+            res.status(400).send("Book not found")
         }
     }
     else
@@ -73,18 +81,17 @@ adminauth.put("/updatebook",authenticate,(req,res)=>
  }
 })
 
-adminauth.get('/getbook',(req,res)=>
+adminauth.get('/getbook',authenticate,async(req,res)=>
     {
         try{
             const name=req.query.BookName
-            const result=book.get(name)
+            const result=await books.findOne({BookName:name})
             if(result)
             {
-                res.send(result)
-                console.log(result)
+                res.json(result)
             }
             else{
-                res.status(400).send("Course not found")
+                res.status(400).send("Book not found")
             }
         }
         catch
@@ -92,20 +99,40 @@ adminauth.get('/getbook',(req,res)=>
             res.status(500).send("Server error")
         }
     })
+
+
+    adminauth.get('/getallbook',authenticate,async(req,res)=>
+        {
+            try{
+                const name=req.query.BookName
+                const result=await books.find()
+                if(result)
+                {
+                    res.json(result)
+                }
+                else{
+                    res.status(400).send("No book Available")
+                }
+            }
+            catch
+            {
+                res.status(500).send("Server error")
+            }
+        })   
     
     
-adminauth.delete('/deletebook',authenticate,(req,res)=>
+adminauth.delete('/deletebook',authenticate,admincheck,async(req,res)=>
     {
         const  {BookName}=req.body      //or name=req.query.course_name
-        console.log(BookName)        // console.log(name) 
-        if(book.get(BookName))
+        const result=await books.findOne({BookName:BookName})
+        if(BookName)
         {
-            book.delete(BookName)
+            await books.findOneAndDelete({BookName:BookName})
             res.status(201).send("successfully")
         }
         else
         {
-            res.status(404).send("course not found");
+            res.status(404).send("Book is not found");
         }
 })
 export {adminauth}

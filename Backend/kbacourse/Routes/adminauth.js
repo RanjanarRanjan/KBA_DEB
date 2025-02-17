@@ -2,13 +2,16 @@ import { Router} from "express";
 import {authenticate} from "../middleware/auth.js"
 import { admincheck } from "../middleware/admin.js";
 import { sample1 } from "../Models/sample.js";
-import upload from "../middleware/upload.js";
+import {upload} from "../middleware/upload.js";
 
 const adminauth=Router();
 //const course=new Map();
+const convertToBase64 =(buffer)=>{
+    return buffer.toString("Base64")
+}
 
 
-adminauth.post("/addcourse",authenticate,upload.single("courseImage") ,async(req,res)=>
+adminauth.post("/addcourse",authenticate,upload.single("courseImage") ,async(req,res)=>//upload single means upload a single file
     {
         try
         {
@@ -17,6 +20,7 @@ adminauth.post("/addcourse",authenticate,upload.single("courseImage") ,async(req
             const {course_name,course_id,course_type,description,course_price}=req.body
             const addcourse=await sample1.findOne({c_id:course_id})
             //console.log(course_name,course_id,course_type,description,course_price)
+            console.log("hii1")
             if(addcourse)//if(course.get(course_name))
             {
                 // res.status(400).send("Course is already exist")
@@ -24,8 +28,11 @@ adminauth.post("/addcourse",authenticate,upload.single("courseImage") ,async(req
             }
             else
             {
-                const imagePath=req.file?req.file.path:""
-
+                let imagePath=null
+                if(req.file)
+                {
+                    imagePath=convertToBase64(req.file.buffer)
+                }
                 //course.set(course_name,{course_id,course_type,description,course_price})
                 const newcourse = new sample1({
                     c_name:course_name,
@@ -46,8 +53,9 @@ adminauth.post("/addcourse",authenticate,upload.single("courseImage") ,async(req
             res.status(403).send("only admin can login")
         }
         }
-        catch
-        {
+        catch(error)
+        {   console.log(error);
+        
             res.status(500).send("server Error")
         }
     })

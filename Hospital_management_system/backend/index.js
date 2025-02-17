@@ -1,7 +1,7 @@
 import express, { json } from 'express'
 import dotenv from 'dotenv'
-import { userauth } from './Routes/userauth.js'
 import mongoose from 'mongoose'
+import { userauth } from './Routes/userauth.js'
 import { adminauth } from './Routes/adminauth.js'
 import {appointment} from './Routes/appointment.js'
 

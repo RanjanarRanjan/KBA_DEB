@@ -7,7 +7,7 @@ import { doctor_creation, signup } from "../Models/sample.js";
 const adminauth=Router();
 
 //add Doctor
-adminauth.post("/add_doctor",authenticate,admincheck,async(req,res)=>
+adminauth.post("/add_doctor",authenticate,async(req,res)=>
     {
         try
         {

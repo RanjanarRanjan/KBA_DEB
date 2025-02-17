@@ -52,16 +52,18 @@ appointment.get("/available_slots", authenticate, usercheck, async (req, res) =>
         }
         // Fetch booked slots
         const bookedSlots = await Appointment.find({ doctor_name, appointment_date: date }).select("time_slot");
-        // Normalize booked time slots
-        // const bookedTimeSlots = bookedSlots.map(slot => slot.time_slot.trim());
+
         const bookedTimeSlots = [];
-        for (let i = 0; i < bookedSlots.length; i++) {
+        for (let i = 0; i < bookedSlots.length; i++) 
+        {
             const slot = bookedSlots[i];
-        if (slot.time_slot) {  // Ensure 'time_slot' exists
-            bookedTimeSlots.push(slot.time_slot.trim());
-        } else {
-        bookedTimeSlots.push(null); // You can push null or an empty string if time_slot is missing
-        }
+            if (slot.time_slot) {  // Ensure 'time_slot' exists
+                bookedTimeSlots.push(slot.time_slot.trim());
+            }
+            else 
+            {
+                bookedTimeSlots.push(null); // You can push null or an empty string if time_slot is missing
+            }
         }
        
         // const availableSlots = doctor.time_schedules.filter(slot => {
@@ -69,11 +71,13 @@ appointment.get("/available_slots", authenticate, usercheck, async (req, res) =>
         //     return !bookedTimeSlots.includes(timeRange);
         // });
         const availableSlots = [];
-        for (let i = 0; i < doctor.time_schedules.length; i++) {
+        for (let i = 0; i < doctor.time_schedules.length; i++) 
+        {
             const slot = doctor.time_schedules[i];
             const timeRange = `${slot.start_time.trim()} - ${slot.end_time.trim()}`;
-        if (!bookedTimeSlots.includes(timeRange)) {
-            availableSlots.push(slot);
+            if (!bookedTimeSlots.includes(timeRange)) 
+            {
+                availableSlots.push(slot);
             }
         }
 
