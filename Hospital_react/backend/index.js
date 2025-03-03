@@ -4,10 +4,17 @@ import mongoose from 'mongoose'
 import { userauth } from './Routes/userauth.js'
 import { adminauth } from './Routes/adminauth.js'
 import {appointment} from './Routes/appointment.js'
+import cors from 'cors'
 
 dotenv.config()
 
 const app = express()
+
+
+app.use(cors({
+    origin:'*',
+    credentials:true
+}))
 
 app.use(json())
 
@@ -21,8 +28,8 @@ app.get("/",function(req,res)
     res.send("hello Everyone");
 })
 
-mongoose.connect('mongodb://localhost:27017/Hospital_management').then(()=>{
-    console.log("MongoDB connected successfully to Hospital_management")
+mongoose.connect('mongodb://localhost:27017/Hospital').then(()=>{
+    console.log("MongoDB connected successfully to Hospital")
 })
 .catch((error)=>{
     console.error("MongoDB connction failed",error)

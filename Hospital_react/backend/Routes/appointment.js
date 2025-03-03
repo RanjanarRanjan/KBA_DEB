@@ -65,11 +65,6 @@ appointment.get("/available_slots", authenticate, usercheck, async (req, res) =>
                 bookedTimeSlots.push(null); // You can push null or an empty string if time_slot is missing
             }
         }
-       
-        // const availableSlots = doctor.time_schedules.filter(slot => {
-        //     const timeRange = `${slot.start_time.trim()} - ${slot.end_time.trim()}`;
-        //     return !bookedTimeSlots.includes(timeRange);
-        // });
         const availableSlots = [];
         for (let i = 0; i < doctor.time_schedules.length; i++) 
         {
@@ -80,8 +75,6 @@ appointment.get("/available_slots", authenticate, usercheck, async (req, res) =>
                 availableSlots.push(slot);
             }
         }
-
-
         // Return a meaningful response
         if (availableSlots.length === 0) {
             return res.status(200).json({ msg: "No available slots for the selected date" });

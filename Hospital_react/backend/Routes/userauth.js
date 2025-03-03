@@ -18,13 +18,20 @@ userauth.post("/signup",async function(req,res)
     const newpassword=await bcrypt.hash(password,10)
 
     const existingUser=await signup.findOne({Email:Email});
-
+    
     if(existingUser)
     {
         res.status(400).send("UserName is already Exist");
     }
-    else
-    {  
+
+    if (user_role === "admin") {
+        const existingAdmin = await signup.findOne({ user_role: "admin" });
+
+        if (existingAdmin) {
+            return res.status(403).send("Admin already exists. Only one admin is allowed.");
+        }
+    }
+   
         const newUser =new signup({
             fullname:Username,
             Email:Email,
@@ -37,7 +44,6 @@ userauth.post("/signup",async function(req,res)
         })
         await newUser.save()      
         res.status(201).send("Registration successfully")
-    }
     }
     catch
     {
@@ -67,7 +73,8 @@ userauth.post('/login',async function(req,res)
                 const token=jwt.sign({ _id: result._id,Email:Email,user_role:result.user_role},process.env.SECRET_KEY,{expiresIn:'1h'});
                 console.log(token);
                 res.cookie('authToken',token,{httpOnly:true});
-                res.status(200).send("success")
+                res.status(200).json({ success: true, message: "Login successful", user_role: result.user_role });
+                console.log("success")
             }
             else
             {

@@ -19,6 +19,10 @@ adminauth.post("/add_doctor",authenticate,upload.single("doctorImage"),async(req
             if(req.user_role=='admin')
             {
             const {doctor_name,email,contact,working_days,time_schedules}=req.body
+            
+            const parsedWorkingDays = JSON.parse(working_days);
+            const parsedTimeSchedules = JSON.parse(time_schedules);
+
             const add_doctor=await doctor_creation.findOne({doctor_name:doctor_name})
            
             if(add_doctor)
@@ -33,13 +37,13 @@ adminauth.post("/add_doctor",authenticate,upload.single("doctorImage"),async(req
                     imagePath=convertToBase64(req.file.buffer)
                 }
                 const newdoctor = new doctor_creation({
-                    doctor_name: doctor_name,
-                    email: email,
-                    contact: contact,
-                    working_days: working_days,
-                    time_schedules: time_schedules,
-                    image:imagePath
-                })
+                    doctor_name,
+                    email,
+                    contact,
+                    working_days: parsedWorkingDays,
+                    time_schedules: parsedTimeSchedules,
+                    image: imagePath
+                });
                 await newdoctor.save()
                 res.status(201).send("successfully")
                 console.log("admin")
@@ -81,7 +85,7 @@ adminauth.post("/add_doctor",authenticate,upload.single("doctorImage"),async(req
 
 //edit or update profile
 
-adminauth.put("/updatedoctor",authenticate,admincheck,async(req,res)=>
+adminauth.put("/updatedoctor",authenticate,admincheck,upload.single("doctorImage"),async(req,res)=>
     {
      try{
             const {doctor_name,email,contact,working_days,time_schedules}=req.body
@@ -92,9 +96,13 @@ adminauth.put("/updatedoctor",authenticate,admincheck,async(req,res)=>
                 result.email=email,
                 result.contact= contact,
                 result.working_days=working_days,
-                result.time_schedules=time_schedules
+                result.time_schedules=time_schedules;
+
+                if (req.file) {
+                    result.image = req.file.buffer.toString("Base64");
+                }
                 await result.save()
-                res.status(200).send("Successfully update a course")
+                res.status(200).send("Successfully update a Doctor")
             }
             else
             {
