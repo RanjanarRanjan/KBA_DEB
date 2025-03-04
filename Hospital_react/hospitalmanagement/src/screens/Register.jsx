@@ -1,3 +1,191 @@
+// import React, { useState } from "react";
+// import { useNavigate, useLocation } from "react-router-dom";
+// import { homeImage } from "../assets/images/Index.jsx";
+// import { Link } from "react-router-dom";
+// import Nav from "../components/Nav.jsx";
+
+// const Register = () => {
+//   const location = useLocation();
+//   const existingUser = location.state?.user || {};
+//   const isEditMode = Boolean(existingUser);
+//   const navigate = useNavigate();
+
+//   const [formData, setFormData] = useState({
+//     username: existingUser?.fullname || "",
+//     email: existingUser?.Email || "",
+//     phone: existingUser?.phone || "",
+//     dob: existingUser?.dob || "",
+//     gender: existingUser?.gender || "",
+//     address: existingUser?.address || "",
+//     userRole: existingUser?.userRole || "",
+//     password: existingUser?.password || "",
+//   });
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData((prevData) => ({ ...prevData, [name]: value }));
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     const endpoint = isEditMode ? "/api/updateuser" : "/api/signup";
+//     const method = isEditMode ? "PATCH" : "POST";
+
+//     try {
+//       const response = await fetch(endpoint, {
+//         method: method,
+//         credentials: "include",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(formData),
+//       });
+
+//       if (!response.ok) throw new Error("Request failed");
+//       navigate("/profile");
+//     } catch (err) {
+//       console.error("Error:", err);
+//     }
+//   };
+
+//   return (
+//     <div className="h-screen bg-gradient-to-tr from-[#ffffff] to-[#0098B9] pt-5 pr-10">
+//       <Nav />
+//       <div className="flex justify-between">
+//         <div>
+//           <img className="w-[90%] mt-12" src={homeImage} alt="home_img" />
+//         </div>
+//         <form onSubmit={handleSubmit} className="mr-20 mt-2">
+//           <h1 className="text-white text-5xl mb-8 text-center">
+//             {isEditMode ? "Edit Profile" : "Register"}
+//           </h1>
+
+//           <input
+//             type="text"
+//             name="username"
+//             value={formData.username}
+//             onChange={handleChange}
+//             placeholder="Enter your Full Name"
+//             className="w-[300px] mb-5 bg-transparent border-b-2 border-white text-white placeholder-white"
+//             required
+//           />
+//           <br />
+
+//           <input
+//             type="email"
+//             name="email"
+//             value={formData.email}
+//             onChange={handleChange}
+//             placeholder="Enter your Email"
+//             className="w-[300px] mb-5 bg-transparent border-b-2 border-white text-white placeholder-white"
+//             required
+//           />
+//           <br />
+
+//           <input
+//             type="number"
+//             name="phone"
+//             value={formData.phone}
+//             onChange={handleChange}
+//             placeholder="Enter your Phone number"
+//             className="w-[300px] mb-5 bg-transparent border-b-2 border-white text-white placeholder-white"
+//             required
+//           />
+//           <br />
+
+//           <input
+//             type="date"
+//             name="dob"
+//             value={formData.dob}
+//             onChange={handleChange}
+//             placeholder="Enter your Date of Birth"
+//             className="w-[300px] mb-5 bg-transparent border-b-2 border-white text-white placeholder-white"
+//             required
+//           />
+//           <br />
+
+//           <label className="text-white">Gender :</label>
+//           {["female", "male", "other"].map((g) => (
+//             <label key={g} className="text-white mx-2">
+//               <input
+//                 type="radio"
+//                 name="gender"
+//                 value={g}
+//                 checked={formData.gender === g}
+//                 onChange={handleChange}
+//                 required
+//               />{" "}
+//               {g.charAt(0).toUpperCase() + g.slice(1)}
+//             </label>
+//           ))}
+//           <br />
+
+//           <textarea
+//             name="address"
+//             value={formData.address}
+//             onChange={handleChange}
+//             placeholder="Address"
+//             className="w-[300px] h-[25px] my-2 bg-transparent border-b-2 border-white text-white placeholder-white"
+//             required
+//           />
+//           <br />
+
+//           {!isEditMode && (
+//             <select
+//               name="userRole"
+//               value={formData.userRole}
+//               onChange={handleChange}
+//               className="w-[300px] mb-5 bg-transparent border-b-2 border-white text-white"
+//               required
+//             >
+//               <option value="" disabled>
+//                 Select your role
+//               </option>
+//               <option value="admin" className="text-black">
+//                 Admin
+//               </option>
+//               <option value="user" className="text-black">
+//                 User
+//               </option>
+//             </select>
+//           )}
+//           <br />
+
+//           <input
+//             type="password"
+//             name="password"
+//             value={formData.password}
+//             onChange={handleChange}
+//             placeholder="Enter your password"
+//             className="w-[300px] mb-8 bg-transparent border-b-2 border-white text-white placeholder-white"
+//             required={!isEditMode}
+//           />
+//           <br />
+
+//           <button
+//             type="submit"
+//             className="w-[300px] bg-[#1799B6] text-white py-2 px-4 rounded border-2 border-white hover:bg-white hover:text-black"
+//           >
+//             {isEditMode ? "Update Profile" : "Register"}
+//           </button>
+//           <br />
+
+//           {!isEditMode && (
+//             <p className="mt-5 text-white text-center">
+//               Already have an account?{" "}
+//               <Link to="/Login" className="text-sky-700">
+//                 Login
+//               </Link>
+//             </p>
+//           )}
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Register;
+
+
+
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { homeImage } from '../assets/images/Index.jsx';

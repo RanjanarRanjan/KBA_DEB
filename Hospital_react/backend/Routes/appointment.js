@@ -125,7 +125,7 @@ appointment.post("/book_appointment", authenticate,usercheck,async (req, res) =>
 appointment.get('/appointments', authenticate, async (req, res) => {
     try {
         if (req.user_role === 'admin') {
-            const allAppointments = await Appointment.find();
+            const allAppointments = await Appointment.find().populate('user_id');
 
             if (!allAppointments || allAppointments.length === 0) {
                 return res.status(404).json({ msg: 'No appointments found' });
@@ -134,8 +134,7 @@ appointment.get('/appointments', authenticate, async (req, res) => {
         }
         else {
             // Regular user can only view their own appointments
-            const userAppointments = await Appointment.find({ user_id: req.user_id });
-
+            const userAppointments = await Appointment.find({ user_id: req.user_id }).populate('user_id');
             if (!userAppointments || userAppointments.length === 0) {
                 return res.status(404).json({ msg: 'No appointments found for this user' });
             }

@@ -1,8 +1,26 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate  } from 'react-router-dom';
 import { hospitalLogo, smallLogo } from '../assets/images/Index.jsx';
 
 const AdminHeader = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("/api/logout", {
+        method: "GET",
+        credentials: "include",
+      });
+      const data = await response.json();
+      if (response.ok) {
+        navigate("/");
+      } else {
+        console.error("Logout failed:", data.msg);
+      }
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
   return (
     <div>
         <header className="h-[80px] w-full flex justify-between bg-gradient-to-tr from-[#ffffff] to-[#0098B9] py-[25px] px-4">
@@ -24,7 +42,7 @@ const AdminHeader = () => {
               `hidden md:block ${isActive ? 'border-2 border-white bg-[#007a99]' : ''}`
             }
           >
-            Doctor List
+            DoctorList
           </NavLink>
           <NavLink 
             to="/patient-list" 
@@ -50,7 +68,12 @@ const AdminHeader = () => {
           >
             Add Doctor
           </NavLink>
-          <NavLink to="/login">Logout</NavLink>
+          <button
+            onClick={handleLogout}
+            className="px-4 rounded hidden md:block bg-red-500 hover:bg-red-600"
+          >
+            Logout
+          </button>
         </div>
       </header>
     </div>

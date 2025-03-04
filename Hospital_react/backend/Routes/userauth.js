@@ -89,39 +89,54 @@ userauth.post('/login',async function(req,res)
 })
 
 
-userauth.get('/getuser',authenticate,usercheck,async(req,res)=>
-    {
-        try{
-            const name=req.query.Email
-            const result1=await signup.findOne({Email:name})
-            if(result1)
-            {
-                res.json(result1);
-                console.log(result1)
-            }
-            else{
-                res.status(400).send("User not found")
-            }
+// userauth.get('/getuser',authenticate,usercheck,async(req,res)=>
+//     {
+//         try{
+//             const name=req.query.Email
+//             const result1=await signup.findOne({Email:name})
+//             if(result1)
+//             {
+//                 res.json(result1);
+//                 console.log(result1)
+//             }
+//             else{
+//                 res.status(400).send("User not found")
+//             }
+//         }
+//         catch
+//         {
+//             res.status(500).send("Server error")
+//         }
+//     })
+
+userauth.get('/getuser', authenticate, async (req, res) => {
+    try {
+        const user = await signup.findById(req.user_id).select('-password'); // Fetch user by ID and exclude password
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).send("User not found");
         }
-        catch
-        {
-            res.status(500).send("Server error")
-        }
-    })
-    
+    } catch (error) {
+        console.error("Error fetching user:", error);
+        res.status(500).send("Server error");
+    }
+});
+
 
 
     userauth.patch("/updateuser",authenticate,usercheck,async(req,res)=>
         {
             try{
-                    const {Email,phone,dob,gender,address}=req.body
+                    const {Email,phone,dob,gender,address,password}=req.body
                     const result=await signup.findOne({Email:Email})
                     if(result)
                     {
                         result.phone=phone,
                         result.dob=dob,
                         result.gender=gender,
-                        result.address=address
+                        result.address=address,
+                        result.password=password
                         await result.save()
                         res.status(200).send("Successfully update a Profile")
                     }
@@ -147,4 +162,6 @@ userauth.get("/logout",(req,res)=>
     
 
 export{userauth};
+
+
 

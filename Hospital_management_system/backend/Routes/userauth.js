@@ -82,26 +82,41 @@ userauth.post('/login',async function(req,res)
 })
 
 
-userauth.get('/getuser',authenticate,usercheck,async(req,res)=>
-    {
-        try{
-            const name=req.query.Email
-            const result1=await signup.findOne({Email:name})
-            if(result1)
-            {
-                res.json(result1);
-                console.log(result1)
-            }
-            else{
-                res.status(400).send("User not found")
-            }
+// userauth.get('/getuser',authenticate,usercheck,async(req,res)=>
+//     {
+//         try{
+//             const name=req.user.Email
+//             const result1=await signup.findOne({Email:name})
+//             if(result1)
+//             {
+//                 res.json(result1);
+//                 console.log(result1)
+//             }
+//             else{
+//                 res.status(400).send("User not found")
+//             }
+//         }
+//         catch
+//         {
+//             res.status(500).send("Server error")
+//         }
+//     })
+
+
+//without query passing
+userauth.get('/getuser', authenticate, async (req, res) => {
+    try {
+        const user = await signup.findById(req.user_id).select('-password'); // Fetch user by ID and exclude password
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).send("User not found");
         }
-        catch
-        {
-            res.status(500).send("Server error")
-        }
-    })
-    
+    } catch (error) {
+        console.error("Error fetching user:", error);
+        res.status(500).send("Server error");
+    }
+});
 
 
     userauth.patch("/updateuser",authenticate,usercheck,async(req,res)=>
