@@ -16,7 +16,7 @@ const History = () => {
         });
         
         if (!response.ok) {
-          throw new Error('Failed to fetch appointments');
+          throw new Error('No appointments ');
         }
         
         const data = await response.json();
