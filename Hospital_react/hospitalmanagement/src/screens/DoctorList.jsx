@@ -102,9 +102,11 @@ const DoctorList = () => {
                   >
                     Remove
                   </button>
-                  <button className="bg-yellow-500 text-white px-4 py-1 rounded hover:bg-yellow-600">
-                    <Link to={`/edit_doctor/${doctor._id}`}>Edit</Link>
-                  </button>
+                  <Link to={`/doctor_details/${doctor._id}`}>
+                    <button className="bg-yellow-500 text-white px-4 py-1 rounded hover:bg-yellow-600">
+                      Doctor Details
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))

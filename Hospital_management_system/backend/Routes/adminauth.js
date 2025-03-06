@@ -79,6 +79,27 @@ adminauth.post("/add_doctor",authenticate,upload.single("doctorImage"),async(req
         })
         
 
+        adminauth.get('/get_one_doctor', authenticate, admincheck, async (req, res) => {
+            try {
+                const { doctor_name } = req.body;
+        
+                if (!doctor_name) {
+                    return res.status(400).json({ message: "Doctor name is required" });
+                }
+        
+                const result = await doctor_creation.findOne({ doctor_name });
+        
+                if (!result) {
+                    return res.status(404).json({ message: "Doctor not found" });
+                }
+        
+                res.status(200).json(result);
+            } catch (error) {
+                res.status(500).json({ message: "Server error", error: error.message });
+            }
+        });
+      
+
 //edit or update profile
 
 adminauth.put("/updatedoctor",authenticate,admincheck,async(req,res)=>

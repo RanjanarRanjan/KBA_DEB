@@ -32,6 +32,9 @@ const History = () => {
   }, []);
 
   const handleCancel = async (id) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete');
+    if (!confirmDelete) return;
+
     try {
       const response = await fetch(`/api/deleteappointment`, {
         method: 'DELETE',

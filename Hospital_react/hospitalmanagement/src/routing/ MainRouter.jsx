@@ -13,6 +13,7 @@ import BookAppointment from '../screens/BookAppointment.jsx'
 import History from '../screens/History.jsx'
 import Profile from '../screens/Profile.jsx'
 import UpdateProfile from '../screens/UpdateProfile.jsx'
+import DoctorDetails from '../screens/DoctorDetails.jsx'
 
 const  MainRouter = () => {
   return (
@@ -32,6 +33,7 @@ const  MainRouter = () => {
             <Route path='/History' element={<History/>}/>
             <Route path='/Profile' element={<Profile/>}/>
             <Route path="/update-profile" element={<UpdateProfile/>} />
+           <Route path="/doctor_details/:id" element={<DoctorDetails/>} />
         </Routes>
     </BrowserRouter>
   )
