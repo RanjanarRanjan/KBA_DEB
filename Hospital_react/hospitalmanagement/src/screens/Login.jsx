@@ -47,7 +47,6 @@ const Login = () => {
         <div className="h-screen bg-gradient-to-tr from-[#ffffff] to-[#0098B9] pt-[20px] pr-[30px]">
             <nav className="flex flex-col justify-end">
                 <Nav />
-                <a className="text-2xl text-white text-end">CARDIOLOGY DEPARTMENT</a>
             </nav>
             <div className="flex justify-between">
                 <div>

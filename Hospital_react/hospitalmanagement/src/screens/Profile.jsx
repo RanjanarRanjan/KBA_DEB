@@ -96,12 +96,16 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import { user_profile } from '../assets/images/Index';
+import { useNavigate } from "react-router-dom";
+
 
 
 const Profile = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -163,11 +167,12 @@ const Profile = () => {
                             </div>
                         </div>
 
-                        <div className="mt-6 md:mt-0 md:self-start md:mr-[40px]">
-                            <button className="bg-orange-300 w-[80px] h-[40px] rounded hover:bg-orange-400">
-                                <a href="profile_edit.html" className="text-black font-medium">Edit</a>
-                            </button>
-                        </div>
+                        <button
+    onClick={() => navigate("/update-profile")}
+    className="bg-orange-300 w-[80px] h-[40px] rounded hover:bg-orange-400"
+>
+    Edit
+</button>;
                     </form>
                 </div>
             </div>

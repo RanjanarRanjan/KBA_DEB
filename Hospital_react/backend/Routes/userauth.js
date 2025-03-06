@@ -125,19 +125,22 @@ userauth.get('/getuser', authenticate, async (req, res) => {
 
 
 
-    userauth.patch("/updateuser",authenticate,usercheck,async(req,res)=>
-        {
-            try{
-                    const {Email,phone,dob,gender,address,password}=req.body
+     userauth.patch("/updateuser",authenticate,usercheck,async(req,res)=>
+         {
+             try{
+                 const {Email,fullname,phone,address}=req.body
                     const result=await signup.findOne({Email:Email})
-                    if(result)
-                    {
+                     if(result)
+                     {
                         result.phone=phone,
-                        result.dob=dob,
-                        result.gender=gender,
+                        result.fullname=fullname,
                         result.address=address,
-                        result.password=password
-                        await result.save()
+    //                     result.password=password
+                         await result.save()
+                     }
+
+                     if(result)
+                     {
                         res.status(200).send("Successfully update a Profile")
                     }
                     else
@@ -150,6 +153,27 @@ userauth.get('/getuser', authenticate, async (req, res) => {
                 res.status(500).send("Server error")
             }
         })
+
+    // userauth.patch("/updateuser", authenticate, usercheck, async (req, res) => {
+    //     try {
+    //         const { fullname, phone, address } = req.body; // Only allow these fields
+    //         const result = await signup.findOneAndUpdate(
+    //             { Email: req.user.Email }, // Assuming `req.user.Email` contains the authenticated user's email
+    //             { fullname, phone,address }, 
+    //             { new: true } // This returns the updated document
+    //         );
+    
+    //         if (result) {
+    //             res.status(200).send("Successfully updated profile");
+    //         } else {
+    //             res.status(400).send("User not found");
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //         res.status(500).send("Server error");
+    //     }
+    // });
+    
 
 
 
