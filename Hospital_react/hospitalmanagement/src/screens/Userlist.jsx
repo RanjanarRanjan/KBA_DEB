@@ -28,7 +28,7 @@ const UserList = () => {
   return (
     <div className="bg-[#0098B9] min-h-screen flex flex-col">
       <AdminHeader />
-      <div className="p-4">
+      <div className="p-4 mt-[100px]">
         <div className="h-[78vh] bg-[#ffffff] border border-cyan-300 rounded-lg p-4 overflow-x-auto">
           <table className="w-full text-left text-gray-700">
             <thead>
@@ -75,47 +75,3 @@ const UserList = () => {
 export default UserList;
 
 
-
-
-// import React from 'react'
-// import AdminHeader from '../components/AdminHeader'
-
-// const Userlist = () => {
-//   return (
-//     <div classNameName="bg-[#0098B9] min-h-screen flex flex-col">
-//         <AdminHeader/>
-//         <div className="p-4">
-//             <div className="h-[78vh] bg-[#ffffff] border border-cyan-300 rounded-lg p-4 overflow-x-auto">
-//               <table className="w-full text-left text-gray-700">
-//                 <thead>
-//                   <tr className="border-b bg-cyan-300">
-//                     <th className="py-2 px-4">sl no.</th>
-//                     <th className="py-2 px-4">Patient Name</th>
-//                     <th className="py-2 px-4">Contact</th>
-//                     <th className="py-2 px-4">Email</th>
-//                     <th className="py-2 px-4">Dob</th>
-//                     <th className="py-2 px-4">Gender</th>
-//                     <th className='py-2 px-4'>Address</th>
-//                   </tr>
-//                 </thead>
-//                 <tbody>
-//                   <tr className="border-b border-black">
-//                     <td className="py-2 px-4">1</td>
-//                     <td className="py-2 px-4">Arun Das</td>
-//                     <td className="py-2 px-4">7994809112</td>
-//                     <td className="py-2 px-4">arun@example.com</td>
-//                     <td className="py-2 px-4">24</td>
-//                     <td className="py-2 px-4">Male</td>
-//                     <td className="py-2 px-4">B+ve</td>
-//                   </tr>
-//                 </tbody>
-//               </table>
-//             </div>
-//     </div>
-    
-
-//     </div>
-//   )
-// }
-
-// export default Userlist

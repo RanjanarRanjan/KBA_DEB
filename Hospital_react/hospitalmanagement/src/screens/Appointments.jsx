@@ -52,7 +52,7 @@ const Appointments = () => {
   return (
     <div className="bg-[#0098B9] min-h-screen flex flex-col">
       <AdminHeader />
-      <div className="p-4">
+      <div className="p-4 mt-[100px]">
         <div className="h-[78vh] bg-[#ffffff] border border-cyan-300 rounded-lg p-4 overflow-x-auto">
           {loading ? (
             <p className="text-center">Loading...</p>

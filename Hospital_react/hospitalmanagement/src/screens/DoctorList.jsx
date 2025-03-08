@@ -57,7 +57,7 @@ const DoctorList = () => {
   return (
     <div className="bg-[#0098B9] min-h-screen flex flex-col">
       <AdminHeader />
-      <div className="p-4">
+      <div className="p-4 mt-[100px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {doctors.length === 0 ? (
             <div className="col-span-full text-center py-4 text-gray-700">

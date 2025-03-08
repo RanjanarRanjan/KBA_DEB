@@ -9,7 +9,7 @@ const Home = () => {
       <div class="bg-[#0098B9] min-h-screen flex flex-col">
         <Header />
 
-        <div class="p-6 flex-1 justify-center">
+        <div class="p-6 flex-1  mt-[100px] justify-center">
         <h1 class="text-center text-white text-[20px] md:text-3xl">Welcome  User</h1>
         <div class="flex flex-col ml-[20px] gap-4 md:flex-row md:justify-between md:mt-[60px]">
             <Link to="/Book_appointment" class="bg-white md:w-[400px] w-[250px] h-[50px] md:h-[100px] p-[4px] rounded-md flex justify-center gap-[10px]">
@@ -25,7 +25,7 @@ const Home = () => {
                 <h2 class="md:text-xl text-[10px] font-medium text-center mt-[15px]">Patient Profile</h2>
             </Link>
         </div>
-    </div>
+      </div>
     <footer class="h-[40%] w-full text-[#076579] text-[10px] text-center  md:text-xl  bg-gradient-to-tr from-[#ffffff] to-[#0098B9] pt-[10px] px-4 ">
         <h3 class="text-center text-white text-xl md:text-2xl pb-[20px]">Contact Us</h3>
         <div class="flex flex-col md:flex-row justify-between">

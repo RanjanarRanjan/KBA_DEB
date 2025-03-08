@@ -62,7 +62,7 @@ const History = () => {
   return (
     <div className="bg-[#0098B9] min-h-screen flex flex-col">
       <Header />
-      <div className="py-2 px-4">
+      <div className="py-2 px-4 mt-[100px]">
         <h1 className="text-center text-white text-3xl">Welcome User</h1>
         <div className="h-[78vh] bg-[#ffffff] border border-cyan-300 rounded-lg p-4 overflow-x-auto">
           {loading ? (
@@ -90,12 +90,25 @@ const History = () => {
                     <td className="py-2 px-4">{appointment.doctor_name}</td>
                     <td className="py-2 px-4">{appointment.time_slot}</td>
                     <td className="py-2 px-4">
-                      <button
+                      {/* <button
                         className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
                         onClick={() => handleCancel(appointment._id)}
                       >
                         Cancel
-                      </button>
+                      </button> */}
+                      <td className="py-2 px-4">
+  <button
+    className={`px-4 py-1 rounded ${
+      new Date(appointment.appointment_date) < new Date()
+        ? "bg-gray-400 cursor-not-allowed"
+        : "bg-red-500 hover:bg-red-600 text-white"
+    }`}
+    onClick={() => handleCancel(appointment._id)}
+    disabled={new Date(appointment.appointment_date) < new Date()}
+  >
+    Cancel
+  </button>
+</td>
                     </td>
                   </tr>
                 ))}

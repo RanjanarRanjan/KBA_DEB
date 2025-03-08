@@ -7,7 +7,7 @@ const Dashboard = () => {
   return (
     <div className="bg-[#0098B9] min-h-screen flex flex-col">
       <AdminHeader />
-      <div className="p-2 md:p-6 ">
+      <div className="p-2 md:p-6 mt-[100px] ">
         
         <div className="flex flex-col gap-[10px] md:flex-row md:justify-evenly mb-[20px] mt-[60px]">
            
