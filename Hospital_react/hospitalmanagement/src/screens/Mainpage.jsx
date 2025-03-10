@@ -1,3 +1,4 @@
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { hospitalLogo, smallLogo } from '../assets/images/Index.jsx';
 import doctorImage from "../assets/images/sp-img.svg"; 

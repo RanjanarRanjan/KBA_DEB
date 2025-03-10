@@ -201,6 +201,15 @@ const DoctorDetails = () => {
             </div>
           </div>
 
+          {/* Doctor Image Upload */}
+          <div className="flex justify-between mb-4">
+             <label className="text-[10px] md:text-xl font-semibold text-center">Doctor Image</label>
+             <input type="file" onChange={handleImageChange} />             
+             {doctor.image && (
+              <img src={`data:image/png;base64,${doctor.image}`} alt="Doctor" className="w-[150px] h-[200px] rounded-md border border-gray-300" />
+            )}
+          </div>
+
           <div className="flex justify-between md:mt-[50px]">
             <button type="button" className="bg-white py-2 px-6 rounded border-4 border-[#0098B9]" onClick={() => navigate(-1)}>Back</button>
             <button type="button" className="bg-[#0098B9] py-2 px-8 rounded border-4 border-white text-white" onClick={handleUpdateDoctor}>Update</button>

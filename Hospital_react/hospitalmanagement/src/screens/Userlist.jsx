@@ -51,7 +51,7 @@ const UserList = () => {
                     <td className="py-2 px-4">{user.fullname}</td>
                     <td className="py-2 px-4">{user.phone}</td>
                     <td className="py-2 px-4">{user.Email}</td>
-                    <td className="py-2 px-4">{user.dob}</td>
+                    <td className="py-2 px-4">{user.dob.split('T')[0]}</td>
                     <td className="py-2 px-4">{user.user_role}</td>
                     <td className="py-2 px-4">{user.gender}</td>
                     <td className="py-2 px-4">{user.address}</td>
