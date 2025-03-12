@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Nav from "../component/Nav";
 
 const AddItem = () => {
     const [itemName, setItemName] = useState("");
@@ -31,6 +32,7 @@ const AddItem = () => {
 
     return (
         <div>
+            <Nav/>
             <h2 className="text-cyan-600 mt-[50px] text-4xl text-center">Add Item</h2>
             <form onSubmit={handleSubmit}>
                 <div className="flex flex-col items-center">
@@ -72,11 +74,7 @@ const AddItem = () => {
                     >
                         Add Item
                     </button>
-                    <Link to='/view'>
-                        <button className="w-[200px] mt-[30px] bg-[#0098B9] py-2 rounded border-4 border-white text-white">
-                            View item
-                        </button>
-                    </Link>
+                   
                 </div>
             </form>
             {message && <p>{message}</p>}

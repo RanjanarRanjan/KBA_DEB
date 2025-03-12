@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Nav from "../component/Nav";
 
 const Viewitem = () => 
     {
@@ -34,6 +35,7 @@ const Viewitem = () =>
 
   return (
     <div className="p-4">
+        <Nav />
         <h2 className="text-xl font-bold mb-2">View Items </h2>
 
         <input type="text" placeholder="Enter category"
