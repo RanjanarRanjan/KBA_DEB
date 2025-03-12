@@ -52,13 +52,15 @@ appointment.get("/available_slots", authenticate, usercheck, async (req, res) =>
         }
         // Fetch booked slots
         const bookedSlots = await Appointment.find({ doctor_name, appointment_date: date }).select("time_slot");
-
         const bookedTimeSlots = [];
         for (let i = 0; i < bookedSlots.length; i++) 
         {
             const slot = bookedSlots[i];
             if (slot.time_slot) {  // Ensure 'time_slot' exists
+                console.log(slot.time_slot)
+                console.log("hii")
                 bookedTimeSlots.push(slot.time_slot.trim());
+               
             }
             else 
             {

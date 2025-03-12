@@ -69,7 +69,7 @@ const Appointments = () => {
                   <th className="py-2 px-4">Doctor</th>
                   <th className="py-2 px-4">Time</th>
                   <th className="py-2 px-4">Date</th>
-                  <th className="py-2 px-4">Action</th>
+                  {/* <th className="py-2 px-4">Action</th> */}
                 </tr>
               </thead>
               <tbody>
