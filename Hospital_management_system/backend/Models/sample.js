@@ -33,6 +33,7 @@ const doctor_creation=model('create_doctor',doctor)
 
 const appointment = new Schema({
     user_id: { type: Schema.Types.ObjectId, ref: "signup_user", required: true },
+    // username: { type: Schema.Types.ObjectId, ref: "signup_user", required: true },
     doctor_name: { type: String, ref: "create_doctor", required: true },  // Changed doctor_id to doctor_name
     appointment_date: { type: String, required: true },
     time_slot: { type: String, required: true }

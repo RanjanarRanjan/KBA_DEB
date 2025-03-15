@@ -52,19 +52,26 @@ appointment.get("/available_slots", authenticate, usercheck, async (req, res) =>
         }
         // Fetch booked slots
         const bookedSlots = await Appointment.find({ doctor_name, appointment_date: date }).select("time_slot");
-
         const bookedTimeSlots = [];
         for (let i = 0; i < bookedSlots.length; i++) 
         {
             const slot = bookedSlots[i];
             if (slot.time_slot) {  // Ensure 'time_slot' exists
+                console.log(slot.time_slot)
+                console.log("hii")
                 bookedTimeSlots.push(slot.time_slot.trim());
+               
             }
             else 
             {
                 bookedTimeSlots.push(null); // You can push null or an empty string if time_slot is missing
             }
         }
+       
+        // const availableSlots = doctor.time_schedules.filter(slot => {
+        //     const timeRange = `${slot.start_time.trim()} - ${slot.end_time.trim()}`;
+        //     return !bookedTimeSlots.includes(timeRange);
+        // });
         const availableSlots = [];
         for (let i = 0; i < doctor.time_schedules.length; i++) 
         {
@@ -75,6 +82,8 @@ appointment.get("/available_slots", authenticate, usercheck, async (req, res) =>
                 availableSlots.push(slot);
             }
         }
+
+
         // Return a meaningful response
         if (availableSlots.length === 0) {
             return res.status(200).json({ msg: "No available slots for the selected date" });
@@ -125,7 +134,7 @@ appointment.post("/book_appointment", authenticate,usercheck,async (req, res) =>
 appointment.get('/appointments', authenticate, async (req, res) => {
     try {
         if (req.user_role === 'admin') {
-            const allAppointments = await Appointment.find().populate('user_id');
+            const allAppointments = await Appointment.find();
 
             if (!allAppointments || allAppointments.length === 0) {
                 return res.status(404).json({ msg: 'No appointments found' });
@@ -134,7 +143,8 @@ appointment.get('/appointments', authenticate, async (req, res) => {
         }
         else {
             // Regular user can only view their own appointments
-            const userAppointments = await Appointment.find({ user_id: req.user_id }).populate('user_id');
+            const userAppointments = await Appointment.find({ user_id: req.user_id });
+
             if (!userAppointments || userAppointments.length === 0) {
                 return res.status(404).json({ msg: 'No appointments found for this user' });
             }

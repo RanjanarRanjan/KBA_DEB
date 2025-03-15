@@ -74,14 +74,24 @@ const Header = () => {
           >
             Profile
           </NavLink>
+          
           <button
             onClick={handleLogout}
-            className="px-4 rounded hidden md:block bg-red-500 hover:bg-red-600"
+            className="px-4 rounded  md:block bg-red-500 hover:bg-red-600"
           >
             Logout
           </button>
         </div>
+        
       </header>
+      <div className="fixed bottom-4 right-4 md:hidden">
+        <button
+          onClick={() => navigate('/Home')}
+          className="bg-[#007a99] text-white px-4 py-2 mb-[400px] rounded-lg shadow-md hover:bg-[#005f73]"
+        >
+          Go to Dashboard
+        </button>
+      </div>
     </div>
   );
 };

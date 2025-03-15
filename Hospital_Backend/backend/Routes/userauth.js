@@ -18,20 +18,13 @@ userauth.post("/signup",async function(req,res)
     const newpassword=await bcrypt.hash(password,10)
 
     const existingUser=await signup.findOne({Email:Email});
-    
+
     if(existingUser)
     {
         res.status(400).send("UserName is already Exist");
     }
-
-    if (user_role === "admin") {
-        const existingAdmin = await signup.findOne({ user_role: "admin" });
-
-        if (existingAdmin) {
-            return res.status(403).send("Admin already exists. Only one admin is allowed.");
-        }
-    }
-   
+    else
+    {  
         const newUser =new signup({
             fullname:Username,
             Email:Email,
@@ -44,6 +37,7 @@ userauth.post("/signup",async function(req,res)
         })
         await newUser.save()      
         res.status(201).send("Registration successfully")
+    }
     }
     catch
     {
@@ -73,8 +67,7 @@ userauth.post('/login',async function(req,res)
                 const token=jwt.sign({ _id: result._id,Email:Email,user_role:result.user_role},process.env.SECRET_KEY,{expiresIn:'1h'});
                 console.log(token);
                 res.cookie('authToken',token,{httpOnly:true});
-                res.status(200).json({ success: true, message: "Login successful", user_role: result.user_role });
-                console.log("success")
+                res.status(200).send("success")
             }
             else
             {
@@ -92,7 +85,7 @@ userauth.post('/login',async function(req,res)
 // userauth.get('/getuser',authenticate,usercheck,async(req,res)=>
 //     {
 //         try{
-//             const name=req.query.Email
+//             const name=req.user.Email
 //             const result1=await signup.findOne({Email:name})
 //             if(result1)
 //             {
@@ -109,6 +102,8 @@ userauth.post('/login',async function(req,res)
 //         }
 //     })
 
+
+//without query passing
 userauth.get('/getuser', authenticate, async (req, res) => {
     try {
         const user = await signup.findById(req.user_id).select('-password'); // Fetch user by ID and exclude password
@@ -124,23 +119,18 @@ userauth.get('/getuser', authenticate, async (req, res) => {
 });
 
 
-
-     userauth.patch("/updateuser",authenticate,usercheck,async(req,res)=>
-         {
-             try{
-                 const {Email,fullname,phone,address}=req.body
+    userauth.patch("/updateuser",authenticate,usercheck,async(req,res)=>
+        {
+            try{
+                    const {Email,phone,dob,gender,address}=req.body
                     const result=await signup.findOne({Email:Email})
-                     if(result)
-                     {
+                    if(result)
+                    {
                         result.phone=phone,
-                        result.fullname=fullname,
-                        result.address=address,
-    //                     result.password=password
-                         await result.save()
-                     }
-
-                     if(result)
-                     {
+                        result.dob=dob,
+                        result.gender=gender,
+                        result.address=address
+                        await result.save()
                         res.status(200).send("Successfully update a Profile")
                     }
                     else
@@ -154,27 +144,6 @@ userauth.get('/getuser', authenticate, async (req, res) => {
             }
         })
 
-    // userauth.patch("/updateuser", authenticate, usercheck, async (req, res) => {
-    //     try {
-    //         const { fullname, phone, address } = req.body; // Only allow these fields
-    //         const result = await signup.findOneAndUpdate(
-    //             { Email: req.user.Email }, // Assuming `req.user.Email` contains the authenticated user's email
-    //             { fullname, phone,address }, 
-    //             { new: true } // This returns the updated document
-    //         );
-    
-    //         if (result) {
-    //             res.status(200).send("Successfully updated profile");
-    //         } else {
-    //             res.status(400).send("User not found");
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).send("Server error");
-    //     }
-    // });
-    
-
 
 
 userauth.get("/logout",(req,res)=>
@@ -186,6 +155,4 @@ userauth.get("/logout",(req,res)=>
     
 
 export{userauth};
-
-
 

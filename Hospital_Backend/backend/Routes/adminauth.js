@@ -19,10 +19,6 @@ adminauth.post("/add_doctor",authenticate,upload.single("doctorImage"),async(req
             if(req.user_role=='admin')
             {
             const {doctor_name,email,contact,working_days,time_schedules}=req.body
-            
-            const parsedWorkingDays = JSON.parse(working_days);
-            const parsedTimeSchedules = JSON.parse(time_schedules);
-
             const add_doctor=await doctor_creation.findOne({doctor_name:doctor_name})
            
             if(add_doctor)
@@ -37,13 +33,13 @@ adminauth.post("/add_doctor",authenticate,upload.single("doctorImage"),async(req
                     imagePath=convertToBase64(req.file.buffer)
                 }
                 const newdoctor = new doctor_creation({
-                    doctor_name,
-                    email,
-                    contact,
-                    working_days: parsedWorkingDays,
-                    time_schedules: parsedTimeSchedules,
-                    image: imagePath
-                });
+                    doctor_name: doctor_name,
+                    email: email,
+                    contact: contact,
+                    working_days: working_days,
+                    time_schedules: time_schedules,
+                    image:imagePath
+                })
                 await newdoctor.save()
                 res.status(201).send("successfully")
                 console.log("admin")
@@ -81,85 +77,58 @@ adminauth.post("/add_doctor",authenticate,upload.single("doctorImage"),async(req
                 res.status(500).send("Server error")
             }
         })
+        
 
-        adminauth.get("/getdoctor/:id", async (req, res) => {
+        adminauth.get('/get_one_doctor', authenticate, admincheck, async (req, res) => {
             try {
-              const doctor = await doctor_creation.findById(req.params.id);
-              if (!doctor) {
-                return res.status(404).json({ message: "Doctor not found" });
-              }
-              res.status(200).json(doctor);
+                const { doctor_name } = req.body;
+        
+                if (!doctor_name) {
+                    return res.status(400).json({ message: "Doctor name is required" });
+                }
+        
+                const result = await doctor_creation.findOne({ doctor_name });
+        
+                if (!result) {
+                    return res.status(404).json({ message: "Doctor not found" });
+                }
+        
+                res.status(200).json(result);
             } catch (error) {
-              console.error("Error fetching doctor details:", error);
-              res.status(500).json({ message: "Server error while fetching doctor details" });
+                res.status(500).json({ message: "Server error", error: error.message });
             }
-          });
-
+        });
+      
 
 //edit or update profile
 
-adminauth.put("/updatedoctor/:id", upload.single("doctor_image"), async (req, res) => {
-    try {
-      const { id } = req.params;
-      const { email, contact, working_days, time_schedules } = req.body;
-  
-      // Check if doctor exists
-      const doctor = await doctor_creation.findById(id);
-      if (!doctor) {
-        return res.status(404).json({ message: "Doctor not found" });
-      }
-  
-      // Prepare update data
-      const updateData = {
-        email,
-        contact,
-        working_days: JSON.parse(working_days),
-        time_schedules: JSON.parse(time_schedules),
-      };
-  
-      // Handle image update
-      if (req.file) {
-        updateData.image = req.file.buffer.toString("base64"); // Store image as base64
-      }
-  
-      // Update the doctor
-      const updatedDoctor = await doctor_creation.findByIdAndUpdate(id, updateData, { new: true });
-  
-      res.json({ message: "Doctor updated successfully", updatedDoctor });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Server error" });
-    }
-  });
-  
-// adminauth.put("/updatedoctor/:id", async (req, res) => {
-//     try {
-//       const { id } = req.params;
-//       const { working_days, time_schedules } = req.body;
-  
-//       // Check if doctor exists
-//       const doctor = await doctor_creation.findById(id);
-//       if (!doctor) {
-//         return res.status(404).json({ message: "Doctor not found" });
-//       }
-  
-//       // Update the doctor
-//       const updatedDoctor = await doctor_creation.findByIdAndUpdate(
-//         id,
-//         { working_days, time_schedules },
-//         { new: true }
-//       );
-  
-//       res.json({ message: "Doctor updated successfully", updatedDoctor });
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).json({ message: "Server error" });
-//     }
-//   });
+adminauth.put("/updatedoctor",authenticate,admincheck,async(req,res)=>
+    {
+     try{
+            const {doctor_name,email,contact,working_days,time_schedules}=req.body
+            const result=await doctor_creation.findOne({doctor_name:doctor_name})
+            if(result)
+            {
+                result.doctor_name=doctor_name,
+                result.email=email,
+                result.contact= contact,
+                result.working_days=working_days,
+                result.time_schedules=time_schedules
+                await result.save()
+                res.status(200).send("Successfully update a course")
+            }
+            else
+            {
+                res.status(400).send("Doctor not found")
+            }
+        }
+     catch
+     {
+         res.status(500).send("Server error")
+     }
+    })
 
 
-  
- 
 //delete doctor
 adminauth.delete('/deletedoctor',authenticate,admincheck,async(req,res)=>
     {
