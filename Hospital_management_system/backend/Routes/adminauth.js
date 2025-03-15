@@ -131,33 +131,7 @@ adminauth.put("/updatedoctor/:id", upload.single("doctor_image"), async (req, re
       res.status(500).json({ message: "Server error" });
     }
   });
-  
-// adminauth.put("/updatedoctor/:id", async (req, res) => {
-//     try {
-//       const { id } = req.params;
-//       const { working_days, time_schedules } = req.body;
-  
-//       // Check if doctor exists
-//       const doctor = await doctor_creation.findById(id);
-//       if (!doctor) {
-//         return res.status(404).json({ message: "Doctor not found" });
-//       }
-  
-//       // Update the doctor
-//       const updatedDoctor = await doctor_creation.findByIdAndUpdate(
-//         id,
-//         { working_days, time_schedules },
-//         { new: true }
-//       );
-  
-//       res.json({ message: "Doctor updated successfully", updatedDoctor });
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).json({ message: "Server error" });
-//     }
-//   });
-
-
+ 
   
  
 //delete doctor

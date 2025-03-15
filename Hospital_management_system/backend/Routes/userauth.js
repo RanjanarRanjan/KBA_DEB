@@ -31,7 +31,6 @@ userauth.post("/signup",async function(req,res)
             return res.status(403).send("Admin already exists. Only one admin is allowed.");
         }
     }
-   
         const newUser =new signup({
             fullname:Username,
             Email:Email,
@@ -61,7 +60,7 @@ userauth.post('/login',async function(req,res)
 
         if(!result)
         {
-            res.status(400).send("Enter avalid Email")
+            res.status(400).send("Enter a valid Email")
         }
         else
         {
@@ -88,26 +87,6 @@ userauth.post('/login',async function(req,res)
     }
 })
 
-
-// userauth.get('/getuser',authenticate,usercheck,async(req,res)=>
-//     {
-//         try{
-//             const name=req.query.Email
-//             const result1=await signup.findOne({Email:name})
-//             if(result1)
-//             {
-//                 res.json(result1);
-//                 console.log(result1)
-//             }
-//             else{
-//                 res.status(400).send("User not found")
-//             }
-//         }
-//         catch
-//         {
-//             res.status(500).send("Server error")
-//         }
-//     })
 
 userauth.get('/getuser', authenticate, async (req, res) => {
     try {
@@ -154,25 +133,6 @@ userauth.get('/getuser', authenticate, async (req, res) => {
             }
         })
 
-    // userauth.patch("/updateuser", authenticate, usercheck, async (req, res) => {
-    //     try {
-    //         const { fullname, phone, address } = req.body; // Only allow these fields
-    //         const result = await signup.findOneAndUpdate(
-    //             { Email: req.user.Email }, // Assuming `req.user.Email` contains the authenticated user's email
-    //             { fullname, phone,address }, 
-    //             { new: true } // This returns the updated document
-    //         );
-    
-    //         if (result) {
-    //             res.status(200).send("Successfully updated profile");
-    //         } else {
-    //             res.status(400).send("User not found");
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).send("Server error");
-    //     }
-    // });
     
 
 

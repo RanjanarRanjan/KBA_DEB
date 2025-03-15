@@ -168,16 +168,9 @@ appointment.delete('/deleteappointment', authenticate, async (req, res) => {
             return res.status(404).send("Appointment not found");
         }
 
-        // Admin can delete any appointment
-        if (req.user_role === 'admin') {
-            await Appointment.findByIdAndDelete(appointment_id);
-            return res.status(200).send("Appointment successfully deleted by admin");
-        }
-
-        // If the logged-in user is the owner of the appointment, they can delete it
         if (appointment.user_id.toString() === req.user_id) {//objectId
             await Appointment.findByIdAndDelete(appointment_id);
-            return res.status(200).send("Appointment successfully deleted by user");
+            return res.status(200).send("Appointment successfully deleted");
         } else {
             return res.status(403).send("You are not authorized to delete this appointment");
         }
@@ -191,9 +184,3 @@ appointment.delete('/deleteappointment', authenticate, async (req, res) => {
 
 export { appointment };
 
-
- // Ensure doctor.time_schedules exist
-        // if (!doctor.time_schedules || doctor.time_schedules.length === 0) {
-        //     return res.status(200).json({ msg: "No available slots for the selected date" });
-        // }
-        // Filter available slots

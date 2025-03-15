@@ -15,7 +15,7 @@ import Profile from './screens/Profile.jsx'
 import UpdateProfile from './screens/UpdateProfile.jsx'
 import DoctorDetails from './screens/DoctorDetails.jsx'
 
-const  MainRouter = () => {
+const  App = () => {
   return (
     <BrowserRouter>
         <Routes>
@@ -38,4 +38,4 @@ const  MainRouter = () => {
     </BrowserRouter>
   )
 }
-export default  MainRouter
+export default  App
