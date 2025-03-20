@@ -87,7 +87,7 @@ adminauth.post("/addbook", authenticate, upload.single("bookImage"), async (req,
         
 
 
-        adminauth.get("/books/:id", async (req, res) => {
+        adminauth.get("/books/:id",authenticate ,async (req, res) => {
             try {
               const { id } = req.params;
               const book = await books.findById(id); // Corrected `book` to `books`

@@ -28,7 +28,7 @@ const Main = () => {
         {/* Explore Library */}
         <div
           className="w-[300px] bg-white shadow-lg rounded-lg p-6 text-center cursor-pointer hover:shadow-2xl transition"
-          onClick={() => navigate("/dashboard")}
+          onClick={() => navigate("/user-dashboard")}
         >
           <img
             src={image2}

@@ -7,6 +7,8 @@ import Managebook from './screens/Managebook'
 import Updatebook from './screens/Updatebook'
 import Bookdetails from './screens/Bookdetails'
 import Main from './screens/Main'
+import Userhome from './screens/Userhome'
+import Usersinglebook from './screens/Usersinglebook'
 
 
 const App = () => {
@@ -20,7 +22,8 @@ const App = () => {
           <Route path='/addbook' element={<Addbook/>}/>
           <Route path='/update/:id' element={<Updatebook/>}/>
           <Route path="/book/:id" element={<Bookdetails/>}/>
-        
+          <Route path='/user-dashboard' element={<Userhome/>}/>
+          <Route path='/singlebook/:id' element={<Usersinglebook/>}/>
       </Routes>
     </BrowserRouter>
   )
