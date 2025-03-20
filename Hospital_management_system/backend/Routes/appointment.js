@@ -19,8 +19,6 @@ appointment.get("/available_doctors", authenticate,usercheck,async (req, res) =>
             return res.status(404).json({ msg: "No doctors available on this day" });
         }
 
-        // Map over the availableDoctors to only return doctor names
-        //const doctorNames = availableDoctors.map(doctor => doctor.doctor_name);
         const doctorNames = [];
         for (let i = 0; i < availableDoctors.length; i++) {
             const doctor = availableDoctors[i];  // Get the current doctor object
