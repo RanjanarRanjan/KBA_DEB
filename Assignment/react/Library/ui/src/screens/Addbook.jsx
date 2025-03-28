@@ -52,7 +52,7 @@ const Addbook = () => {
       const response = await fetch("/api/addbook", {
         method: "POST",
         body: formDataObj,
-        credentials: "include", // For cookies (JWT token)
+        // credentials: "include", // For cookies (JWT token)
       });
 
       const data = await response.json();
