@@ -10,35 +10,39 @@ const convertToBase64 = (buffer) => {
 };
 
 adminauth.post("/addbook", authenticate, upload.single("bookImage"), async (req, res) => {
-    try {
-        if (!req.user || req.user.user_role !== "admin") {
-            return res.status(403).json({ msg: "Only admin can add books" });
-        }
-        const { BookName, Author, Category, Description } = req.body;
-        if (!BookName || !Author || !Category || !Description) {
-            return res.status(400).json({ msg: "All fields are required" });
-        }
-        const existingBook = await books.findOne({ BookName });
-        if (existingBook) {
-            return res.status(400).json({ msg: "Book already exists" });
-        }
-        let imagePath = null;
-        if (req.file) {
-            imagePath = convertToBase64(req.file.buffer);
-        }
-        const newBook = new books({
-            BookName,
-            Author,
-            Category,
-            Description,
-            image: imagePath,
-        });
-        await newBook.save();
-        return res.status(201).json({ msg: "Book added successfully" });
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ msg: "Server Error" });
-    }
+  try {
+      if (!req.user || req.user.user_role !== "admin") {
+          return res.status(403).json({ msg: "Only admin can add books" });
+      }
+      const { BookName, Author, Category, Description } = req.body;
+      if (!BookName || !Author || !Category || !Description) {
+          return res.status(400).json({ msg: "All fields are required" });
+      }
+      const existingBook = await books.findOne({ BookName });
+      if (existingBook) {
+          return res.status(400).json({ msg: "Book already exists" });
+      }
+      
+      // Handling image: Convert image buffer to Base64 string directly
+      let imagePath = null;
+      if (req.file) {
+        imagePath = `data:image/png;base64,${convertToBase64(req.file.buffer)}`;
+      }
+
+      const newBook = new books({
+          BookName,
+          Author,
+          Category,
+          Description,
+          image: imagePath,
+      });
+
+      await newBook.save();
+      return res.status(201).json({ msg: "Book added successfully" });
+  } catch (error) {
+      console.error(error);
+      return res.status(500).json({ msg: "Server Error" });
+  }
 });
 
 
