@@ -8,6 +8,7 @@ import {
   Alert,
   Image,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
@@ -24,6 +25,7 @@ export default function UpdateStudent() {
   });
 
   const [image, setImage] = useState<string | null>(null);
+  const [imageUri, setImageUri] = useState<string | null>(null);
 
   useEffect(() => {
     fetchStudent();
@@ -41,11 +43,13 @@ export default function UpdateStudent() {
       });
 
       if (data.image) {
-        setImage(`data:image/jpeg;base64,${data.image}`);
+        const uri = `data:image/jpeg;base64,${data.image}`;
+        setImage(uri);
+        setImageUri(uri);
       }
     } catch (error) {
       Alert.alert('Error', 'Failed to load student');
-      console.error(error); // Debugging line
+      console.error(error);
     }
   };
 
@@ -64,38 +68,31 @@ export default function UpdateStudent() {
 
     if (!result.canceled) {
       const asset = result.assets[0];
-      console.log('Selected image base64:', asset.base64); // Debugging line
+      const uri = asset.uri;
       setImage(`data:image/jpeg;base64,${asset.base64}`);
+      setImageUri(uri);
     }
   };
 
   const handleUpdate = async () => {
     const formData = new FormData();
 
-    // Append text fields
     Object.entries(form).forEach(([key, value]) => {
       formData.append(key, value);
     });
 
-    // Handle image field: If new image is picked, append it as a blob
-    if (image) {
-      if (image.startsWith('data:image')) {
-        const base64Data = image.split(',')[1];
-        const byteCharacters = atob(base64Data);
-        const byteNumbers = Array.from(byteCharacters).map(char => char.charCodeAt(0));
-        const byteArray = new Uint8Array(byteNumbers);
-        const blob = new Blob([byteArray], { type: 'image/jpeg' });
-        formData.append('image', blob as any, 'photo.jpg');
-      } else {
-        formData.append('existingImage', image); // key name should match backend expectations
-      }
+    if (imageUri) {
+      formData.append('image', {
+        uri: imageUri,
+        name: 'photo.jpg',
+        type: 'image/jpeg',
+      } as any);
     }
 
     try {
-      console.log('Sending form data:', formData); // Debugging line
       const response = await fetch(`http://192.168.128.196:5000/students/${s_id}`, {
         method: 'PUT',
-        body: formData as any,
+        body: formData,
       });
 
       if (!response.ok) {
@@ -107,7 +104,7 @@ export default function UpdateStudent() {
       router.push(`/student/${s_id}`);
     } catch (error) {
       Alert.alert('Error', 'Something went wrong');
-      console.error(error); // Debugging line
+      console.error(error);
     }
   };
 
@@ -117,6 +114,10 @@ export default function UpdateStudent() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <TouchableOpacity onPress={() => router.push('/home')} style={styles.backButton}>
+        <Text style={styles.backText}>← Back to Home</Text>
+      </TouchableOpacity>
+
       <Text style={styles.title}>Update Student</Text>
 
       <Text style={styles.label}>Student ID: {s_id}</Text>
@@ -148,6 +149,13 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: '#f9f9f9',
   },
+  backButton: {
+    marginBottom: 10,
+  },
+  backText: {
+    fontSize: 16,
+    color: '#007AFF',
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -174,3 +182,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
+

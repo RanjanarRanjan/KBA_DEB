@@ -1,6 +1,14 @@
-// app/student/[s_id].tsx
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, Button, ActivityIndicator, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Button,
+  ActivityIndicator,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 
 export default function StudentDetail() {
@@ -37,6 +45,39 @@ export default function StudentDetail() {
     }
   };
 
+  const handleDelete = () => {
+    Alert.alert(
+      'Delete Confirmation',
+      'Are you sure you want to delete this student?',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              const response = await fetch(`http://192.168.128.196:5000/students/${s_id}`, {
+                method: 'DELETE',
+              });
+
+              if (!response.ok) {
+                Alert.alert('Error', 'Failed to delete student');
+                return;
+              }
+
+              const result = await response.json();
+              Alert.alert('Success', result.message);
+              router.push('/home');
+            } catch (error) {
+              console.error('Delete error:', error);
+              Alert.alert('Error', 'Something went wrong during deletion');
+            }
+          },
+        },
+      ]
+    );
+  };
+
   if (loading) {
     return <ActivityIndicator size="large" style={{ marginTop: 50 }} />;
   }
@@ -47,12 +88,21 @@ export default function StudentDetail() {
 
   return (
     <View style={styles.container}>
+      {/* Back to Home Button at Top */}
+      <TouchableOpacity onPress={() => router.push('/home')} style={styles.backButton}>
+        <Text style={styles.backText}>← Back to Home</Text>
+      </TouchableOpacity>
+
       <Text style={styles.title}>Student Details</Text>
 
       <Image
-  style={styles.image}
-  source={{ uri: student.image ? `data:image/jpeg;base64,${student.image}` : 'https://via.placeholder.com/150' }}
-/>
+        style={styles.image}
+        source={{
+          uri: student.image
+            ? `data:image/jpeg;base64,${student.image}`
+            : 'https://via.placeholder.com/150',
+        }}
+      />
 
       <View style={styles.detailContainer}>
         <Text style={styles.label}>Name:</Text>
@@ -71,9 +121,12 @@ export default function StudentDetail() {
         <Text style={styles.value}>{student.department}</Text>
       </View>
 
-      <Button title="Back to Home" onPress={() => router.push('/home')} />
       <View style={{ marginTop: 10 }}>
         <Button title="Update Student" onPress={() => router.push(`/student/update/${student.s_id}`)} />
+      </View>
+
+      <View style={{ marginTop: 10 }}>
+        <Button title="Delete Student" color="red" onPress={handleDelete} />
       </View>
     </View>
   );
@@ -85,10 +138,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     padding: 20,
   },
+  backButton: {
+    marginBottom: 10,
+  },
+  backText: {
+    fontSize: 16,
+    color: '#007AFF',
+  },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 20,
+    textAlign: 'center',
   },
   image: {
     width: 150,
@@ -108,4 +169,3 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
